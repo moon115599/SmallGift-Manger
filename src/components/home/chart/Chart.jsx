@@ -2,82 +2,12 @@
 import React from "react";
 import * as Styled from "./style";
 
-// import { ResponsiveLine } from "@nivo/line";
+import { ResponsiveLine } from "@nivo/line";
 
-const Chart = () => {
-  let data = [
-    {
-      id: "hi",
-      color: "hsl(172, 70%, 50%)",
-      data: [
-        {
-          x: "월",
-          y: 192,
-        },
-        {
-          x: "화",
-          y: 269,
-        },
-        {
-          x: "수",
-          y: 225,
-        },
-        {
-          x: "목",
-          y: 66,
-        },
-        {
-          x: "금",
-          y: 42,
-        },
-        {
-          x: "토",
-          y: 191,
-        },
-        {
-          x: "일",
-          y: 227,
-        },
-      ],
-    },
-    {
-      id: "hiyo",
-      color: "hsl(172, 70%, 50%)",
-      data: [
-        {
-          x: "월",
-          y: 192,
-        },
-        {
-          x: "화",
-          y: 269,
-        },
-        {
-          x: "수",
-          y: 225,
-        },
-        {
-          x: "목",
-          y: 66,
-        },
-        {
-          x: "금",
-          y: 42,
-        },
-        {
-          x: "토",
-          y: 191,
-        },
-        {
-          x: "일",
-          y: 227,
-        },
-      ],
-    },
-  ];
+const Chart = ({ data }) => {
   return (
-    /* <div style={{ width: "auto", height: "500px" }}>
-      {/!* <div> *!/}
+    <div style={{ width: "auto", height: "500px" }}>
+      {/* <div> */}
       <ResponsiveLine
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -97,7 +27,7 @@ const Chart = () => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "transportation",
+          // legend: "transportation",
           legendOffset: 36,
           legendPosition: "middle",
         }}
@@ -143,8 +73,7 @@ const Chart = () => {
           },
         ]}
       />
-    </div> */
-    <div />
+    </div>
   );
 };
 export default Chart;
