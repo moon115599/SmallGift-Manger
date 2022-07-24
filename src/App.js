@@ -36,7 +36,7 @@ function App() {
         <Route path="/chart" element={<Chart />} />
         <Route path="/management/products" element={<ProductManagement />} />
         <Route path="/management/register/products" element={<ProductRegister />} />
-        <Route path="/management/register/business/" element={<BusinessRegister />} />
+        <Route path="/management/register/business" element={<BusinessRegister />} />
       </Routes>
     </BrowserRouter>
   );

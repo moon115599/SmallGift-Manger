@@ -1,3 +1,5 @@
+import * as Styled from "./style";
+
 import React from "react";
 
 import { Card } from "@mui/material";
@@ -42,8 +44,10 @@ const Weekly = () => {
   ];
   return (
     <Card variant="outlined">
-      주간 판매 현황
-      <Chart data={data} />
+      <Styled.Container>
+        <span className="title">주간 판매 현황</span>
+        <Chart data={data} />
+      </Styled.Container>
     </Card>
   );
 };
