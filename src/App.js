@@ -1,5 +1,6 @@
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
+import LogIn from "./pages/logIn/LogIn";
+import SignUp from "./pages/signUp/SignUp";
 import Sales from "./pages/sales/Sales";
 import Single from "./pages/single/Single";
 import ProductManagement from "./pages/management/productManagement/ProductManagement";
@@ -16,7 +17,7 @@ function App() {
 
         <Route path="/">
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
+          <Route path="logIn" element={<Login />} />
           <Route path="chart" element={<Chart />} />
           <Route path="users">
             <Route index element={<ProductManagement />} />
@@ -32,7 +33,8 @@ function App() {
 */}
 
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/chart" element={<Chart />} />
         <Route path="/management/products" element={<ProductManagement />} />
         <Route path="/management/register/products" element={<ProductRegister />} />
