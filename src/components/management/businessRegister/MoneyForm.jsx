@@ -1,14 +1,15 @@
 import React from "react";
 import { TextField, FormControl, InputLabel, Selec, MenuItem, Select, Button } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 const MoneyForm = () => {
   return (
     <>
-      <Styled.TitleDiv>
+      <CommonStyled.TitleDiv>
         <span>정산 대금 수신 정보 입력</span>
         <hr />
-      </Styled.TitleDiv>
+      </CommonStyled.TitleDiv>
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>예금주명</span>

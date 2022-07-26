@@ -38,13 +38,34 @@ const Sidebar = () => {
       <Styled.Center>
         <ul>
           <li>
-            <HomeIcon className="Icon" />
-            <span>홈</span>
+            <Link to="/">
+              <HomeIcon className="Icon" />
+              <span>홈</span>
+            </Link>
           </li>
           <li>
-            <MonetizationOnIcon className="Icon" />
-            <span>판매 관리</span>
+            <Link to="/management/products">
+              <MonetizationOnIcon className="Icon" />
+              <span>판매 관리</span>
+            </Link>
           </li>
+          <ul>
+            <Link to="/management/register/business">
+              <li>
+                <span> 사업자 등록</span>
+              </li>
+            </Link>
+            <Link to="/management/register/products">
+              <li>
+                <span> 상품 등록</span>
+              </li>
+            </Link>
+            <Link to="/management/products">
+              <li>
+                <span>상품 관리</span>
+              </li>
+            </Link>
+          </ul>
           <li>
             <BarChartIcon className="Icon" />
             <span>판매 현황</span>

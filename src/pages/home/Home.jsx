@@ -8,6 +8,7 @@ import Reviews from "../../components/home/Reviews";
 import Populars from "../../components/home/Populars";
 
 import * as Styled from "./style";
+import * as CommonStyled from "../style";
 import React from "react";
 import { Grid } from "@mui/material";
 
@@ -17,7 +18,7 @@ const Home = () => {
       <Sidebar />
       <Styled.HomeContainer>
         <Navbar discription="" />
-        <Styled.GridContainer>
+        <CommonStyled.MainContainer>
           <Grid container spacing={2}>
             <Grid item xs={3}>
               <Sales />
@@ -38,7 +39,7 @@ const Home = () => {
               <Monthly />
             </Grid>
           </Grid>
-        </Styled.GridContainer>
+        </CommonStyled.MainContainer>
       </Styled.HomeContainer>
     </Styled.Container>
   );

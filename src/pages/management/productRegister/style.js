@@ -5,12 +5,6 @@ export const Container = styled.div`
 `;
 export const FormContainer = styled.div`
   flex: 6;
-  form {
-    margin: 10px 120px;
-  }
-`;
-export const GridContainer = styled.div`
-  margin: 10px 120px;
 `;
 
 export const TitleDiv = styled.div`

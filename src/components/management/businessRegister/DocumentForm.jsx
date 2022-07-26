@@ -1,14 +1,15 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 const DocumentForm = () => {
   return (
     <>
-      <Styled.TitleDiv>
+      <CommonStyled.TitleDiv>
         <span>서류 첨부</span>
         <hr />
-      </Styled.TitleDiv>
+      </CommonStyled.TitleDiv>
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>사업자등록증</span>

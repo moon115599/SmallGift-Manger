@@ -9,23 +9,26 @@ import React from "react";
 
 import { TextField } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 const BusinessRegister = () => {
   const data = {};
   return (
-    <Styled.Container>
+    <CommonStyled.Container>
       <Sidebar />
-      <Styled.FormContainer>
+      <CommonStyled.FormContainer>
         <Navbar discription="" />
-        <form action="">
-          <AccountForm />
-          <BusinessForm />
-          <MoneyForm />
-          <RegisterNumberForm />
-          <DocumentForm />
-        </form>
-      </Styled.FormContainer>
-    </Styled.Container>
+        <CommonStyled.MainContainer>
+          <form action="">
+            <AccountForm />
+            <BusinessForm />
+            <MoneyForm />
+            <RegisterNumberForm />
+            <DocumentForm />
+          </form>
+        </CommonStyled.MainContainer>
+      </CommonStyled.FormContainer>
+    </CommonStyled.Container>
   );
 };
 

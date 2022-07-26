@@ -1,14 +1,15 @@
 import React from "react";
 import { TextField } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 const RegisterNumberForm = () => {
   return (
     <>
-      <Styled.TitleDiv>
+      <CommonStyled.TitleDiv>
         <span>통신 판매업 신고 번호</span>
         <hr />
-      </Styled.TitleDiv>
+      </CommonStyled.TitleDiv>
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>신고 번호</span>

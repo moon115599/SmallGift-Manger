@@ -3,21 +3,6 @@ import { TextField } from "@mui/material";
 
 export const Container = styled.div``;
 
-export const TitleDiv = styled.div`
-  font-weight: bold;
-
-  margin-bottom: 10px;
-  span {
-    font-size: 20px;
-  }
-  hr {
-    border: 0px;
-    height: 1.2px;
-    margin-top: 10px;
-    background-color: black;
-  }
-`;
-
 export const InputsDiv = styled.div`
   display: flex;
   flex-direction: column;

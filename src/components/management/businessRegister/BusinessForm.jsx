@@ -1,14 +1,15 @@
 import React from "react";
 import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 const BusinessForm = () => {
   return (
     <>
-      <Styled.TitleDiv>
+      <CommonStyled.TitleDiv>
         <span>사업자 등록</span>
         <hr />
-      </Styled.TitleDiv>
+      </CommonStyled.TitleDiv>
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>대표자명</span>
