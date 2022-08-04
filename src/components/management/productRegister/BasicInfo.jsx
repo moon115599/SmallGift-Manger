@@ -37,6 +37,7 @@ const BasicInfo = () => {
         <Styled.InputDiv>
           <span>카테고리</span>
           <TextField
+            id="catergory"
             className="TextField"
             size="small"
             select

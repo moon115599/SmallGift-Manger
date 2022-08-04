@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const axiosRegisterProduct = (payload) => {
+export const axiosRegisterProduct = async (payload) => {
   try {
     const response = await axios.post("/api/manager/registration/product", payload);
     if (response.code === 200) {

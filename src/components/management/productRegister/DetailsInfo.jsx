@@ -12,20 +12,20 @@ const DetailsInfo = () => {
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>가격</span>
-          <TextField className="TextField" size="small" required type="number" variant="outlined" />
+          <TextField id="productPrice" className="TextField" size="small" required type="number" variant="outlined" />
           <span>원</span>
           <hr />
         </Styled.InputDiv>
         <Styled.InputDiv>
           <span>재고 수량</span>
-          <TextField className="TextField" size="small" required type="number" variant="outlined" />
+          <TextField id="productStock" className="TextField" size="small" required type="number" variant="outlined" />
           <span>개</span>
           <hr />
         </Styled.InputDiv>
         <Styled.InputDiv>
           <span>판매기간</span>
           <TextField
-            id="date"
+            id="startPeriod"
             label="Date"
             type="date"
             defaultValue="2017-05-24"
@@ -36,7 +36,7 @@ const DetailsInfo = () => {
           />
           <span>~</span>
           <TextField
-            id="date"
+            id="endPeriod"
             label="Date"
             type="date"
             defaultValue="2017-05-24"
