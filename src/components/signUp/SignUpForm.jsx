@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -12,23 +13,68 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../../redux/_action/user_action";
+import axios from "axios";
 
 const SignUpForm = () => {
-  const [state, setState] = useState({
-    userId: "",
-    userPwd: "",
-  });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const [payload, setPayload] = useState({
+    email: "",
+    username: "",
+    password: "",
+    rePassword: "",
+    provider: "NORMAL",
+    role: "ROLE_MANAGER",
+  });
+  const handleChange = (e) => {
+    setPayload({ ...payload, [e.target.id]: e.target.value });
+    console.log(payload);
+  };
+
+  // 동의 체크 확인
   const [checked, setChecked] = useState(false);
-  // 동의 체크
+
+  // 체크 되어있는지
   const handleAgree = (event) => {
     setChecked(event.target.checked);
   };
 
-  // form 전송
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // 아이디가 비어있으면 isUsername을 false로 처리
+    if (payload.email === "") {
+      return;
+    }
+    if (payload.username === "") {
+      return;
+    }
+    // 비번이 비어쓰면 isPassword를 false로 처리
+    if (payload.password === "") {
+      return;
+    }
+    // 비번이 비어쓰면 isPassword를 false로 처리
+    if (payload.rePassword !== payload.password) {
+      return;
+    }
+
+    // useDispatch를 이용해서 LoginUser라는 action을 전달함
+    //
+    try {
+      const response = await axios.post("/api/manager/login", payload);
+      if (response.code === 200) {
+        console.log("등록이 완료되었습니다.");
+        navigate("/");
+      } else {
+        console.log(response.msg);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
       <FormControl component="fieldset" variant="standard">
@@ -50,11 +96,11 @@ const SignUpForm = () => {
             <TextField required fullWidth type="password" id="rePassword" name="rePassword" label="비밀번호 재입력" />
           </Grid>
           <Grid item xs={12}>
-            <TextField required fullWidth id="name" name="name" label="이름" />
+            <TextField required fullWidth type="text" id="username" name="username" label="아이디" />
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel
-              control={<Checkbox onChange={handleAgree} color="primary" />}
+              control={<Checkbox /* onChange={handleAgree} */ color="primary" />}
               label="회원가입 약관에 동의합니다."
             />
           </Grid>

@@ -3,7 +3,7 @@ import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const BusinessForm = () => {
+const BusinessForm = ({ handleChange }) => {
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -13,17 +13,38 @@ const BusinessForm = () => {
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>대표자명</span>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <TextField
+            onChange={handleChange}
+            id="username"
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
           <hr />
         </Styled.InputDiv>
         <Styled.InputDiv>
           <span>상호명</span>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <TextField
+            onChange={handleChange}
+            id="businessName"
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
           <hr />
         </Styled.InputDiv>
         <Styled.InputDiv>
           <span>사업자 주소</span>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <TextField
+            onChange={handleChange}
+            id="address"
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
           <Button className="Button" variant="outlined" size="small">
             찾기
           </Button>
@@ -31,13 +52,27 @@ const BusinessForm = () => {
         </Styled.InputDiv>
         <Styled.InputDiv>
           <span>사업자 등록 번호</span>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <TextField
+            onChange={handleChange}
+            id="businessTel"
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
           <hr />
         </Styled.InputDiv>
         <Styled.InputDiv>
-          <span>종목/업태</span>
-          <TextField className="TextField" size="small" required placeholder="종목" variant="filled" />
-          <TextField className="TextField" size="small" required placeholder="업태" variant="filled" />
+          <span>업종</span>
+          <TextField
+            onChange={handleChange}
+            id="businessType"
+            className="TextField"
+            size="small"
+            required
+            placeholder="종목"
+            variant="filled"
+          />
         </Styled.InputDiv>
       </Styled.InputsDiv>
     </>

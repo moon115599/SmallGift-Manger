@@ -28,7 +28,7 @@ const ProductManagement = () => {
     {
       field: "삭제",
       headerName: "삭제",
-      type: "number",
+      // type: "button",
       width: 100,
     },
   ];

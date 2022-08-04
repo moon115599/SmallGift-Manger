@@ -3,7 +3,10 @@ import { TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const RegisterNumberForm = () => {
+const RegisterNumberForm = ({ handleChange }) => {
+  const handleForm = (e) => {
+    console.log(e.target.id);
+  };
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -13,7 +16,7 @@ const RegisterNumberForm = () => {
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>신고 번호</span>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <TextField onChange={handleChange} className="TextField" size="small" required variant="filled" />
         </Styled.InputDiv>
       </Styled.InputsDiv>
     </>
