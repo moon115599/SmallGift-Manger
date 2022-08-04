@@ -1,19 +1,20 @@
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import Table from "../../../components/management/productManagement/Table";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
+import { axiosGetProduct } from "../../../api/management/productManagement";
 
 const ProductManagement = () => {
   const columns = [
-    { field: "번호", headerName: "번호", width: 20 },
-    { field: "상품명", headerName: "상품명", width: 130 },
-    { field: "판매가", headerName: "판매가", type: "number", width: 80 },
+    { field: "productId", headerName: "번호", width: 20 },
+    { field: "productName", headerName: "상품명", width: 130 },
+    { field: "productPrice", headerName: "판매가", type: "number", width: 80 },
     {
-      field: "상품 노출",
+      field: "onProduct",
       headerName: "상품 노출",
       type: "number",
       width: 90,
@@ -32,17 +33,20 @@ const ProductManagement = () => {
       width: 100,
     },
   ];
+  const [rows, setRows] = useState([
+    { id: 1, productId: 1, productName: "Good", productPrice: 10000 },
+    { id: 2, productId: 2, productName: "Good", productPrice: 10000 },
+    { id: 3, productId: 3, productName: "Good", productPrice: 10000 },
+    { id: 4, productId: 4, productName: "Good", productPrice: 10000 },
+    { id: 5, productId: 5, productName: "Good", productPrice: 10000 },
+    { id: 6, productId: 6, productName: "Good", productPrice: 10000 },
+    { id: 7, productId: 7, productName: "Good", productPrice: 10000 },
+    { id: 8, productId: 8, productName: "Good", productPrice: 10000 },
+  ]);
 
-  const rows = [
-    { id: 1, 번호: 1, 상품명: "Good", 판매가: 10000 },
-    { id: 2, 번호: 2, 상품명: "Good", 판매가: 10000 },
-    { id: 3, 번호: 3, 상품명: "Good", 판매가: 10000 },
-    { id: 4, 번호: 4, 상품명: "Good", 판매가: 10000 },
-    { id: 5, 번호: 5, 상품명: "Good", 판매가: 10000 },
-    { id: 6, 번호: 6, 상품명: "Good", 판매가: 10000 },
-    { id: 7, 번호: 7, 상품명: "Good", 판매가: 10000 },
-    { id: 8, 번호: 8, 상품명: "Good", 판매가: 10000 },
-  ];
+  useEffect(() => {
+    axiosGetProduct(setRows);
+  }, []);
   return (
     <CommonStyled.Container>
       <Sidebar />
