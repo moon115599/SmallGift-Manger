@@ -54,19 +54,14 @@ const LogInForm = () => {
       return;
     }
 
-    dispatch(logInUser);
-    try {
-      const response = await axios.post("/api/manager/signup", payload);
-      if (response.code === 200) {
-        console.log("등록이 완료되었습니다.");
+    dispatch(logInUser(payload)).then((response) => {
+      if (response.payload.success) {
         navigate("/");
-        setCookies("token", `Bearer ${response?.data?.result?.Token}`);
+        setCookies("token", `Bearer ${response?.payload?.data?.result?.Token}`);
       } else {
-        console.log(response.msg);
+        console.log(response.payload.msg);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    });
   };
 
   return (

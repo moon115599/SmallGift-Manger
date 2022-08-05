@@ -62,17 +62,13 @@ const SignUpForm = () => {
 
     // useDispatch를 이용해서 LoginUser라는 action을 전달함
     //
-    try {
-      const response = await axios.post("/api/manager/login", payload);
-      if (response.code === 200) {
-        console.log("등록이 완료되었습니다.");
+    dispatch(signUpUser(payload)).then((response) => {
+      if (response.payload.success) {
         navigate("/");
       } else {
-        console.log(response.msg);
+        console.log(response.payload.msg);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    });
   };
 
   return (
