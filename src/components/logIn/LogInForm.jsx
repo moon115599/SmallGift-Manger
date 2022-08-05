@@ -15,7 +15,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
-import { logInUser, signUpUser } from "../../redux/_action/user_action";
+import { logInUser } from "../../redux/_action/user_action";
 import axios from "axios";
 
 const LogInForm = () => {
@@ -54,6 +54,7 @@ const LogInForm = () => {
       return;
     }
 
+    dispatch(logInUser);
     try {
       const response = await axios.post("/api/manager/signup", payload);
       if (response.code === 200) {

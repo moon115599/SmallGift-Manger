@@ -12,11 +12,6 @@ export default function (state = {}, action = {}) {
         ...state,
         res: action.payload,
       };
-    case LOGOUT_USER:
-      return {
-        ...state,
-        res: action.payload,
-      };
     default:
       return state;
   }
