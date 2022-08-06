@@ -40,10 +40,12 @@ const SignUpForm = () => {
   // 체크 되어있는지
   const handleAgree = (event) => {
     setChecked(event.target.checked);
+    console.log(checked);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(event.target.value);
     // 아이디가 비어있으면 isUsername을 false로 처리
     if (payload.email === "") {
       return;
@@ -65,6 +67,7 @@ const SignUpForm = () => {
     dispatch(signUpUser(payload)).then((response) => {
       if (response.payload.success) {
         navigate("/");
+        console.log("success");
       } else {
         console.log(response.payload.msg);
       }
@@ -73,13 +76,23 @@ const SignUpForm = () => {
 
   return (
     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-      <FormControl component="fieldset" variant="standard">
+      <FormControl onSubmit={handleSubmit} component="fieldset" variant="standard">
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextField required autoFocus fullWidth type="email" id="email" name="email" label="이메일 주소" />
+            <TextField
+              onChange={handleChange}
+              required
+              autoFocus
+              fullWidth
+              type="email"
+              id="email"
+              name="email"
+              label="이메일 주소"
+            />
           </Grid>
           <Grid item xs={12}>
             <TextField
+              onChange={handleChange}
               required
               fullWidth
               type="password"
@@ -89,19 +102,35 @@ const SignUpForm = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField required fullWidth type="password" id="rePassword" name="rePassword" label="비밀번호 재입력" />
+            <TextField
+              onChange={handleChange}
+              required
+              fullWidth
+              type="password"
+              id="rePassword"
+              name="rePassword"
+              label="비밀번호 재입력"
+            />
           </Grid>
           <Grid item xs={12}>
-            <TextField required fullWidth type="text" id="username" name="username" label="아이디" />
+            <TextField
+              onChange={handleChange}
+              required
+              fullWidth
+              type="text"
+              id="username"
+              name="username"
+              label="아이디"
+            />
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel
-              control={<Checkbox /* onChange={handleAgree} */ color="primary" />}
+              control={<Checkbox onChange={handleAgree} color="primary" />}
               label="회원가입 약관에 동의합니다."
             />
           </Grid>
         </Grid>
-        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} size="large">
+        <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} size="large">
           회원가입
         </Button>
       </FormControl>

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { LOGIN_USER, SIGNUP_USER } from "./types";
-import { axiosLogInUser, axiosSignUpUser } from "../../api/user";
+import { axiosLogInUser } from "../../api/user/logIn";
+import { axiosSignUpUser } from "../../api/user/signUp";
 
 export const logInUser = (dataTosubmit) => {
   return {
