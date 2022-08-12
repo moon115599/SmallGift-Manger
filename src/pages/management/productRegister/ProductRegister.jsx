@@ -6,7 +6,7 @@ import SalesInfo from "../../../components/management/productRegister/SalesInfo"
 
 import React, { useState } from "react";
 
-import { Button, TextField } from "@mui/material";
+import { Button, FormControl, TextField } from "@mui/material";
 import * as CommonStyled from "../../style";
 import * as Styled from "./style";
 import { axiosRegisterProduct } from "../../../api/management/productRegister";
@@ -35,14 +35,14 @@ const ProductRegister = () => {
       <CommonStyled.FormContainer>
         <Navbar discription="" />
         <CommonStyled.MainContainer>
-          <form action="">
+          <FormControl onSubmit={handleSubmit}>
             <BasicInfo onchange={handleChange} />
             <DetailsInfo onChange={handleChange} />
             <SalesInfo onChange={handleChange} />
             <Button variant="contained" color="secondary" onClick={handleSubmit}>
               상품 등록하기
             </Button>
-          </form>
+          </FormControl>
         </CommonStyled.MainContainer>
       </CommonStyled.FormContainer>
     </CommonStyled.Container>

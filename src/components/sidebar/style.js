@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  flex: 1;
+  min-width: 310px;
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
   background-color: white;
+  margin-right: 60px;
 `;
 export const Hr = styled.hr`
   height: 0;

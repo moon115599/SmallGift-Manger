@@ -13,6 +13,11 @@ export const TitleDiv = styled.div`
     margin-top: 10px;
     background-color: black;
   }
+  .titleToButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const ColumnFlexContainer = styled.div`

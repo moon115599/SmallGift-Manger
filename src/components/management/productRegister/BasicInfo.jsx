@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField, Button, MenuItem } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 const categories = [
   {
@@ -29,10 +30,10 @@ const BasicInfo = () => {
   };
   return (
     <>
-      <Styled.TitleDiv>
+      <CommonStyled.TitleDiv>
         <span>상품 기본 정보</span>
         <hr />
-      </Styled.TitleDiv>
+      </CommonStyled.TitleDiv>
       <Styled.InputsDiv>
         <Styled.InputDiv>
           <span>카테고리</span>

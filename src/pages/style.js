@@ -3,7 +3,11 @@ import styled from "styled-components";
 export const MainContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 10px 120px;
+  margin: 10px 0px 0px 120px;
+  width: 1194px;
+  background-color: white;
+  border-radius: 3%;
+  padding: 50px;
 `;
 
 export const FormContainer = styled.div`
@@ -12,6 +16,7 @@ export const FormContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
+  background-color: #f9f9f9;
 `;
 
 export const TitleDiv = styled.div`
@@ -30,5 +35,4 @@ export const TitleDiv = styled.div`
     height: 1.2px;
     margin-top: 10px;
     background-color: black;
-  }
 `;

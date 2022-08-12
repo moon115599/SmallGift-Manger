@@ -4,6 +4,7 @@ import { LOGIN_USER, SIGNUP_USER } from "./types";
 import { axiosLogInUser } from "../../api/user/logIn";
 import { axiosSignUpUser } from "../../api/user/signUp";
 
+// 로그인
 export const logInUser = (dataTosubmit) => {
   return {
     type: LOGIN_USER,
