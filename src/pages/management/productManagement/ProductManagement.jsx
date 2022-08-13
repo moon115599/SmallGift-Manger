@@ -20,15 +20,17 @@ const ProductManagement = () => {
     { id: 7, productId: 7, productName: "Good", productPrice: 10000 },
     { id: 8, productId: 8, productName: "Good", productPrice: 10000 },
   ]);
+  const title = "상품 관리";
+  const description = "판매 중인 상품 리스트를 관리할 수 있습니다";
 
   useEffect(() => {
     axiosGetProduct(products);
   }, []);
   return (
     <CommonStyled.Container>
-      <Sidebar />
+      <Sidebar className="sidebar" id="sidebar" />
       <CommonStyled.FormContainer>
-        <Navbar discription="" />
+        <Navbar className="navbar" discription={description} title={title} />
         <CommonStyled.MainContainer>
           <Table info={products} />
         </CommonStyled.MainContainer>

@@ -10,8 +10,8 @@ const AccountForm = ({ hadleChange }) => {
         <span>가입 정보</span>
         <hr />
       </CommonStyled.TitleDiv>
-      <Styled.InputsDiv>
-        <Styled.InputDiv>
+      <CommonStyled.InputsDiv>
+        <CommonStyled.InputDiv>
           <span>계정</span>
           <TextField
             onChange={hadleChange}
@@ -21,8 +21,8 @@ const AccountForm = ({ hadleChange }) => {
             required
             variant="filled"
           />
-        </Styled.InputDiv>
-      </Styled.InputsDiv>
+        </CommonStyled.InputDiv>
+      </CommonStyled.InputsDiv>
     </>
   );
 };

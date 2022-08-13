@@ -8,4 +8,6 @@ export const Container = styled.div`
   0 Button {
     font-size: 11px;
   }
+  background-color: #f9f9f9;
+  white-space: nowrap;
 `;

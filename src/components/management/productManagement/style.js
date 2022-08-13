@@ -4,6 +4,12 @@ export const Table = styled.div`
   width: 650px;
   margin: 0px auto;
   font-align: center;
+  thead {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+  }
+  tbody {
+  }
 `;
 
 export const TitleDiv = styled.div`

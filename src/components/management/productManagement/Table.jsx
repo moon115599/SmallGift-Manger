@@ -90,25 +90,23 @@ const Table = () => {
         <hr />
       </CommonStyled.TitleDiv>
       <Styled.Table>
-        <div style={{ height: 800, width: "100%" }}>
-          <table>
-            <thead>
-              <tr>
-                <th>체크</th>
-                <th>번호</th>
-                <th>상품명</th>
-                <th>판매가</th>
-                <th>상품 노출</th>
-                <th>수정</th>
-              </tr>
-            </thead>
-            <tbody>
-              {info.map((item) => {
-                return <Td key={item.id} item={item} handleRemove={handleRemove} handleEdit={handleEdit} />;
-              })}
-            </tbody>
-          </table>
-        </div>
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" />
+            </th>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>판매가</th>
+            <th>상품 노출</th>
+            <th>수정</th>
+          </tr>
+        </thead>
+        <tbody>
+          {info.map((item) => {
+            return <Td key={item.id} item={item} handleRemove={handleRemove} handleEdit={handleEdit} />;
+          })}
+        </tbody>
       </Styled.Table>
     </CommonStyled.ColumnFlexContainer>
   );

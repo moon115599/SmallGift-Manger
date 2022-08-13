@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { TextField } from "@mui/material";
 
 export const Container = styled.div``;
 
@@ -7,6 +6,7 @@ export const InputsDiv = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  width: 100%;
 `;
 
 export const InputDiv = styled.div`

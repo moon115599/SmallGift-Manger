@@ -9,7 +9,7 @@ const SalesInfo = () => {
   return (
     <>
       <Styled.TitleDiv>
-        <span>상품 기본 정보</span>
+        <span>상품 상세 정보</span>
         <hr />
       </Styled.TitleDiv>
       <Styled.InputsDiv>

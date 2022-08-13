@@ -14,6 +14,9 @@ import axios from "axios";
 import { axiosRegisterBusiness } from "../../../api/management/businessRegister";
 
 const BusinessRegister = () => {
+  const title = "사업자 등록";
+  const description = "판매를 하기 전 최초 1회 사업자 등록이 필요합니다";
+
   const [payload, setPayload] = useState({
     username: "",
     businessName: "",
@@ -35,9 +38,9 @@ const BusinessRegister = () => {
 
   return (
     <CommonStyled.Container>
-      <Sidebar />
+      <Sidebar className="sidebar" />
       <CommonStyled.FormContainer>
-        <Navbar discription="" />
+        <Navbar className="navbar" title={title} discription={description} />
         <CommonStyled.MainContainer>
           <FormControl onSubmit={handleSubmit}>
             <AccountForm handleChange={handleChange} />
@@ -45,7 +48,7 @@ const BusinessRegister = () => {
             <MoneyForm handleChange={handleChange} />
             <RegisterNumberForm handleChange={handleChange} />
             <DocumentForm handleChange={handleChange} />
-            <Button onClick={handleSubmit} className="Button" variant="outlined" size="small">
+            <Button onClick={handleSubmit} className="Button" color="secondary" variant="contained" size="small">
               사업자 등록 요청
             </Button>
           </FormControl>

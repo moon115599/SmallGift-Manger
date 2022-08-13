@@ -34,8 +34,8 @@ const BasicInfo = () => {
         <span>상품 기본 정보</span>
         <hr />
       </CommonStyled.TitleDiv>
-      <Styled.InputsDiv>
-        <Styled.InputDiv>
+      <CommonStyled.InputsDiv>
+        <CommonStyled.InputDiv>
           <span>카테고리</span>
           <TextField
             id="catergory"
@@ -54,12 +54,12 @@ const BasicInfo = () => {
             ))}
           </TextField>
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>상품명</span>
           <TextField className="TextField" placeholder="상품명을 입력하세요" size="small" required variant="outlined" />
-        </Styled.InputDiv>
-      </Styled.InputsDiv>
+        </CommonStyled.InputDiv>
+      </CommonStyled.InputsDiv>
     </>
   );
 };

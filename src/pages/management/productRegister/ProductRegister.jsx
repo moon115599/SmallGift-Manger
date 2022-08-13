@@ -12,6 +12,9 @@ import * as Styled from "./style";
 import { axiosRegisterProduct } from "../../../api/management/productRegister";
 
 const ProductRegister = () => {
+  const title = "상품 등록";
+  const description = "판매할 상품을 새로 등록할 수 있습니다";
+
   const [payload, setPayload] = useState({
     category: "",
     productName: "",
@@ -31,9 +34,9 @@ const ProductRegister = () => {
 
   return (
     <CommonStyled.Container>
-      <Sidebar />
+      <Sidebar className="sidebar" />
       <CommonStyled.FormContainer>
-        <Navbar discription="" />
+        <Navbar className="navbar" title={title} discription={description} />
         <CommonStyled.MainContainer>
           <FormControl onSubmit={handleSubmit}>
             <BasicInfo onchange={handleChange} />

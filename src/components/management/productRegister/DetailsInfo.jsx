@@ -6,7 +6,7 @@ const DetailsInfo = () => {
   return (
     <>
       <Styled.TitleDiv>
-        <span>상품 기본 정보</span>
+        <span>상품 판매 정보</span>
         <hr />
       </Styled.TitleDiv>
       <Styled.InputsDiv>
