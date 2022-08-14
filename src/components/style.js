@@ -24,6 +24,7 @@ export const TitleDiv = styled.div`
 export const ColumnFlexContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const InputsDiv = styled.div`

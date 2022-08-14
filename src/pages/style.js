@@ -4,7 +4,6 @@ export const MainContainer = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
-  margin-right: 59px;
   background-color: white;
   border-radius: 3%;
   padding: 50px;
@@ -14,26 +13,13 @@ export const MainContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  flex: 6;
   background-color: #f9f9f9;
+  margin-left: 30px;
 `;
 
 export const Container = styled.div`
   display: flex;
   background-color: #f9f9f9;
-  //@media screen and (max-width: 700px) {
-  //  .sidebar {
-  //    display: none;
-  //  }
-  //}
-  .sidebar {
-    width: 10px;
-    display: none;
-  }
-  #sidebar {
-    width: 10px;
-    display: none;
-  }
 `;
 
 export const TitleDiv = styled.div`

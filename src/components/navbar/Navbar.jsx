@@ -16,16 +16,14 @@ const Navbar = ({ title, discription }) => {
   return (
     <Styled.Container>
       <Grid container spacing={2}>
-        <Grid item md={8} xs={4}>
+        <Grid item md={8} xs={6}>
           <h2>{title}</h2>
           <span>{discription}</span>
         </Grid>
-        <Grid item md={2} xs={4}>
+        <Grid item md={4} xs={6}>
           <Button variant="contained" color="primary">
             고객페이지로 이동
           </Button>
-        </Grid>
-        <Grid item md={2} xs={4}>
           <Button variant="contained" color="secondary" onClick={handleOnClick}>
             로그아웃
           </Button>

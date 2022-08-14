@@ -6,6 +6,9 @@ export const Container = styled.div`
   min-height: 100vh;
   background-color: white;
   margin-right: 60px;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 export const Hr = styled.hr`
   height: 0;

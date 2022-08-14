@@ -20,10 +20,10 @@ const SalesInfo = () => {
           <Styled.RowFlex>
             <Styled.ImgDiv />
             <Styled.RuleDiv>
-              <span>이미지 등록시 유의사항</span>
+              <p>이미지 등록시 유의사항</p>
               <div>
                 <p>상품을 대표할 수 있는 상품 이미지를 등록합니다.</p>
-                <p> break 대표 이미지 등록 시, 상품 상세 페이지 외 자동 리사이징됩니다. </p>
+                <p>break 대표 이미지 등록 시, 상품 상세 페이지 외 자동 리사이징됩니다. </p>
                 <p>권장 이미지 규격: 1000px * 1000px / 10M 이하 / png, jpg</p>
               </div>
               <Button className="Button" variant="outlined" size="small">
@@ -37,6 +37,7 @@ const SalesInfo = () => {
           <span>상세 설명</span>
           <br />
           <CKEditor
+            style={{ minWidth: "10px" }}
             editor={ClassicEditor}
             data="<p>Hello from CKEditor 5!</p>"
             onReady={(editor) => {
