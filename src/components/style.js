@@ -11,6 +11,7 @@ export const TitleDiv = styled.div`
     border: 0px;
     height: 1.2px;
     margin-top: 10px;
+    width: 100%;
     background-color: black;
   }
   .titleToButton {

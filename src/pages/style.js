@@ -8,6 +8,9 @@ export const MainContainer = styled.div`
   background-color: white;
   border-radius: 3%;
   padding: 50px;
+  .form-control {
+    width: 100%;
+  }
 `;
 
 export const FormContainer = styled.div`

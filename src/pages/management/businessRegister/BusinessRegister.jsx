@@ -42,7 +42,7 @@ const BusinessRegister = () => {
       <CommonStyled.FormContainer>
         <Navbar className="navbar" title={title} discription={description} />
         <CommonStyled.MainContainer>
-          <FormControl onSubmit={handleSubmit}>
+          <FormControl className="form-control" onSubmit={handleSubmit}>
             <AccountForm handleChange={handleChange} />
             <BusinessForm handleChange={handleChange} />
             <MoneyForm handleChange={handleChange} />

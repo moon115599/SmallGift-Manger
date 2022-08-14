@@ -38,7 +38,7 @@ const ProductRegister = () => {
       <CommonStyled.FormContainer>
         <Navbar className="navbar" title={title} discription={description} />
         <CommonStyled.MainContainer>
-          <FormControl onSubmit={handleSubmit}>
+          <FormControl className="form-control" onSubmit={handleSubmit}>
             <BasicInfo onchange={handleChange} />
             <DetailsInfo onChange={handleChange} />
             <SalesInfo onChange={handleChange} />
