@@ -42,7 +42,7 @@ const BasicInfo = () => {
             className="TextField"
             size="small"
             select
-            label="필수"
+            variant="filled"
             helperText="카테고리를 선택하여 주세요"
             value={category}
             onChange={handleChange}

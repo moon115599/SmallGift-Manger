@@ -13,7 +13,7 @@ const DocumentForm = () => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>사업자등록증</span>
-          <Button className="Button" variant="outlined" size="small">
+          <Button className="Button" variant="outlined">
             파일 선택
           </Button>
           <TextField className="TextField" size="small" required variant="filled" />
@@ -21,7 +21,7 @@ const DocumentForm = () => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>통신판매신고증</span>
-          <Button className="Button" variant="outlined" size="small">
+          <Button className="Button" variant="outlined">
             파일 선택
           </Button>
           <TextField className="TextField" size="small" required variant="filled" />

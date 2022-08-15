@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const Table = styled.div`
-  width: 650px;
+export const Table = styled.table`
+  width: 100%;
   margin: 0px auto;
-  font-align: center;
-  thead {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+  font-size: 18px;
+  tr {
+    border-bottom: 1px solid black;
   }
   tbody {
+    text-align: center;
   }
 `;
 

@@ -8,13 +8,16 @@ const Td = ({ item, handleRemove, handleEdit }) => {
         <input type="checkbox" />
       </td>
       <td>{item.productId}</td>
+      <td>{item.productImg}</td>
       <td>{item.productName}</td>
       <td>{item.productPrice}</td>
       <td>
         <Switch defaultChecked />
       </td>
       <td>
-        <Button variant="outlined">수정</Button>
+        <Button variant="outlined" size="small">
+          수정
+        </Button>
       </td>
     </tr>
   );

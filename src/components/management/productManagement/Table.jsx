@@ -12,14 +12,14 @@ const Table = () => {
   };
 
   const [info, setInfo] = useState([
-    { id: 1, productId: 1, productName: "Good", productPrice: 10000 },
-    { id: 2, productId: 2, productName: "Good", productPrice: 10000 },
-    { id: 3, productId: 3, productName: "Good", productPrice: 10000 },
-    { id: 4, productId: 4, productName: "Good", productPrice: 10000 },
-    { id: 5, productId: 5, productName: "Good", productPrice: 10000 },
-    { id: 6, productId: 6, productName: "Good", productPrice: 10000 },
-    { id: 7, productId: 7, productName: "Good", productPrice: 10000 },
-    { id: 8, productId: 8, productName: "Good", productPrice: 10000 },
+    { id: 1, productId: 1, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 2, productId: 2, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 3, productId: 3, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 4, productId: 4, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 5, productId: 5, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 6, productId: 6, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 7, productId: 7, productImg: "", productName: "Good", productPrice: 10000 },
+    { id: 8, productId: 8, productImg: "", productName: "Good", productPrice: 10000 },
   ]);
   const [selected, setSelected] = useState("");
   const [modalOn, setModalOn] = useState(false);
@@ -34,6 +34,7 @@ const Table = () => {
             ? {
                 id: data.id,
                 productId: data.productId,
+                productImg: data.productImg,
                 productName: data.productName,
                 productPrice: data.productPrice,
                 onProduct: data.onProduct,
@@ -46,6 +47,7 @@ const Table = () => {
         info.concat({
           id: nextId.current,
           productId: data.productId,
+          productImg: data.productImg,
           productName: data.productName,
           productPrice: data.productPrice,
           onProduct: data.onProduct,
@@ -63,6 +65,7 @@ const Table = () => {
     const selectedData = {
       id: item.id,
       productId: item.productId,
+      productImg: item.productImg,
       productName: item.productName,
       productPrice: item.productPrice,
       onProduct: item.onProduct,
@@ -83,8 +86,12 @@ const Table = () => {
         <div className="titleToButton">
           <span>상품 관리</span>
           <div>
-            <Button variant="outlined">선택 삭제</Button>
-            <Button variant="outlined">전체 삭제</Button>
+            <Button variant="outlined" size="small">
+              선택 삭제
+            </Button>
+            <Button variant="outlined" size="small">
+              전체 삭제
+            </Button>
           </div>
         </div>
         <hr />
@@ -97,6 +104,7 @@ const Table = () => {
             </th>
             <th>번호</th>
             <th>상품명</th>
+            <th> </th>
             <th>판매가</th>
             <th>상품 노출</th>
             <th>수정</th>

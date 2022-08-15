@@ -1,8 +1,8 @@
 import Sidebar from "../../../components/sidebar/Sidebar";
 import Navbar from "../../../components/navbar/Navbar";
 import BasicInfo from "../../../components/management/productRegister/BasicInfo";
-import DetailsInfo from "../../../components/management/productRegister/DetailsInfo";
 import SalesInfo from "../../../components/management/productRegister/SalesInfo";
+import DetailsInfo from "../../../components/management/productRegister/DetailsInfo";
 
 import React, { useState } from "react";
 
@@ -40,8 +40,8 @@ const ProductRegister = () => {
         <CommonStyled.MainContainer>
           <FormControl className="form-control" onSubmit={handleSubmit}>
             <BasicInfo onchange={handleChange} />
-            <DetailsInfo onChange={handleChange} />
             <SalesInfo onChange={handleChange} />
+            <DetailsInfo onChange={handleChange} />
             <Button variant="contained" color="secondary" onClick={handleSubmit}>
               상품 등록하기
             </Button>
