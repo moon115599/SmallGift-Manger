@@ -14,13 +14,13 @@ const MoneyForm = ({ handleChange }) => {
         <span>정산 대금 수신 정보 입력</span>
         <hr />
       </CommonStyled.TitleDiv>
-      <Styled.InputsDiv>
-        <Styled.InputDiv>
+      <CommonStyled.InputsDiv>
+        <CommonStyled.InputDiv>
           <span>예금주명</span>
           <TextField className="TextField" size="small" required variant="filled" />
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>은행계좌</span>
           <FormControl className="FormControl">
             <InputLabel>은행</InputLabel>
@@ -47,8 +47,8 @@ const MoneyForm = ({ handleChange }) => {
           <Button className="Button" variant="outlined" size="small">
             계좌 유효성 확인하기
           </Button>
-        </Styled.InputDiv>
-      </Styled.InputsDiv>
+        </CommonStyled.InputDiv>
+      </CommonStyled.InputsDiv>
     </>
   );
 };

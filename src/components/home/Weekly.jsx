@@ -43,12 +43,10 @@ const Weekly = () => {
     },
   ];
   return (
-    <Card variant="outlined">
-      <Styled.Container>
-        <span className="title">주간 판매 현황</span>
-        <Chart data={data} />
-      </Styled.Container>
-    </Card>
+    <Styled.Container>
+      <span className="title">주간 판매 현황</span>
+      <Chart data={data} />
+    </Styled.Container>
   );
 };
 

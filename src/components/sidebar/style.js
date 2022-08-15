@@ -5,7 +5,6 @@ export const Container = styled.div`
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
   background-color: white;
-  margin-right: 60px;
   @media screen and (max-width: 1000px) {
     display: none;
   }

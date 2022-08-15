@@ -1,3 +1,5 @@
+import * as Styled from "./style";
+
 import Widget from "./widget/Widget";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
@@ -21,9 +23,9 @@ const Reviews = () => {
     ),
   };
   return (
-    <Card variant="outlined">
+    <Styled.Container>
       <Widget data={data} />
-    </Card>
+    </Styled.Container>
   );
 };
 

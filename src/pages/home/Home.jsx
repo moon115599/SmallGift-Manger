@@ -18,28 +18,27 @@ const Home = () => {
       <Sidebar />
       <Styled.HomeContainer>
         <Navbar discription="" />
-        <CommonStyled.MainContainer>
-          <Grid container spacing={2}>
-            <Grid item xs={3}>
-              <Sales />
-            </Grid>
-            <Grid item xs={3}>
-              <Profits />
-            </Grid>
-            <Grid item xs={3}>
-              <Reviews />
-            </Grid>
-            <Grid item xs={3}>
-              <Populars />
-            </Grid>
-            <Grid item xs={6}>
-              <Weekly />
-            </Grid>
-            <Grid item xs={6}>
-              <Monthly />
-            </Grid>
+
+        <Grid className="grid-container" container spacing={2}>
+          <Grid item md={3} xs={6}>
+            <Sales />
           </Grid>
-        </CommonStyled.MainContainer>
+          <Grid item md={3} xs={6}>
+            <Profits />
+          </Grid>
+          <Grid item md={3} xs={6}>
+            <Reviews />
+          </Grid>
+          <Grid item md={3} xs={6}>
+            <Populars />
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <Weekly />
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <Monthly />
+          </Grid>
+        </Grid>
       </Styled.HomeContainer>
     </Styled.Container>
   );

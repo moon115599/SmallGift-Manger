@@ -13,12 +13,12 @@ const RegisterNumberForm = ({ handleChange }) => {
         <span>통신 판매업 신고 번호</span>
         <hr />
       </CommonStyled.TitleDiv>
-      <Styled.InputsDiv>
-        <Styled.InputDiv>
+      <CommonStyled.InputsDiv>
+        <CommonStyled.InputDiv>
           <span>신고 번호</span>
           <TextField onChange={handleChange} className="TextField" size="small" required variant="filled" />
-        </Styled.InputDiv>
-      </Styled.InputsDiv>
+        </CommonStyled.InputDiv>
+      </CommonStyled.InputsDiv>
     </>
   );
 };

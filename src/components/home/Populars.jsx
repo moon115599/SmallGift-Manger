@@ -1,4 +1,6 @@
 import React from "react";
+import * as Styled from "./style";
+
 import Ranking from "./ranking/Ranking";
 import { Card } from "@mui/material";
 
@@ -9,9 +11,9 @@ const Populars = () => {
     third: "c메뉴",
   };
   return (
-    <Card variant="outlined">
+    <Styled.Container>
       <Ranking data={data} />
-    </Card>
+    </Styled.Container>
   );
 };
 

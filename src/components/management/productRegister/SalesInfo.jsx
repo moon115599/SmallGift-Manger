@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
+import * as CommonStyled from "../../style";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -8,15 +9,15 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 const SalesInfo = () => {
   return (
     <>
-      <Styled.TitleDiv>
+      <CommonStyled.TitleDiv>
         <span>상품 상세 정보</span>
         <hr />
-      </Styled.TitleDiv>
-      <Styled.InputsDiv>
-        <Styled.InputDiv>
+      </CommonStyled.TitleDiv>
+      <CommonStyled.InputsDiv>
+        <CommonStyled.InputDiv>
           <span>상품 대표 이미지 등록</span>
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <Styled.RowFlex>
             <Styled.ImgDiv />
             <Styled.RuleDiv>
@@ -32,8 +33,8 @@ const SalesInfo = () => {
             </Styled.RuleDiv>
           </Styled.RowFlex>
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>상세 설명</span>
           <br />
           <CKEditor
@@ -56,8 +57,8 @@ const SalesInfo = () => {
             }}
           />
           <TextField className="TextField" size="small" required variant="outlined" />
-        </Styled.InputDiv>
-      </Styled.InputsDiv>
+        </CommonStyled.InputDiv>
+      </CommonStyled.InputsDiv>
     </>
   );
 };

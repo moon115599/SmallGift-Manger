@@ -1,3 +1,5 @@
+import * as Styled from "./style";
+
 import Widget from "./widget/Widget";
 
 import React from "react";
@@ -19,9 +21,9 @@ const Sales = () => {
     ),
   };
   return (
-    <Card variant="outlined">
+    <Styled.Container>
       <Widget data={data} />
-    </Card>
+    </Styled.Container>
   );
 };
 

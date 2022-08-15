@@ -7,14 +7,20 @@ export const MainContainer = styled.div`
   background-color: white;
   border-radius: 3%;
   padding: 50px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+
   .form-control {
     width: 100%;
+  }
+  .grid-container {
+    background-color: #f9f9f9;
   }
 `;
 
 export const FormContainer = styled.div`
   background-color: #f9f9f9;
-  margin-left: 30px;
+  margin: 0 150px;
+  width: 100%;
 `;
 
 export const Container = styled.div`

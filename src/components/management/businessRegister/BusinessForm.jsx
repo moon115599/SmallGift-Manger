@@ -10,8 +10,8 @@ const BusinessForm = ({ handleChange }) => {
         <span>사업자 등록</span>
         <hr />
       </CommonStyled.TitleDiv>
-      <Styled.InputsDiv>
-        <Styled.InputDiv>
+      <CommonStyled.InputsDiv>
+        <CommonStyled.InputDiv>
           <span>대표자명</span>
           <TextField
             onChange={handleChange}
@@ -22,8 +22,8 @@ const BusinessForm = ({ handleChange }) => {
             variant="filled"
           />
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>상호명</span>
           <TextField
             onChange={handleChange}
@@ -34,8 +34,8 @@ const BusinessForm = ({ handleChange }) => {
             variant="filled"
           />
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>사업자 주소</span>
           <TextField
             onChange={handleChange}
@@ -49,8 +49,8 @@ const BusinessForm = ({ handleChange }) => {
             찾기
           </Button>
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>사업자 등록 번호</span>
           <TextField
             onChange={handleChange}
@@ -61,8 +61,8 @@ const BusinessForm = ({ handleChange }) => {
             variant="filled"
           />
           <hr />
-        </Styled.InputDiv>
-        <Styled.InputDiv>
+        </CommonStyled.InputDiv>
+        <CommonStyled.InputDiv>
           <span>업종</span>
           <TextField
             onChange={handleChange}
@@ -73,8 +73,8 @@ const BusinessForm = ({ handleChange }) => {
             placeholder="종목"
             variant="filled"
           />
-        </Styled.InputDiv>
-      </Styled.InputsDiv>
+        </CommonStyled.InputDiv>
+      </CommonStyled.InputsDiv>
     </>
   );
 };

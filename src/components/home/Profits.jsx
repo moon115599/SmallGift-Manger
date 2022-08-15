@@ -1,3 +1,4 @@
+import * as Styled from "./style";
 import Widget from "./widget/Widget";
 
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -23,9 +24,9 @@ const Profits = () => {
     ),
   };
   return (
-    <Card variant="outlined">
+    <Styled.Container>
       <Widget data={data} />
-    </Card>
+    </Styled.Container>
   );
 };
 
