@@ -38,6 +38,7 @@ export const InputDiv = styled.div`
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
+  white-space: nowrap;
   span {
     display: inline-block;
     width: 140px;

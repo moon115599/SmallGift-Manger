@@ -57,7 +57,7 @@ const BasicInfo = () => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>상품명</span>
-          <TextField className="TextField" placeholder="상품명을 입력하세요" size="small" required variant="outlined" />
+          <TextField className="TextField" variant="filled" placeholder="상품명을 입력하세요" size="small" required />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

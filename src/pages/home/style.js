@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const HomeContainer = styled.div`
   flex: 6;
   background-color: #f9f9f9;
-  margin: 0 150px;
+  margin: 0 90px;
   .grid-container {
   }
 `;

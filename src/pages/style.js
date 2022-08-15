@@ -19,7 +19,7 @@ export const MainContainer = styled.div`
 
 export const FormContainer = styled.div`
   background-color: #f9f9f9;
-  margin: 0 150px;
+  margin: 0 90px;
   width: 100%;
 `;
 

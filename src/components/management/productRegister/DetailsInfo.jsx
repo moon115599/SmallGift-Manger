@@ -56,7 +56,6 @@ const DetailsInfo = () => {
               console.log("Focus.", editor);
             }}
           />
-          <TextField className="TextField" size="small" required variant="outlined" />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>
