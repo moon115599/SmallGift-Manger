@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   min-width: 310px;
@@ -37,11 +38,13 @@ export const Top = styled.div`
 
 export const Center = styled.div`
     margin-top: 20px;
-
+    
     ul {
       list-style: none;
       margin: 0;
       padding: 10px;
+      text-decoration-line: none;
+      
       
       li {
         display: flex;

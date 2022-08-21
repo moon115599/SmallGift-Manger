@@ -36,7 +36,7 @@ const Sidebar = () => {
       </Styled.Top>
       <Styled.Center>
         <ul>
-          <Link to="/">
+          <Link style={{ textDecoration: "none" }} to="/">
             <li className="/">
               <HomeIcon className="Icon" />
               <span>홈</span>
