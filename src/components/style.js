@@ -5,7 +5,7 @@ export const TitleDiv = styled.div`
   width: 100%;
   margin-bottom: 10px;
   span {
-    font-size: 24px;
+    font-size: 22px;
   }
   hr {
     border: 0px;
@@ -35,7 +35,7 @@ export const InputsDiv = styled.div`
 `;
 
 export const InputDiv = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
   white-space: nowrap;

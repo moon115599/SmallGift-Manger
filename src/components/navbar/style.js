@@ -9,7 +9,14 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const TitleContainer = styled.div``;
+export const TitleContainer = styled.div`
+  h2 {
+    font-size: 22px;
+  }
+  span {
+    font-size: 14px;
+  }
+`;
 
 export const BtnContainer = styled.div`
   padding-left: 24px;

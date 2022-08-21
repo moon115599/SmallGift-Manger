@@ -17,26 +17,25 @@ export const Hr = styled.hr`
 
 export const Top = styled.div`
   margin: 10px 0;
-  font-size: 11px;
-  height: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  height: 180px;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
-  div {
+  padding: 0 30px;
+  .i {
     display: flex;
-    margin: 3px;
-  }
-  div span {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    margin-top: 30px;
+  }
+  .info-name {
+    font-size: 18px;
   }
 `;
 
 export const Center = styled.div`
-    padding-left: 10px;
     margin-top: 20px;
 
     ul {
@@ -50,21 +49,32 @@ export const Center = styled.div`
         padding: 5px;
         cursor: pointer;
 
+        border-radius: 13px ;
+        padding: 16px 16px;
+        
         &:hover {
           background-color: #ece8ff;
         }
 
+        .clicked {
+          background-color: #6600CC
+          color:  #FFFFFF;
+        }
+        
         .Icon {
           font-size: 12px;
           color: #7451f8;
         }
 
         span{
-          font-size: 12px;
+          font-size: 18px;
           font-weight: 600;
-          color: #888;
           margin-left: 10px;
         }
+      }
+      ul {
+          color: #858585;
+        
       }
     }
   }

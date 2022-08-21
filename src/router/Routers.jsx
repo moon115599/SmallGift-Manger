@@ -1,7 +1,7 @@
 import Home from "../pages/home/Home";
 import LogIn from "../pages/logIn/LogIn";
 import SignUp from "../pages/signUp/SignUp";
-import Sales from "../pages/sales/Sales";
+import Sales from "../pages/status/Status";
 import Single from "../pages/single/Single";
 import ProductManagement from "../pages/management/productManagement/ProductManagement";
 import ProductRegister from "../pages/management/productRegister/ProductRegister";
@@ -21,12 +21,12 @@ function App() {
           <Route path="chart" element={<Chart />} />
           <Route path="users">
             <Route index element={<ProductManagement />} />
-            <Route path="sales" element={<Sales />} />
+            <Route path="status" element={<Sales />} />
             <Route path=":userId" element={<Single />} />
           </Route>
           <Route path="management">
             <Route index element={<ProductManagement />} />
-            <Route path="sales" element={<Sales />} />
+            <Route path="status" element={<Sales />} />
             <Route path=":productId" element={<Single />} />
           </Route>
         </Route>

@@ -29,6 +29,7 @@ const MoneyForm = ({ handleChange }) => {
               id="bankName"
               label="은행"
               variant="filled"
+              size="small"
             >
               <MenuItem value="하나은행">하나은행</MenuItem>
               <MenuItem value="우리은행">우리은행</MenuItem>
