@@ -9,19 +9,19 @@ export const Container = styled.div`
     padding: 10px;
     height: 60px;
     margin-bottom: 5px;
-
+    white-space: nowrap;
     span {
       margin: 0 0;
     }
 
     .title {
       font-weight: bold;
-      font-size: 10px;
+      font-size: 13px;
       color: rgb(160, 160, 160);
     }
 
     .counter {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 800;
       color: #6600cc;
       text-align: center;

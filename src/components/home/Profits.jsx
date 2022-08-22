@@ -13,6 +13,7 @@ const Profits = () => {
     title: "예상 환급 금액",
     isMoney: true,
     isGun: false,
+    amount: 0,
     icon: (
       <PersonOutlinedIcon
         className="icon"

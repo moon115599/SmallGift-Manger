@@ -13,6 +13,7 @@ const Sales = () => {
     title: "판매현황",
     isMoney: false,
     isGun: true,
+    amount: 0,
     icon: (
       <MonetizationOnOutlinedIcon
         className="icon"

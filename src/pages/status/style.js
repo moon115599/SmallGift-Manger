@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+  //background-color: black;
+  span {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .status-button {
+    margin-bottom: 20px;
+  }
 `;

@@ -5,7 +5,6 @@ import CachedIcon from "@mui/icons-material/Cached";
 import * as Styled from "./style";
 
 const Widget = ({ data }) => {
-  const amount = 100;
   const diff = 20;
   let today = new Date();
   const date = `${today.toLocaleDateString().substring(5)} ${today.getHours()} :00`;
@@ -14,14 +13,14 @@ const Widget = ({ data }) => {
       <div className="content">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {amount}
+          {data.amount}
           {data.isMoney && "원"}
           {data.isGun && "건"}
         </span>
-        <div className="refresh">
-          <span>{date}</span>
-          <CachedIcon className="icon" />
-        </div>
+        {/* <div className="refresh"> */}
+        {/*   <span>{date}</span> */}
+        {/*   <CachedIcon className="icon" /> */}
+        {/* </div> */}
       </div>
     </Styled.Container>
   );

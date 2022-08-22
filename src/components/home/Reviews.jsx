@@ -12,6 +12,7 @@ const Reviews = () => {
     title: "새로 달린 리뷰",
     isMoney: false,
     isGun: true,
+    amount: 0,
     icon: (
       <ShoppingCartOutlinedIcon
         className="icon"

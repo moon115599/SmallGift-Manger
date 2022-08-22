@@ -26,9 +26,9 @@ const Status = () => {
       <CommonStyled.FormContainer>
         <Navbar discription={description} title={title} />
         <Styled.MainContainer>
-          <StatusButton />
-          <StatusInfo />
-          <StatusList />
+          <StatusButton className="status-button" />
+          <StatusInfo className="status-info" />
+          <StatusList className="status-list" />
         </Styled.MainContainer>
       </CommonStyled.FormContainer>
     </CommonStyled.Container>

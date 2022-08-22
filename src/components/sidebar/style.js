@@ -19,7 +19,7 @@ export const Hr = styled.hr`
 export const Top = styled.div`
   margin: 10px 0;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   height: 180px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ export const Top = styled.div`
     margin-top: 30px;
   }
   .info-name {
-    font-size: 18px;
+    font-size: 20px;
   }
 `;
 
@@ -65,12 +65,12 @@ export const Center = styled.div`
         }
         
         .Icon {
-          font-size: 12px;
+          font-size: 20px;
           color: #7451f8;
         }
 
         span{
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 600;
           margin-left: 10px;
         }
