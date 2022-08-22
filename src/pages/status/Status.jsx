@@ -10,7 +10,7 @@ import * as CommonStyled from "../style";
 import { axiosGetProduct } from "../../api/management/productManagement";
 import StatusButton from "../../components/status/StatusButton";
 import StatusInfo from "../../components/status/StatusInfo";
-import StatusList from "../../components/status/StatusList";
+import StatusTable from "../../components/status/StatusTable";
 
 const Status = () => {
   const [products, setProducts] = useState([]);
@@ -28,7 +28,7 @@ const Status = () => {
         <Styled.MainContainer>
           <StatusButton className="status-button" />
           <StatusInfo className="status-info" />
-          <StatusList className="status-list" />
+          <StatusTable className="status-table" />
         </Styled.MainContainer>
       </CommonStyled.FormContainer>
     </CommonStyled.Container>
