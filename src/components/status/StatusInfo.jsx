@@ -1,7 +1,7 @@
 import React from "react";
 
 const StatusInfo = () => {
-  return <div />;
+  // return <></>;
 };
 
 export default StatusInfo;

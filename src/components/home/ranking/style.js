@@ -19,11 +19,5 @@ export const Container = styled.div`
       font-size: 11px;
       color: rgb(160, 160, 160);
     }
-
-    .list li {
-      font-weight: bold;
-      font-size: 10px;
-      font-size: 15px;
-    }
   }
 `;
