@@ -6,6 +6,10 @@ export const Table = styled.table`
   background-color: white;
   font-size: 18px;
   border-collapse: collapse;
+  th,
+  td {
+    padding: 16px 0px;
+  }
   th {
     border-top: 2px solid black;
     border-bottom: 2px solid black;

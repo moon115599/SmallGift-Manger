@@ -19,24 +19,23 @@ const StatusInfo = () => {
   }, []);
 
   return (
-    <>
-      <br />
-      <span>{date}</span>
-      <Grid className="grid-container" container spacing={2}>
-        <Grid item md={3} xs={6}>
-          <First />
-        </Grid>
-        <Grid item md={3} xs={6}>
-          <Second />
-        </Grid>
-        <Grid item md={3} xs={6}>
-          <Third />
-        </Grid>
-        <Grid item md={3} xs={6}>
-          <Fourth />
-        </Grid>
+    <Grid className="grid-container" container spacing={2}>
+      <Grid item md={12} xs={12}>
+        <span> {date} </span>
       </Grid>
-    </>
+      <Grid item md={3} xs={6}>
+        <First />
+      </Grid>
+      <Grid item md={3} xs={6}>
+        <Second />
+      </Grid>
+      <Grid item md={3} xs={6}>
+        <Third />
+      </Grid>
+      <Grid item md={3} xs={6}>
+        <Fourth />
+      </Grid>
+    </Grid>
   );
 };
 

@@ -30,7 +30,7 @@ const ProductManagement = () => {
     <CommonStyled.Container>
       <Sidebar style={{ display: "none" }} className="sidebar" id="sidebar" />
       <CommonStyled.FormContainer>
-        <Navbar discription={description} title={title} />
+        <Navbar title={title} discription={description} />
         <CommonStyled.MainContainer>
           <Table info={products} />
         </CommonStyled.MainContainer>

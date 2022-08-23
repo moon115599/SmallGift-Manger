@@ -18,9 +18,12 @@ export const MainContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
+  min-height: 100vh;
+
   background-color: #f9f9f9;
   margin: 0 150px;
   width: 100%;
+  height: 100%;
 `;
 
 export const Container = styled.div`

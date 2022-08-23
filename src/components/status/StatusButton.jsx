@@ -26,7 +26,14 @@ const StatusButton = () => {
   useEffect(() => {}, [date.start]);
 
   return (
-    <ToggleButtonGroup color="primary" value={alignment} exclusive onChange={handleChange} aria-label="Platform">
+    <ToggleButtonGroup
+      size="large"
+      color="primary"
+      value={alignment}
+      exclusive
+      onChange={handleChange}
+      aria-label="Platform"
+    >
       <ToggleButton value={0}>오늘</ToggleButton>
       <ToggleButton value={6}>7일</ToggleButton>
       <ToggleButton value={29}>30일</ToggleButton>
