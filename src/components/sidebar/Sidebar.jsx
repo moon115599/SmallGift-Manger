@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useNavigate } from "react";
 import { Link } from "react-router-dom";
 
 import * as Styled from "./style";
@@ -11,10 +11,73 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 
 const Sidebar = () => {
-  const [page, setPage] = useState("");
+  const [menu, setMenu] = useState({
+    first: false,
+    second: false,
+    third: false,
+    fourth: false,
+  });
+  const [menuManagement, setMenuManagement] = useState({
+    first: false,
+    second: false,
+    third: false,
+  });
+
+  const [path, setPath] = useState("");
+
+  const handleClick = (e) => {
+    console.log(e.target.className);
+  };
+
   useEffect(() => {
-    let path = window.location.pathname;
-    //    document.querySelector(`.${path}`).className += "clicked";
+    if (window.location.pathname === "/") {
+      setMenu({
+        first: true,
+        second: false,
+        third: false,
+        fourth: false,
+      });
+    } else if (window.location.pathname.substring(0, 11) === "/management") {
+      setMenu({
+        first: false,
+        second: true,
+        third: false,
+        fourth: false,
+      });
+      if (window.location.pathname === "/management/register/business") {
+        setMenuManagement({
+          first: true,
+          second: false,
+          third: false,
+        });
+      } else if (window.location.pathname === "/management/register/products") {
+        setMenuManagement({
+          first: false,
+          second: true,
+          third: false,
+        });
+      } else {
+        setMenuManagement({
+          first: false,
+          second: false,
+          third: true,
+        });
+      }
+    } else if (window.location.pathname === "/status") {
+      setMenu({
+        first: false,
+        second: false,
+        third: true,
+        fourth: false,
+      });
+    } else {
+      setMenu({
+        first: false,
+        second: false,
+        third: false,
+        fourth: true,
+      });
+    }
   }, []);
 
   return (
@@ -36,47 +99,49 @@ const Sidebar = () => {
       </Styled.Top>
       <Styled.Center>
         <ul>
-          <Link style={{ textDecoration: "none" }} to="/">
-            <li className="/">
+          <Link className="link" to="/">
+            <li className={menu.first ? "clicked" : ""}>
               <HomeIcon className="Icon" />
               <span>홈</span>
             </li>
           </Link>
-          <Link to="/management/products">
-            <li className="/management/products">
+          <Link className="link" to="/management/register/business">
+            <li className={menu.second ? "clicked" : ""}>
               <MonetizationOnIcon className="Icon" />
               <span>판매 관리</span>
             </li>
           </Link>
 
           <ul>
-            <Link to="/management/register/business">
-              <li className="/management/register/business">
+            <Link className="link" to="/management/register/business">
+              <li className={menuManagement.first ? "clicked-management" : ""}>
                 <span> 사업자 등록</span>
               </li>
             </Link>
-            <Link to="/management/register/products">
-              <li className="/management/register/products">
+            <Link className="link" to="/management/register/products">
+              <li className={menuManagement.second ? "clicked-management" : ""}>
                 <span> 상품 등록</span>
               </li>
             </Link>
-            <Link to="/management/products">
-              <li className="/management/products">
+            <Link className="link" to="/management/products">
+              <li className={menuManagement.third ? "clicked-management" : ""}>
                 <span>상품 관리</span>
               </li>
             </Link>
           </ul>
-          <Link to="/status">
-            <li className="판매현황">
+          <Link className="link" to="/status">
+            <li className={menu.third ? "clicked" : ""}>
               <BarChartIcon className="Icon" />
               <span>판매 현황</span>
             </li>
           </Link>
 
-          <li className="리뷰관리">
-            <ReceiptIcon className="Icon" />
-            <span>리뷰 관리</span>
-          </li>
+          <Link className="link" to="/">
+            <li className={menu.fourth ? "clicked" : ""}>
+              <ReceiptIcon className="Icon" />
+              <span>리뷰 관리</span>
+            </li>
+          </Link>
         </ul>
       </Styled.Center>
     </Styled.Container>

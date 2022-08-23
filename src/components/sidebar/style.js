@@ -37,47 +37,62 @@ export const Top = styled.div`
 `;
 
 export const Center = styled.div`
-    margin-top: 20px;
-    
+  margin-top: 20px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    text-decoration-line: none;
+
+    .link {
+      text-decoration: none;
+      color: black;
+    }
+
     ul {
-      list-style: none;
-      margin: 0;
-      padding: 10px;
-      text-decoration-line: none;
-      
-      
       li {
-        display: flex;
-        align-items: center;
-        padding: 5px;
-        cursor: pointer;
+        opacity: 0.3;
+      }
+      .clicked-management {
+        opacity: 1;
+        color: #6600cc;
+      }
+    }
 
-        border-radius: 13px ;
-        padding: 16px 16px;
-        
-        &:hover {
-          background-color: #ece8ff;
-        }
+    li {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      cursor: pointer;
 
-        .clicked {
-          background-color: #6600CC
-          color:  #FFFFFF;
-        }
-        
-        .Icon {
-          font-size: 20px;
-          color: #7451f8;
-        }
+      border-radius: 13px;
+      padding: 16px 16px;
 
-        span{
-          font-size: 20px;
-          font-weight: 600;
-          margin-left: 10px;
-        }
+      &:hover {
+        background-color: #ece8ff;
+      }
+
+      .Icon {
+        font-size: 20px;
+        opacity: 0.2;
+      }
+
+      span {
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 15px;
       }
       ul {
-          color: #858585;
-        
+        color: #858585;
+      }
+    }
+
+    .clicked {
+      background-color: #6600cc;
+      color: white;
+      .Icon {
+        opacity: 1;
       }
     }
   }
