@@ -84,7 +84,7 @@ const Table = () => {
     <CommonStyled.ColumnFlexContainer>
       <CommonStyled.TitleDiv>
         <div className="titleToButton">
-          <span>상품 관리</span>
+          <span>상품 리스트</span>
           <div>
             <Button variant="outlined" size="small">
               선택 삭제
@@ -94,7 +94,6 @@ const Table = () => {
             </Button>
           </div>
         </div>
-        <hr />
       </CommonStyled.TitleDiv>
       <Styled.Table>
         <thead>

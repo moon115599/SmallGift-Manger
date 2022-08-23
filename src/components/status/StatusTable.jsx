@@ -18,9 +18,6 @@ const StatusTable = () => {
 
   return (
     <CommonStyled.ColumnFlexContainer>
-      <CommonStyled.TitleDiv>
-        <hr />
-      </CommonStyled.TitleDiv>
       <Styled.Table>
         <thead>
           <tr>

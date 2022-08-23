@@ -3,9 +3,15 @@ import styled from "styled-components";
 export const Table = styled.table`
   width: 100%;
   margin: 0px auto;
+  background-color: white;
   font-size: 18px;
-  tr {
-    border-bottom: 1px solid black;
+  border-collapse: collapse;
+  th {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
   tbody {
     text-align: center;
