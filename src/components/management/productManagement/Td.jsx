@@ -1,7 +1,19 @@
 import React, { useState } from "react";
 import { Button, Switch } from "@mui/material";
+import { axiosModifyProduct } from "../../../api/management/productManagement";
+import Modal from "./Modal";
 
-const Td = ({ item, handleEdit, handleCheck, checked }) => {
+const Td = ({ item, handleCheck, checked }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <tr id={item.productId}>
       <td>
@@ -15,9 +27,10 @@ const Td = ({ item, handleEdit, handleCheck, checked }) => {
         <Switch defaultChecked />
       </td>
       <td>
-        <Button variant="outlined" size="small">
+        <Button onClick={openModal} variant="outlined" size="small">
           수정
         </Button>
+        <Modal item={item} open={modalOpen} close={closeModal} />
       </td>
     </tr>
   );

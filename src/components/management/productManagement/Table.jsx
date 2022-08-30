@@ -11,7 +11,7 @@ const Table = ({ info, setInfo }) => {
 
   const handleRemove = () => {
     checked.map((id) => {
-      axiosRemoveProduct(parseInt(id, 10));
+      axiosRemoveProduct(id);
     });
   };
 
@@ -31,7 +31,6 @@ const Table = ({ info, setInfo }) => {
     } else {
       setChecked(checked.filter((i) => i != e.target.parentElement.parentElement.id));
     }
-    console.log(checked);
   };
 
   return (

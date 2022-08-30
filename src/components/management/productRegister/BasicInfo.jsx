@@ -22,7 +22,7 @@ const categories = [
   },
 ];
 
-const BasicInfo = () => {
+const BasicInfo = ({ data }) => {
   const [category, setCategory] = React.useState("A");
 
   const handleChange = (event) => {
@@ -40,6 +40,7 @@ const BasicInfo = () => {
           <TextField
             id="catergory"
             className="TextField"
+            // value = {data.category || ""}
             size="small"
             select
             variant="filled"
@@ -57,7 +58,15 @@ const BasicInfo = () => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>상품명</span>
-          <TextField className="TextField" variant="filled" placeholder="상품명을 입력하세요" size="small" required />
+          <TextField
+            className="TextField"
+            value={data.productName}
+            defaultValue=""
+            variant="filled"
+            placeholder="상품명을 입력하세요"
+            size="small"
+            required
+          />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

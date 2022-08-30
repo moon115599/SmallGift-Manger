@@ -39,9 +39,9 @@ const ProductRegister = () => {
         <Navbar className="navbar" title={title} discription={description} />
         <CommonStyled.MainContainer>
           <FormControl className="form-control" onSubmit={handleSubmit}>
-            <BasicInfo onchange={handleChange} />
-            <SalesInfo onChange={handleChange} />
-            <DetailsInfo onChange={handleChange} />
+            <BasicInfo onchange={handleChange} data={payload} />
+            <SalesInfo onChange={handleChange} data={payload} />
+            <DetailsInfo onChange={handleChange} data={payload} />
             <Button variant="contained" color="secondary" onClick={handleSubmit}>
               상품 등록하기
             </Button>
