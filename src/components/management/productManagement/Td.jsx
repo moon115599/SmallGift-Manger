@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Switch } from "@mui/material";
 
-const Td = ({ item, handleRemove, handleEdit }) => {
+const Td = ({ item, handleEdit, handleCheck, checked }) => {
   return (
-    <tr>
+    <tr id={item.productId}>
       <td>
-        <input type="checkbox" />
+        <input type="checkbox" onChange={handleCheck} checked={checked.includes(item.productId)} />
       </td>
-      <td>{item.productId}</td>
+      <td>{item.listNum}</td>
       <td>{item.productImg}</td>
       <td>{item.productName}</td>
       <td>{item.productPrice}</td>

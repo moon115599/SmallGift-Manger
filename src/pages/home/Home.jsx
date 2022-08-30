@@ -9,10 +9,16 @@ import Populars from "../../components/home/Populars";
 
 import * as Styled from "./style";
 import * as CommonStyled from "../style";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
+import { axiosGetHome } from "../../api/home/home";
 
 const Home = () => {
+  const [info, setInfo] = useState([]);
+  useEffect(() => {
+    axiosGetHome(setInfo);
+  }, []);
+
   return (
     <Styled.Container>
       <Sidebar />

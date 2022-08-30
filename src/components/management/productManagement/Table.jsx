@@ -6,78 +6,32 @@ import { Button, Grid } from "@mui/material";
 import { axiosRemoveProduct } from "../../../api/management/productManagement";
 import Td from "./Td";
 
-const Table = () => {
-  const handleClick = (e) => {
-    console.log(e);
+const Table = ({ info, setInfo }) => {
+  const [checked, setChecked] = useState([]);
+
+  const handleRemove = () => {
+    checked.map((id) => {
+      axiosRemoveProduct(parseInt(id, 10));
+    });
   };
 
-  const [info, setInfo] = useState([
-    { id: 1, productId: 1, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 2, productId: 2, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 3, productId: 3, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 4, productId: 4, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 5, productId: 5, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 6, productId: 6, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 7, productId: 7, productImg: "", productName: "Good", productPrice: 10000 },
-    { id: 8, productId: 8, productImg: "", productName: "Good", productPrice: 10000 },
-  ]);
-  const [selected, setSelected] = useState("");
-  const [modalOn, setModalOn] = useState(false);
-
-  const nextId = useRef(11);
-
-  const handleSave = (data) => {
-    if (data.id) {
-      setInfo(
-        info.map((row) =>
-          data.id === row.id
-            ? {
-                id: data.id,
-                productId: data.productId,
-                productImg: data.productImg,
-                productName: data.productName,
-                productPrice: data.productPrice,
-                onProduct: data.onProduct,
-              }
-            : row,
-        ),
-      );
+  const checkAll = (e) => {
+    let checked = [];
+    if (e.target.checked === true) {
+      info.forEach((i) => checked.push(i.productId));
+      setChecked(checked);
     } else {
-      setInfo((info) =>
-        info.concat({
-          id: nextId.current,
-          productId: data.productId,
-          productImg: data.productImg,
-          productName: data.productName,
-          productPrice: data.productPrice,
-          onProduct: data.onProduct,
-        }),
-      );
+      setChecked(checked);
     }
   };
 
-  const handleRemove = (productId) => {
-    axiosRemoveProduct(productId);
-  };
-
-  const handleEdit = (item) => {
-    setModalOn(true);
-    const selectedData = {
-      id: item.id,
-      productId: item.productId,
-      productImg: item.productImg,
-      productName: item.productName,
-      productPrice: item.productPrice,
-      onProduct: item.onProduct,
-    };
-    setSelected(selectedData);
-  };
-  const handleCancel = () => {
-    setModalOn(false);
-  };
-  const handleEditSubmit = (item) => {
-    handleSave(item);
-    setModalOn(false);
+  const handleCheck = (e) => {
+    if (e.target.checked === true) {
+      setChecked([...checked, parseInt(e.target.parentElement.parentElement.id, 10)]);
+    } else {
+      setChecked(checked.filter((i) => i != e.target.parentElement.parentElement.id));
+    }
+    console.log(checked);
   };
 
   return (
@@ -86,11 +40,8 @@ const Table = () => {
         <div className="titleToButton">
           <span>상품 리스트</span>
           <div>
-            <Button variant="outlined" size="small">
-              선택 삭제
-            </Button>
-            <Button variant="outlined" size="small">
-              전체 삭제
+            <Button variant="contained" size="small" onClick={handleRemove}>
+              삭제
             </Button>
           </div>
         </div>
@@ -99,7 +50,7 @@ const Table = () => {
         <thead>
           <tr>
             <th>
-              <input type="checkbox" />
+              <input type="checkbox" onChange={checkAll} checked={checked.length === info.length} />
             </th>
             <th>번호</th>
             <th>상품명</th>
@@ -111,7 +62,9 @@ const Table = () => {
         </thead>
         <tbody>
           {info.map((item) => {
-            return <Td key={item.id} item={item} handleRemove={handleRemove} handleEdit={handleEdit} />;
+            return (
+              <Td id={item.productId} key={item.productId} item={item} handleCheck={handleCheck} checked={checked} />
+            );
           })}
         </tbody>
       </Styled.Table>

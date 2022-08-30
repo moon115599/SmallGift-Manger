@@ -23,6 +23,17 @@ export const axiosRemoveProduct = async (productId) => {
   }
 };
 
+export const axiosModifyProduct = async (productId) => {
+  try {
+    const response = await axios.post("/api/manager/productList/modify", productId);
+    if (response.code === 200) {
+      console.log("등록이 완료되었습니다.");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const axiosOnProduct = async (productId) => {
   try {
     const response = await axios.patch("/api/manager/productList", productId);
