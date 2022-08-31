@@ -17,13 +17,13 @@ const MoneyForm = ({ handleChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>예금주명</span>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <input className="TextField" size="small" required variant="filled" />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>은행계좌</span>
           <FormControl className="FormControl">
-            <Select
+            <select
               onChange={(handleChange, handleBankChange)}
               value={bankName}
               id="bankName"
@@ -31,12 +31,12 @@ const MoneyForm = ({ handleChange }) => {
               variant="filled"
               size="small"
             >
-              <MenuItem value="하나은행">하나은행</MenuItem>
-              <MenuItem value="우리은행">우리은행</MenuItem>
-              <MenuItem value="신한은행">신한은행</MenuItem>
-            </Select>
+              <option value="하나은행">하나은행</option>
+              <option value="우리은행">우리은행</option>
+              <option value="신한은행">신한은행</option>
+            </select>
           </FormControl>
-          <TextField
+          <input
             onChange={handleChange}
             id="backAccount"
             className="TextField"

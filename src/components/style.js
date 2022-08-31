@@ -30,8 +30,8 @@ export const ColumnFlexContainer = styled.div`
 export const InputsDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
-  width: 100%;
+
+  margin: 0 20px 30px 20px;
 `;
 
 export const InputDiv = styled.div`
@@ -48,16 +48,19 @@ export const InputDiv = styled.div`
     opacity: 0.3;
     margin-top: 10px;
   }
-  input {
-    height: 10px;
-  }
-  .TextField {
-    margin-right: 15px;
+  input,
+  select {
+    width: 300px;
+    height: 45px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    margin: 0 10px;
   }
   .FormControl {
     //padding: 10px;
-  }
-  .Button {
-    margin-right: 15px;
   }
 `;

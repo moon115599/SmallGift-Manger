@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const AccountForm = ({ hadleChange }) => {
+const AccountForm = ({ handleChange }) => {
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -13,14 +13,7 @@ const AccountForm = ({ hadleChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>계정</span>
-          <TextField
-            onChange={hadleChange}
-            id="username"
-            className="TextField"
-            size="small"
-            required
-            variant="filled"
-          />
+          <input onChange={handleChange} id="username" className="TextField" required />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

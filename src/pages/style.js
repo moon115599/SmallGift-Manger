@@ -12,6 +12,14 @@ export const MainContainer = styled.div`
   .form-control {
     width: 100%;
   }
+  .form-control > Button {
+    width: 350px;
+    height: 60px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 19px;
+  }
   .grid-container {
     background-color: #f9f9f9;
   }
@@ -19,7 +27,6 @@ export const MainContainer = styled.div`
 
 export const FormContainer = styled.div`
   min-height: 100vh;
-
   background-color: #f9f9f9;
   margin: 0 150px;
   width: 100%;

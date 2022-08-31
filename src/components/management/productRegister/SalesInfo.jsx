@@ -13,7 +13,7 @@ const SalesInfo = ({ data }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>가격</span>
-          <TextField
+          <input
             id="productPrice"
             className="TextField"
             value={data.productPrice}
@@ -28,7 +28,7 @@ const SalesInfo = ({ data }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>재고 수량</span>
-          <TextField
+          <input
             id="productStock"
             className="TextField"
             // value={data.productStock || 0}
@@ -42,10 +42,10 @@ const SalesInfo = ({ data }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>판매기간</span>
-          <TextField
-            id="startPeriod"
+          <input
+            id="start_dt"
             variant="filled"
-            value={data.end_dt}
+            value={data.start_dt}
             label="Date"
             type="date"
             defaultValue=""
@@ -54,10 +54,10 @@ const SalesInfo = ({ data }) => {
               shrink: true,
             }}
           />
-          <span>~</span>
-          <TextField
-            id="endPeriod"
-            value={data.start_dt}
+          <h3 style={{ display: "inline", margin: "0 10px" }}>~</h3>
+          <input
+            id="end_dt"
+            value={data.end_dt}
             label="Date"
             variant="filled"
             type="date"

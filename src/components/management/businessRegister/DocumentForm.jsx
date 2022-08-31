@@ -16,7 +16,7 @@ const DocumentForm = () => {
           <Button className="Button" variant="outlined">
             파일 선택
           </Button>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <input className="TextField" size="small" required variant="filled" />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
@@ -24,7 +24,7 @@ const DocumentForm = () => {
           <Button className="Button" variant="outlined">
             파일 선택
           </Button>
-          <TextField className="TextField" size="small" required variant="filled" />
+          <input className="TextField" size="small" required variant="filled" />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

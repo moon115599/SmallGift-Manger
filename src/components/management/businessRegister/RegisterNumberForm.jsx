@@ -16,7 +16,7 @@ const RegisterNumberForm = ({ handleChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>신고 번호</span>
-          <TextField onChange={handleChange} className="TextField" size="small" required variant="filled" />
+          <input onChange={handleChange} className="TextField" size="small" required variant="filled" />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

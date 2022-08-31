@@ -22,9 +22,7 @@ export const InputDiv = styled.div`
     opacity: 0.3;
     margin-top: 10px;
   }
-  input {
-    height: 10px;
-  }
+
   .TextField {
     margin-right: 15px;
   }

@@ -37,7 +37,7 @@ const BasicInfo = ({ data }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>카테고리</span>
-          <TextField
+          <select
             id="catergory"
             className="TextField"
             // value = {data.category || ""}
@@ -49,16 +49,16 @@ const BasicInfo = ({ data }) => {
             onChange={handleChange}
           >
             {categories.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
+              <option key={option.value} value={option.value}>
                 {option.label}
-              </MenuItem>
+              </option>
             ))}
-          </TextField>
+          </select>
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>상품명</span>
-          <TextField
+          <input
             className="TextField"
             value={data.productName}
             defaultValue=""

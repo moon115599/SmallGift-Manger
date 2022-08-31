@@ -13,19 +13,12 @@ const BusinessForm = ({ handleChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>대표자명</span>
-          <TextField
-            onChange={handleChange}
-            id="username"
-            className="TextField"
-            size="small"
-            required
-            variant="filled"
-          />
+          <input onChange={handleChange} id="username" className="TextField" size="small" required variant="filled" />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>상호명</span>
-          <TextField
+          <input
             onChange={handleChange}
             id="businessName"
             className="TextField"
@@ -37,14 +30,7 @@ const BusinessForm = ({ handleChange }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>사업자 주소</span>
-          <TextField
-            onChange={handleChange}
-            id="address"
-            className="TextField"
-            size="small"
-            required
-            variant="filled"
-          />
+          <input onChange={handleChange} id="address" className="TextField" size="small" required variant="filled" />
           <Button className="Button" variant="outlined" size="small">
             찾기
           </Button>
@@ -52,7 +38,7 @@ const BusinessForm = ({ handleChange }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>사업자 등록 번호</span>
-          <TextField
+          <input
             onChange={handleChange}
             id="businessTel"
             className="TextField"
@@ -64,7 +50,7 @@ const BusinessForm = ({ handleChange }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>업종</span>
-          <TextField
+          <input
             onChange={handleChange}
             id="businessType"
             className="TextField"
