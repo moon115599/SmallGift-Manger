@@ -22,7 +22,7 @@ const categories = [
   },
 ];
 
-const BasicInfo = ({ data }) => {
+const BasicInfo = ({ data, onChange }) => {
   const [category, setCategory] = React.useState("A");
 
   const handleChange = (event) => {
@@ -66,6 +66,8 @@ const BasicInfo = ({ data }) => {
             placeholder="상품명을 입력하세요"
             size="small"
             required
+            id="productName"
+            onChange={onChange}
           />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>

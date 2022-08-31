@@ -3,7 +3,7 @@ import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const SalesInfo = ({ data }) => {
+const SalesInfo = ({ data, onChange }) => {
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -22,6 +22,7 @@ const SalesInfo = ({ data }) => {
             required
             type="number"
             variant="filled"
+            onChange={onChange}
           />
           <span>원</span>
           <hr />

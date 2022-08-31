@@ -39,7 +39,7 @@ const ProductRegister = () => {
         <Navbar className="navbar" title={title} discription={description} />
         <CommonStyled.MainContainer>
           <FormControl className="form-control" onSubmit={handleSubmit}>
-            <BasicInfo onchange={handleChange} data={payload} />
+            <BasicInfo onChange={handleChange} data={payload} />
             <SalesInfo onChange={handleChange} data={payload} />
             <DetailsInfo onChange={handleChange} data={payload} />
             <Button variant="contained" color="secondary" onClick={handleSubmit}>

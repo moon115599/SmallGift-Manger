@@ -5,23 +5,16 @@ import Second from "./statusInfo/Second";
 import Third from "./statusInfo/Third";
 import Fourth from "./statusInfo/Fourth";
 
-const StatusInfo = () => {
-  const [date, setDate] = useState("");
-  useEffect(() => {
-    let today = new Date();
-
-    const year = today.getFullYear();
-    const month = `0${today.getMonth() + 1}`.slice(-2);
-    const day = `0${today.getDate()}`.slice(-2);
-
-    let dateString = `${year}년 ${month}월 ${day}일`;
-    setDate(dateString);
-  }, []);
-
+const StatusInfo = ({ date }) => {
   return (
     <Grid className="grid-container" container spacing={2}>
       <Grid item md={12} xs={12}>
-        <span> {date} </span>
+        <span>
+          {`${date.start.substring(0, 4)}년 ${date.start.substring(4, 6)}월 ${date.start.substring(
+            6,
+            8,
+          )}일~${date.end.substring(0, 4)}년 ${date.end.substring(4, 6)}월 ${date.end.substring(6, 8)}일`}
+        </span>
       </Grid>
       <Grid item md={3} xs={6}>
         <First />

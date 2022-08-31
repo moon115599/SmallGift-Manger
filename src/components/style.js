@@ -30,8 +30,10 @@ export const ColumnFlexContainer = styled.div`
 export const InputsDiv = styled.div`
   display: flex;
   flex-direction: column;
-
   margin: 0 20px 30px 20px;
+  span {
+    margin-bottom: 10px;
+  }
 `;
 
 export const InputDiv = styled.div`

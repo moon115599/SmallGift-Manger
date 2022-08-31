@@ -6,15 +6,10 @@ import { Button, Grid } from "@mui/material";
 import { axiosRemoveProduct } from "../../api/management/productManagement";
 import Td from "./statusList/td";
 
-const StatusTable = () => {
+const StatusTable = ({ info }) => {
   const handleClick = (e) => {
     console.log(e);
   };
-
-  const [info, setInfo] = useState([
-    { id: 1, productId: 1, date: "2022.07.18", productName: "베이비 아포가토", productPrice: 10000, buyer: "김은*" },
-    { id: 2, productId: 2, date: "2022.07.18", productName: "플랫화이트 9oz", productPrice: 10000, buyer: "박지*" },
-  ]);
 
   return (
     <CommonStyled.ColumnFlexContainer>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
@@ -9,6 +9,23 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const DetailsInfo = ({ data }) => {
+  const [imageUrl, setImageUrl] = useState(null);
+  const imgRef = useRef();
+
+  const onChangeImage = () => {
+    const reader = new FileReader();
+    const file = imgRef.current.files[0];
+    console.log(file);
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImageUrl(reader.result);
+      console.log("이미지주소", reader.result);
+    };
+  };
+  const onClickFileBtn = (e) => {
+    imgRef.current.click();
+  };
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -21,7 +38,7 @@ const DetailsInfo = ({ data }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <Styled.RowFlex>
-            <img src={tempImg} />
+            <img src={imageUrl || tempImg} />
             <Styled.RuleDiv>
               <span>이미지 등록시 유의사항</span>
               <div>
@@ -29,7 +46,24 @@ const DetailsInfo = ({ data }) => {
                 <p>break 대표 이미지 등록 시, 상품 상세 페이지 외 자동 리사이징됩니다. </p>
                 <p>권장 이미지 규격: 1000px * 1000px / 10M 이하 / png, jpg</p>
               </div>
-              <Button className="Button" variant="outlined" size="small">
+              <input
+                type="file"
+                className="imgInput"
+                id="logoImg"
+                accept="image/*"
+                name="file"
+                ref={imgRef}
+                onChange={onChangeImage}
+                style={{ display: "none" }}
+              />
+              <Button
+                className="Button"
+                variant="outlined"
+                size="small"
+                onClick={() => {
+                  onClickFileBtn();
+                }}
+              >
                 첨부하기
               </Button>
             </Styled.RuleDiv>
