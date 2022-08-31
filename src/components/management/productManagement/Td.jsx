@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Switch } from "@mui/material";
-import { axiosModifyProduct } from "../../../api/management/productManagement";
+import { axiosModifyProduct, axiosOnProduct } from "../../../api/management/productManagement";
 import Modal from "./Modal";
 
 const Td = ({ item, handleCheck, checked }) => {
@@ -14,6 +14,12 @@ const Td = ({ item, handleCheck, checked }) => {
     setModalOpen(false);
   };
 
+  const handleSwitch = (e) => {
+    if (e.target.checked) {
+      axiosOnProduct(item.productId);
+    }
+  };
+
   return (
     <tr id={item.productId}>
       <td>
@@ -24,7 +30,7 @@ const Td = ({ item, handleCheck, checked }) => {
       <td>{item.productName}</td>
       <td>{item.productPrice}</td>
       <td>
-        <Switch defaultChecked />
+        <Switch defaultChecked onChange={handleSwitch} />
       </td>
       <td>
         <Button onClick={openModal} variant="outlined" size="small">
