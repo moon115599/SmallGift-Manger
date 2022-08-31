@@ -1,14 +1,34 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const hideController = styled.div`
+  padding-top: 20px;
+  padding-right: 20px;
+  background-color: white;
+  border-right: 0.5px solid rgb(230, 227, 227);
+
+  li {
+    margin-left: 20px;
+    border-right: 0;
+  }
+  .show-menu {
+    z-index: 99;
+    min-height: 100vh;
+
+    transition: all 1s;
+  }
+  .hide-menu {
+    position: absolute;
+    left: -376px;
+    transition: 1s;
+  }
+`;
+
 export const Container = styled.div`
   min-width: 310px;
-  border-right: 0.5px solid rgb(230, 227, 227);
+
   min-height: 100vh;
   background-color: white;
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
 `;
 export const Hr = styled.hr`
   height: 0;
