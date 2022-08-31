@@ -3,6 +3,8 @@ import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
+import tempImg from "../../../assets/tempImg.png";
+
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -19,9 +21,9 @@ const DetailsInfo = ({ data }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <Styled.RowFlex>
-            <Styled.ImgDiv />
+            <img src={tempImg} />
             <Styled.RuleDiv>
-              <p>이미지 등록시 유의사항</p>
+              <span>이미지 등록시 유의사항</span>
               <div>
                 <p>상품을 대표할 수 있는 상품 이미지를 등록합니다.</p>
                 <p>break 대표 이미지 등록 시, 상품 상세 페이지 외 자동 리사이징됩니다. </p>
@@ -40,7 +42,7 @@ const DetailsInfo = ({ data }) => {
           <CKEditor
             style={{ minWidth: "10px" }}
             editor={ClassicEditor}
-            data="<p>Hello from CKEditor 5!</p>"
+            data="<p>설명을 입력하세요</p>"
             onReady={(editor) => {
               // You can store the "editor" and use when it is needed.
               console.log("Editor is ready to use!", editor);

@@ -50,16 +50,29 @@ export const InputDiv = styled.div`
   }
 `;
 
-export const ImgDiv = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: gray;
-`;
-
 export const RuleDiv = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 export const RowFlex = styled.div`
   display: flex;
+
+  img {
+    height: 160px;
+    width: 160px;
+    margin-right: 30px;
+  }
+  Button {
+    width: 150px;
+    height: 40px;
+  }
+  span {
+    margin-top: 0px;
+  }
+  p {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 5px 0;
+  }
 `;

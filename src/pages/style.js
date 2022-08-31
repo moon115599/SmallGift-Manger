@@ -13,12 +13,12 @@ export const MainContainer = styled.div`
     width: 100%;
   }
   .form-control > Button {
-    width: 350px;
-    height: 60px;
+    width: 320px;
+    height: 50px;
     margin: 0 auto;
     text-align: center;
     border-radius: 8px;
-    font-size: 19px;
+    font-size: 18px;
   }
   .grid-container {
     background-color: #f9f9f9;
