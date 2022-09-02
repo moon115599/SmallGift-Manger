@@ -13,7 +13,7 @@ const StatusInfo = ({ date }) => {
           {`${date.start.substring(0, 4)}년 ${date.start.substring(4, 6)}월 ${date.start.substring(
             6,
             8,
-          )}일~${date.end.substring(0, 4)}년 ${date.end.substring(4, 6)}월 ${date.end.substring(6, 8)}일`}
+          )}일 ~ ${date.end.substring(0, 4)}년 ${date.end.substring(4, 6)}월 ${date.end.substring(6, 8)}일`}
         </span>
       </Grid>
       <Grid item md={3} xs={6}>

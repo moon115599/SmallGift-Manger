@@ -16,6 +16,7 @@ import {
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../redux/_action/user_action";
 import axios from "axios";
+import { axiosEmailCheck, axiosIdCheck } from "../../api/user/signUp";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -73,12 +74,33 @@ const SignUpForm = () => {
       }
     });
   };
+  // 중복 확인
+  const [check, setCheck] = useState({
+    email: "",
+    id: "",
+  });
+  // 이메일 중복 확인
+  const checkEmail = () => {
+    if (axiosEmailCheck(payload.email).status === 200) {
+      setCheck({ ...check, email: "사용 가능한 이메일입니다." });
+    } else {
+      setCheck({ ...check, email: "이미 존재하는 이메일입니다." });
+    }
+  };
+  // 아이디 중복 확인
+  const checkId = (id) => {
+    if (axiosIdCheck(payload.id).status === 200) {
+      setCheck({ ...check, id: "사용 가능한 아이디입니다." });
+    } else {
+      setCheck({ ...check, id: "이미 존재하는 아이디입니다." });
+    }
+  };
 
   return (
     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
       <FormControl onSubmit={handleSubmit} component="fieldset" variant="standard">
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={9}>
             <TextField
               onChange={handleChange}
               required
@@ -90,6 +112,23 @@ const SignUpForm = () => {
               label="이메일 주소"
             />
           </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={checkEmail}
+              type="submit"
+              fullWidth
+              variant="outlined"
+              sx={{ m: 0, height: "56px" }}
+              size="large"
+            >
+              중복 확인
+            </Button>
+          </Grid>
+          {check.email ? (
+            <Grid item xs={12}>
+              <span style={{ color: "red" }}>{check.email}</span>
+            </Grid>
+          ) : null}
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
@@ -112,7 +151,7 @@ const SignUpForm = () => {
               label="비밀번호 재입력"
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={9}>
             <TextField
               onChange={handleChange}
               required
@@ -123,6 +162,23 @@ const SignUpForm = () => {
               label="아이디"
             />
           </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={checkId}
+              type="submit"
+              fullWidth
+              variant="outlined"
+              sx={{ m: 0, height: "56px" }}
+              size="large"
+            >
+              중복 확인
+            </Button>
+          </Grid>
+          {check.id ? (
+            <Grid item xs={12}>
+              <span style={{ color: "red" }}>{check.id}</span>
+            </Grid>
+          ) : null}
           <Grid item xs={12}>
             <FormControlLabel
               control={<Checkbox onChange={handleAgree} color="primary" />}

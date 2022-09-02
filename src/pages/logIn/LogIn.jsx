@@ -19,7 +19,7 @@ import LogInForm from "../../components/logIn/LogInForm";
 
 const LogIn = () => {
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <CssBaseline />
       <Box
         sx={{
