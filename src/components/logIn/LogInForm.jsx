@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -22,7 +22,7 @@ import { axiosLogInUser } from "../../api/user/logIn";
 const LogInForm = () => {
   // 이메일, 비밀번호 제출
   const dispatch = useDispatch();
-  const [cookies, setCookies] = useCookies([]);
+  const [cookies, setCookies, removeCookies] = useCookies([]);
   const navigate = useNavigate();
 
   // 사용자한테 아이디/비밀번호를 입력 받고
@@ -67,6 +67,26 @@ const LogInForm = () => {
       }
     }
   };
+
+  // 아이디 저장 여부 변수 (스테이트로 저장)
+  const [isRemember, setIsRemember] = useState(false);
+
+  // 아이디 저장 여부 확인하는 메서드
+  const checkRemember = (e) => {
+    setIsRemember(e.target.checked);
+    if (e.target.checked) {
+      setCookies("rememberUsername", payload.username);
+    } else {
+      removeCookies("rememberUsername");
+    }
+  };
+
+  useEffect(() => {
+    if (cookies.rememberUsername !== undefined) {
+      setPayload({ ...payload, username: cookies.rememberUsername });
+      setIsRemember(true);
+    }
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -120,7 +140,10 @@ const LogInForm = () => {
           </Grid>
         ) : null}
 
-        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="이메일 저장" />
+        <FormControlLabel
+          control={<Checkbox onChange={checkRemember} value="remember" color="primary" />}
+          label="아이디 저장"
+        />
         <Button
           disabled={!(validate.username && validate.password && validate.first)}
           onClick={handleSubmit}
