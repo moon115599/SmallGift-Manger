@@ -13,7 +13,7 @@ export const axiosEmailCheck = async (email) => {
     };
   }
 };
-export const axiosIdCheck = async (id) => {
+export const axiosUsernameCheck = async (id) => {
   try {
     const response = await axios.post(`/api/admin/${id}/exists`, {});
     return {

@@ -16,12 +16,19 @@ import {
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../redux/_action/user_action";
 import axios from "axios";
-import { axiosEmailCheck, axiosIdCheck } from "../../api/user/signUp";
+import { axiosEmailCheck, axiosUsernameCheck } from "../../api/user/signUp";
+import {
+  validateEmail,
+  validateUsername,
+  validatePassword,
+  validateRePassword,
+} from "../../utils/signUpValidationUtil";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // 회원가입시 필요한 정보
   const [payload, setPayload] = useState({
     email: "",
     username: "",
@@ -30,20 +37,67 @@ const SignUpForm = () => {
     provider: "NORMAL",
     role: "ROLE_MANAGER",
   });
+
+  // 오류체크
+  const [validate, setValidate] = useState({
+    email: false,
+    username: false,
+    password: false,
+    rePassword: false,
+  });
+
+  // 오류 메세지
+  const [msg, setMsg] = useState({
+    email: "",
+    username: "",
+    password: "",
+    rePassword: "",
+  });
+
+  // 변경되는 정보 갱신
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    console.log(payload);
+    if (e.target.id === "email") {
+      if (validateEmail(e.target.value)) {
+        setMsg({ ...msg, email: "" });
+        setValidate({ ...validate, email: true });
+      } else {
+        setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다." });
+      }
+    } else if (e.target.id === "username") {
+      if (validateUsername(e.target.value)) {
+        setMsg({ ...msg, username: "" });
+        setValidate({ ...validate, username: true });
+      } else {
+        setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요." });
+      }
+    } else if (e.target.id === "password") {
+      if (validatePassword(e.target.value)) {
+        setMsg({ ...msg, password: "" });
+        setValidate({ ...validate, password: true });
+      } else {
+        setMsg({ ...msg, password: "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요." });
+      }
+    } else if (e.target.id === "rePassword") {
+      if (validateRePassword(payload.password, e.target.value)) {
+        setMsg({ ...msg, rePassword: "" });
+        setValidate({ ...validate, rePassword: true });
+      } else {
+        setMsg({ ...msg, rePassword: "비밀번호가 일치하지 않습니다." });
+      }
+    }
   };
 
   // 동의 체크 확인
-  const [checked, setChecked] = useState(false);
+  const [agree, setAgree] = useState(false);
 
   // 체크 되어있는지
   const handleAgree = (event) => {
-    setChecked(event.target.checked);
-    console.log(checked);
+    setAgree(event.target.check);
+    console.log(agree);
   };
 
+  // 제출하는 함수
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event.target.value);
@@ -77,7 +131,7 @@ const SignUpForm = () => {
   // 중복 확인
   const [check, setCheck] = useState({
     email: "",
-    id: "",
+    username: "",
   });
   // 이메일 중복 확인
   const checkEmail = () => {
@@ -88,11 +142,11 @@ const SignUpForm = () => {
     }
   };
   // 아이디 중복 확인
-  const checkId = (id) => {
-    if (axiosIdCheck(payload.id).status === 200) {
-      setCheck({ ...check, id: "사용 가능한 아이디입니다." });
+  const checkUsername = (usename) => {
+    if (axiosUsernameCheck(payload.username).status === 200) {
+      setCheck({ ...check, username: "사용 가능한 아이디입니다." });
     } else {
-      setCheck({ ...check, id: "이미 존재하는 아이디입니다." });
+      setCheck({ ...check, username: "이미 존재하는 아이디입니다." });
     }
   };
 
@@ -129,6 +183,11 @@ const SignUpForm = () => {
               <span style={{ color: "red" }}>{check.email}</span>
             </Grid>
           ) : null}
+          {!validate.email ? (
+            <Grid item xs={12}>
+              <span style={{ color: "red" }}>{msg.email}</span>
+            </Grid>
+          ) : null}
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
@@ -139,7 +198,12 @@ const SignUpForm = () => {
               name="password"
               label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
             />
-          </Grid>
+          </Grid>{" "}
+          {!validate.password ? (
+            <Grid item xs={12}>
+              <span style={{ color: "red" }}>{msg.password}</span>
+            </Grid>
+          ) : null}
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
@@ -151,6 +215,11 @@ const SignUpForm = () => {
               label="비밀번호 재입력"
             />
           </Grid>
+          {!validate.rePassword ? (
+            <Grid item xs={12}>
+              <span style={{ color: "red" }}>{msg.rePassword}</span>
+            </Grid>
+          ) : null}
           <Grid item xs={9}>
             <TextField
               onChange={handleChange}
@@ -159,12 +228,12 @@ const SignUpForm = () => {
               type="text"
               id="username"
               name="username"
-              label="아이디"
+              label="아이디 (2자리 이상, 10자리 이하)"
             />
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={checkId}
+              onClick={checkUsername}
               type="submit"
               fullWidth
               variant="outlined"
@@ -174,9 +243,14 @@ const SignUpForm = () => {
               중복 확인
             </Button>
           </Grid>
-          {check.id ? (
+          {check.username ? (
             <Grid item xs={12}>
-              <span style={{ color: "red" }}>{check.id}</span>
+              <span style={{ color: "red" }}>{check.username}</span>
+            </Grid>
+          ) : null}
+          {!validate.username ? (
+            <Grid item xs={12}>
+              <span style={{ color: "red" }}>{msg.username}</span>
             </Grid>
           ) : null}
           <Grid item xs={12}>
