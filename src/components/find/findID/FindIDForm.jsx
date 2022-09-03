@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { validateEmail } from "../../../utils/validationUtil";
+import { axiosFindId } from "../../../api/user/find";
 
 const FindIDForm = () => {
   // 이메일, 비밀번호 제출
@@ -25,28 +27,43 @@ const FindIDForm = () => {
     email: "",
   });
 
-  const [isError, setIsError] = useState({
-    email: false,
+  // 오류체크
+  const [validate, setValidate] = useState({
+    email: true,
+    first: false,
+  });
+
+  // 오류 메세지
+  const [msg, setMsg] = useState({
+    email: "",
   });
 
   // 입력폼에서 데이터가 바뀔때마다 payload의 데이터 최신화
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.ids]: e.target.value });
-    console.log(payload);
+
+    if (e.target.value === "") {
+      setMsg({ ...msg, email: "이메일을 입력해주세요." });
+      setValidate({ ...validate, email: false });
+    } else if (validateEmail(e.target.value)) {
+      setMsg({ ...msg, email: "" });
+      setValidate({ ...validate, email: true, first: true });
+    } else {
+      setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다." });
+      setValidate({ ...validate, email: false, first: true });
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (payload.email === "") {
-      setIsError({ ...isError, email: true });
-    }
+    const findIdRes = axiosFindId;
   };
 
   return (
     <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
       <TextField
-        error={isError.email ? true : undefined}
+        error={!validate.email}
         margin="normal"
         required
         fullWidth
@@ -57,8 +74,20 @@ const FindIDForm = () => {
         autoFocus
         onChange={handleChange}
       />
+      {!validate.email ? (
+        <Grid item xs={12}>
+          <span style={{ color: "red" }}>{msg.email}</span>
+        </Grid>
+      ) : null}
 
-      <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Button
+        disabled={!(validate.email && validate.first)}
+        onClick={handleSubmit}
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
         아이디 찾기
       </Button>
     </Box>

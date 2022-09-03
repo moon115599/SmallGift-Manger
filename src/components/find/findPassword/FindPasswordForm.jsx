@@ -109,7 +109,7 @@ const FindPasswordForm = () => {
         </Grid>
       ) : null}
       <Button
-        disabled={!(validate.email && validate.email && validate.first)}
+        disabled={!(validate.email && validate.username && validate.first)}
         onClick={handleSubmit}
         type="submit"
         fullWidth
