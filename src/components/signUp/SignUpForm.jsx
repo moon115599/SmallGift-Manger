@@ -23,6 +23,7 @@ import {
   validatePassword,
   validateRePassword,
 } from "../../utils/signUpValidationUtil";
+import { MsgColorChanger } from "./style";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -44,8 +45,8 @@ const SignUpForm = () => {
     username: true,
     password: true,
     rePassword: true,
-    emailCheck: true,
-    usernameCheck: true,
+    emailCheck: false,
+    usernameCheck: false,
   });
 
   // 오류 메세지
@@ -128,14 +129,14 @@ const SignUpForm = () => {
     e.preventDefault();
     if (payload.email !== "" && validate.email) {
       if (axiosEmailCheck(payload.email).status === 200) {
-        setMsg({ ...msg, email: "사용 가능한 이메일입니다." });
-        setValidate({ ...validate, email: true });
+        setMsg({ ...msg, emailCheck: "사용 가능한 이메일입니다." });
+        setValidate({ ...validate, emailCheck: true });
       } else if (axiosEmailCheck(payload.email).status === 402) {
-        setMsg({ ...msg, email: "이미 존재하는 이메일입니다." });
-        setValidate({ ...validate, email: false });
+        setMsg({ ...msg, emailCheck: "이미 존재하는 이메일입니다." });
+        setValidate({ ...validate, emailCheck: false });
       } else {
-        setMsg({ ...msg, email: "중복 확인을 다시 시도해주세요." });
-        setValidate({ ...validate, email: false });
+        setMsg({ ...msg, emailCheck: "중복 확인을 다시 시도해주세요." });
+        setValidate({ ...validate, emailCheck: false });
       }
     }
   };
@@ -144,14 +145,14 @@ const SignUpForm = () => {
     e.preventDefault();
     if (payload.username !== "" && validate.username) {
       if (axiosUsernameCheck(payload.username).status === 200) {
-        setMsg({ ...msg, username: "사용 가능한 아이디입니다." });
-        setValidate({ ...validate, username: true });
+        setMsg({ ...msg, usernameCheck: "사용 가능한 아이디입니다." });
+        setValidate({ ...validate, usernameCheck: true });
       } else if (axiosUsernameCheck(payload.username).status === 402) {
-        setMsg({ ...msg, username: "이미 존재하는 이메일입니다." });
-        setValidate({ ...validate, username: false });
+        setMsg({ ...msg, usernameCheck: "이미 존재하는 이메일입니다." });
+        setValidate({ ...validate, usernameCheck: false });
       } else {
-        setMsg({ ...msg, username: "중복 확인을 다시 시도해주세요." });
-        setValidate({ ...validate, username: false });
+        setMsg({ ...msg, usernameCheck: "중복 확인을 다시 시도해주세요." });
+        setValidate({ ...validate, usernameCheck: false });
       }
     }
   };
@@ -159,120 +160,139 @@ const SignUpForm = () => {
   return (
     <Box component="form" noValidate sx={{ mt: 3 }}>
       <FormControl component="fieldset" variant="standard">
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={9}>
-            <TextField
-              onChange={handleChange}
-              error={!validate.email}
-              required
-              autoFocus
-              fullWidth
-              type="email"
-              id="email"
-              name="email"
-              label="이메일 주소"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              onClick={checkEmail}
-              type="submit"
-              fullWidth
-              variant="outlined"
-              sx={{ m: 0, height: "56px" }}
-              size="large"
-            >
-              중복 확인
-            </Button>
-          </Grid>
-          {msg.emailCheck ? (
-            <Grid item xs={12}>
-              <span style={{ color: "red" }}>{msg.emailCheck}</span>
+        <MsgColorChanger>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={9}>
+              <TextField
+                onChange={handleChange}
+                error={!validate.email}
+                required
+                autoFocus
+                fullWidth
+                type="email"
+                id="email"
+                name="email"
+                label="이메일 주소"
+              />
             </Grid>
-          ) : null}
-          {!validate.email ? (
-            <Grid item xs={12}>
-              <span style={{ color: "red" }}>{msg.email}</span>
+            <Grid item xs={3}>
+              <Button
+                onClick={checkEmail}
+                type="submit"
+                fullWidth
+                variant="outlined"
+                sx={{ m: 0, height: "56px" }}
+                size="large"
+              >
+                중복 확인
+              </Button>
             </Grid>
-          ) : null}
-          <Grid item xs={12}>
-            <TextField
-              onChange={handleChange}
-              error={!validate.password}
-              required
-              fullWidth
-              type="password"
-              id="password"
-              name="password"
-              label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
-            />
-          </Grid>{" "}
-          {!validate.password ? (
+            {msg.emailCheck ? (
+              <Grid className={validate.emailCheck ? "success" : "error"} item xs={12}>
+                <span>{msg.emailCheck}</span>
+              </Grid>
+            ) : null}
+            {!validate.email ? (
+              <Grid item xs={12}>
+                <span style={{ color: "red" }}>{msg.email}</span>
+              </Grid>
+            ) : null}
             <Grid item xs={12}>
-              <span style={{ color: "red" }}>{msg.password}</span>
+              <TextField
+                onChange={handleChange}
+                error={!validate.password}
+                required
+                fullWidth
+                type="password"
+                id="password"
+                name="password"
+                label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
+              />
+            </Grid>{" "}
+            {!validate.password ? (
+              <Grid item xs={12}>
+                <span style={{ color: "red" }}>{msg.password}</span>
+              </Grid>
+            ) : null}
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                error={!validate.rePassword}
+                required
+                fullWidth
+                type="password"
+                id="rePassword"
+                name="rePassword"
+                label="비밀번호 재입력"
+              />
             </Grid>
-          ) : null}
-          <Grid item xs={12}>
-            <TextField
-              onChange={handleChange}
-              error={!validate.rePassword}
-              required
-              fullWidth
-              type="password"
-              id="rePassword"
-              name="rePassword"
-              label="비밀번호 재입력"
-            />
+            {!validate.rePassword ? (
+              <Grid item xs={12}>
+                <span style={{ color: "red" }}>{msg.rePassword}</span>
+              </Grid>
+            ) : null}
+            <Grid item xs={9}>
+              <TextField
+                onChange={handleChange}
+                error={!validate.username}
+                required
+                fullWidth
+                type="text"
+                id="username"
+                name="username"
+                label="아이디 (2자리 이상, 10자리 이하)"
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                onClick={checkUsername}
+                type="submit"
+                fullWidth
+                variant="outlined"
+                sx={{ m: 0, height: "56px" }}
+                size="large"
+              >
+                중복 확인
+              </Button>
+            </Grid>
+            {msg.usernameCheck ? (
+              <Grid className={validate.usernameCheck ? "success" : "error"} item xs={12}>
+                <span>{msg.usernameCheck}</span>
+              </Grid>
+            ) : null}
+            {!validate.username ? (
+              <Grid item xs={12}>
+                <span style={{ color: "red" }}>{msg.username}</span>
+              </Grid>
+            ) : null}
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox onChange={handleAgree} color="primary" />}
+                label="회원가입 약관에 동의합니다."
+              />
+            </Grid>
           </Grid>
-          {!validate.rePassword ? (
-            <Grid item xs={12}>
-              <span style={{ color: "red" }}>{msg.rePassword}</span>
-            </Grid>
-          ) : null}
-          <Grid item xs={9}>
-            <TextField
-              onChange={handleChange}
-              error={!validate.username}
-              required
-              fullWidth
-              type="text"
-              id="username"
-              name="username"
-              label="아이디 (2자리 이상, 10자리 이하)"
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              onClick={checkUsername}
-              type="submit"
-              fullWidth
-              variant="outlined"
-              sx={{ m: 0, height: "56px" }}
-              size="large"
-            >
-              중복 확인
-            </Button>
-          </Grid>
-          {msg.usernameCheck ? (
-            <Grid item xs={12}>
-              <span style={{ color: "red" }}>{msg.usernameCheck}</span>
-            </Grid>
-          ) : null}
-          {!validate.username ? (
-            <Grid item xs={12}>
-              <span style={{ color: "red" }}>{msg.username}</span>
-            </Grid>
-          ) : null}
-          <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox onChange={handleAgree} color="primary" />}
-              label="회원가입 약관에 동의합니다."
-            />
-          </Grid>
-        </Grid>
-        <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} size="large">
-          회원가입
-        </Button>
+          <Button
+            disabled={
+              !(
+                validate.username &&
+                validate.username &&
+                validate.password &&
+                validate.rePassword &&
+                validate.emailCheck &&
+                validate.usernameCheck
+              )
+            }
+            onClick={handleSubmit}
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            size="large"
+          >
+            회원가입
+          </Button>
+        </MsgColorChanger>
       </FormControl>
     </Box>
   );
