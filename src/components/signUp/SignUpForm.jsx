@@ -16,7 +16,7 @@ import {
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../redux/_action/user_action";
 import axios from "axios";
-import { axiosEmailCheck, axiosUsernameCheck } from "../../api/user/signUp";
+import { axiosEmailCheck, axiosSignUpUser, axiosUsernameCheck } from "../../api/user/signUp";
 import {
   validateEmail,
   validateUsername,
@@ -40,10 +40,12 @@ const SignUpForm = () => {
 
   // 오류체크
   const [validate, setValidate] = useState({
-    email: false,
-    username: false,
-    password: false,
-    rePassword: false,
+    email: true,
+    username: true,
+    password: true,
+    rePassword: true,
+    emailCheck: true,
+    usernameCheck: true,
   });
 
   // 오류 메세지
@@ -52,6 +54,8 @@ const SignUpForm = () => {
     username: "",
     password: "",
     rePassword: "",
+    emailCheck: "",
+    usernameCheck: "",
   });
 
   // 변경되는 정보 갱신
@@ -62,7 +66,7 @@ const SignUpForm = () => {
         setMsg({ ...msg, email: "" });
         setValidate({ ...validate, email: true });
       } else {
-        setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다." });
+        setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다.", emailCheck: "" });
         setValidate({ ...validate, email: false });
       }
     } else if (e.target.id === "username") {
@@ -70,7 +74,7 @@ const SignUpForm = () => {
         setMsg({ ...msg, username: "" });
         setValidate({ ...validate, username: true });
       } else {
-        setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요." });
+        setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요.", usernameCheck: "" });
         setValidate({ ...validate, username: false });
       }
     } else if (e.target.id === "password") {
@@ -105,7 +109,6 @@ const SignUpForm = () => {
     event.preventDefault();
 
     // useDispatch를 이용해서 LoginUser라는 action을 전달함
-    //
     dispatch(signUpUser(payload)).then((response) => {
       if (response.payload.success) {
         navigate("/");
@@ -121,29 +124,41 @@ const SignUpForm = () => {
     username: "",
   });
   // 이메일 중복 확인
-  const checkEmail = () => {
-    if (axiosEmailCheck(payload.email).status === 200) {
-      setCheck({ ...check, email: "사용 가능한 이메일입니다." });
-    } else if (axiosEmailCheck(payload.email).status === 402) {
-      setCheck({ ...check, email: "이미 존재하는 이메일입니다." });
-    } else {
-      setCheck({ ...check, email: "다시 시도해주세요." });
+  const checkEmail = (e) => {
+    e.preventDefault();
+    if (payload.email !== "" && validate.email) {
+      if (axiosEmailCheck(payload.email).status === 200) {
+        setMsg({ ...msg, email: "사용 가능한 이메일입니다." });
+        setValidate({ ...validate, email: true });
+      } else if (axiosEmailCheck(payload.email).status === 402) {
+        setMsg({ ...msg, email: "이미 존재하는 이메일입니다." });
+        setValidate({ ...validate, email: false });
+      } else {
+        setMsg({ ...msg, email: "중복 확인을 다시 시도해주세요." });
+        setValidate({ ...validate, email: false });
+      }
     }
   };
   // 아이디 중복 확인
-  const checkUsername = (usename) => {
-    if (axiosUsernameCheck(payload.username).status === 200) {
-      setCheck({ ...check, username: "사용 가능한 아이디입니다." });
-    } else if (axiosUsernameCheck(payload.username).status === 402) {
-      setCheck({ ...check, username: "이미 존재하는 아이디입니다." });
-    } else {
-      setCheck({ ...check, username: "다시 시도해주세요." });
+  const checkUsername = (e) => {
+    e.preventDefault();
+    if (payload.username !== "" && validate.username) {
+      if (axiosUsernameCheck(payload.username).status === 200) {
+        setMsg({ ...msg, username: "사용 가능한 아이디입니다." });
+        setValidate({ ...validate, username: true });
+      } else if (axiosUsernameCheck(payload.username).status === 402) {
+        setMsg({ ...msg, username: "이미 존재하는 이메일입니다." });
+        setValidate({ ...validate, username: false });
+      } else {
+        setMsg({ ...msg, username: "중복 확인을 다시 시도해주세요." });
+        setValidate({ ...validate, username: false });
+      }
     }
   };
 
   return (
-    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-      <FormControl onSubmit={handleSubmit} component="fieldset" variant="standard">
+    <Box component="form" noValidate sx={{ mt: 3 }}>
+      <FormControl component="fieldset" variant="standard">
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={9}>
             <TextField
@@ -170,9 +185,9 @@ const SignUpForm = () => {
               중복 확인
             </Button>
           </Grid>
-          {check.email ? (
+          {msg.emailCheck ? (
             <Grid item xs={12}>
-              <span style={{ color: "red" }}>{check.email}</span>
+              <span style={{ color: "red" }}>{msg.emailCheck}</span>
             </Grid>
           ) : null}
           {!validate.email ? (
@@ -238,9 +253,9 @@ const SignUpForm = () => {
               중복 확인
             </Button>
           </Grid>
-          {check.username ? (
+          {msg.usernameCheck ? (
             <Grid item xs={12}>
-              <span style={{ color: "red" }}>{check.username}</span>
+              <span style={{ color: "red" }}>{msg.usernameCheck}</span>
             </Grid>
           ) : null}
           {!validate.username ? (
