@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Avatar,
@@ -26,7 +26,6 @@ import {
 import { MsgColorChanger } from "./style";
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // 회원가입시 필요한 정보
@@ -45,8 +44,8 @@ const SignUpForm = () => {
     username: true,
     password: true,
     rePassword: true,
-    emailCheck: false,
-    usernameCheck: false,
+    emailCheck: true,
+    usernameCheck: true,
   });
 
   // 오류 메세지
@@ -99,29 +98,6 @@ const SignUpForm = () => {
     }
   };
 
-  // 동의 체크 확인
-  const [agree, setAgree] = useState(false);
-
-  // 체크 되어있는지
-  const handleAgree = (event) => {
-    setAgree(event.target.checked);
-  };
-
-  // 제출하는 함수
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // useDispatch를 이용해서 LoginUser라는 action을 전달함
-    dispatch(signUpUser(payload)).then((response) => {
-      if (response.payload.success) {
-        navigate("/");
-        console.log("success");
-      } else {
-        console.log(response.payload.msg);
-        alert(response.payload.msg);
-      }
-    });
-  };
   // 중복 확인
   const [check, setCheck] = useState({
     email: "",
@@ -130,11 +106,14 @@ const SignUpForm = () => {
   // 이메일 중복 확인
   const checkEmail = (e) => {
     e.preventDefault();
+
+    const emailCheckRes = axiosEmailCheck(payload.email);
+
     if (payload.email !== "" && validate.email) {
-      if (axiosEmailCheck(payload.email).status === 200) {
+      if (emailCheckRes.status === 200) {
         setMsg({ ...msg, emailCheck: "사용 가능한 이메일입니다." });
         setValidate({ ...validate, emailCheck: true });
-      } else if (axiosEmailCheck(payload.email).status === 402) {
+      } else if (emailCheckRes.status === 402) {
         setMsg({ ...msg, emailCheck: "이미 존재하는 이메일입니다." });
         setValidate({ ...validate, emailCheck: false });
       } else {
@@ -146,17 +125,43 @@ const SignUpForm = () => {
   // 아이디 중복 확인
   const checkUsername = (e) => {
     e.preventDefault();
+
+    const usernameCheckRes = axiosUsernameCheck(payload.username);
+
     if (payload.username !== "" && validate.username) {
-      if (axiosUsernameCheck(payload.username).status === 200) {
+      if (usernameCheckRes.status === 200) {
         setMsg({ ...msg, usernameCheck: "사용 가능한 아이디입니다." });
         setValidate({ ...validate, usernameCheck: true });
-      } else if (axiosUsernameCheck(payload.username).status === 402) {
+      } else if (usernameCheckRes.status === 402) {
         setMsg({ ...msg, usernameCheck: "이미 존재하는 이메일입니다." });
         setValidate({ ...validate, usernameCheck: false });
       } else {
         setMsg({ ...msg, usernameCheck: "중복 확인을 다시 시도해주세요." });
         setValidate({ ...validate, usernameCheck: false });
       }
+    }
+  };
+
+  // 동의 체크 확인
+  const [agree, setAgree] = useState(false);
+
+  // 체크 되어있는지
+  const handleAgree = (event) => {
+    setAgree(event.target.checked);
+  };
+
+  // 제출하는 함수
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(agree);
+
+    const signUpRes = axiosSignUpUser(payload);
+    if (signUpRes.success) {
+      navigate("/");
+      console.log("success");
+    } else {
+      console.log(signUpRes.msg);
+      alert(signUpRes.msg);
     }
   };
 
@@ -301,7 +306,8 @@ const SignUpForm = () => {
                 validate.password &&
                 validate.rePassword &&
                 validate.emailCheck &&
-                validate.usernameCheck
+                validate.usernameCheck &&
+                agree
               )
             }
             onClick={handleSubmit}
