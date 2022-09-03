@@ -63,6 +63,7 @@ const SignUpForm = () => {
         setValidate({ ...validate, email: true });
       } else {
         setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다." });
+        setValidate({ ...validate, email: false });
       }
     } else if (e.target.id === "username") {
       if (validateUsername(e.target.value)) {
@@ -70,6 +71,7 @@ const SignUpForm = () => {
         setValidate({ ...validate, username: true });
       } else {
         setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요." });
+        setValidate({ ...validate, username: false });
       }
     } else if (e.target.id === "password") {
       if (validatePassword(e.target.value)) {
@@ -77,6 +79,7 @@ const SignUpForm = () => {
         setValidate({ ...validate, password: true });
       } else {
         setMsg({ ...msg, password: "숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요." });
+        setValidate({ ...validate, password: false });
       }
     } else if (e.target.id === "rePassword") {
       if (validateRePassword(payload.password, e.target.value)) {
@@ -84,6 +87,7 @@ const SignUpForm = () => {
         setValidate({ ...validate, rePassword: true });
       } else {
         setMsg({ ...msg, rePassword: "비밀번호가 일치하지 않습니다." });
+        setValidate({ ...validate, rePassword: false });
       }
     }
   };
