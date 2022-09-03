@@ -17,12 +17,7 @@ import { useDispatch } from "react-redux";
 import { signUpUser } from "../../redux/_action/user_action";
 import axios from "axios";
 import { axiosEmailCheck, axiosSignUpUser, axiosUsernameCheck } from "../../api/user/signUp";
-import {
-  validateEmail,
-  validateUsername,
-  validatePassword,
-  validateRePassword,
-} from "../../utils/signUpValidationUtil";
+import { validateEmail, validateUsername, validatePassword, validateRePassword } from "../../utils/validationUtil";
 import { MsgColorChanger } from "./style";
 
 const SignUpForm = () => {
@@ -301,7 +296,7 @@ const SignUpForm = () => {
           <Button
             disabled={
               !(
-                validate.username &&
+                validate.email &&
                 validate.username &&
                 validate.password &&
                 validate.rePassword &&
