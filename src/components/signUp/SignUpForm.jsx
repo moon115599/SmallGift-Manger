@@ -97,29 +97,12 @@ const SignUpForm = () => {
 
   // 체크 되어있는지
   const handleAgree = (event) => {
-    setAgree(event.target.check);
-    console.log(agree);
+    setAgree(event.target.checked);
   };
 
   // 제출하는 함수
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
-    // 아이디가 비어있으면 isUsername을 false로 처리
-    if (payload.email === "") {
-      return;
-    }
-    if (payload.username === "") {
-      return;
-    }
-    // 비번이 비어쓰면 isPassword를 false로 처리
-    if (payload.password === "") {
-      return;
-    }
-    // 비번이 비어쓰면 isPassword를 false로 처리
-    if (payload.rePassword !== payload.password) {
-      return;
-    }
 
     // useDispatch를 이용해서 LoginUser라는 action을 전달함
     //
@@ -141,16 +124,20 @@ const SignUpForm = () => {
   const checkEmail = () => {
     if (axiosEmailCheck(payload.email).status === 200) {
       setCheck({ ...check, email: "사용 가능한 이메일입니다." });
-    } else {
+    } else if (axiosEmailCheck(payload.email).status === 402) {
       setCheck({ ...check, email: "이미 존재하는 이메일입니다." });
+    } else {
+      setCheck({ ...check, email: "다시 시도해주세요." });
     }
   };
   // 아이디 중복 확인
   const checkUsername = (usename) => {
     if (axiosUsernameCheck(payload.username).status === 200) {
       setCheck({ ...check, username: "사용 가능한 아이디입니다." });
-    } else {
+    } else if (axiosUsernameCheck(payload.username).status === 402) {
       setCheck({ ...check, username: "이미 존재하는 아이디입니다." });
+    } else {
+      setCheck({ ...check, username: "다시 시도해주세요." });
     }
   };
 
@@ -161,6 +148,7 @@ const SignUpForm = () => {
           <Grid item xs={9}>
             <TextField
               onChange={handleChange}
+              error={!validate.email}
               required
               autoFocus
               fullWidth
@@ -195,6 +183,7 @@ const SignUpForm = () => {
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
+              error={!validate.password}
               required
               fullWidth
               type="password"
@@ -211,6 +200,7 @@ const SignUpForm = () => {
           <Grid item xs={12}>
             <TextField
               onChange={handleChange}
+              error={!validate.rePassword}
               required
               fullWidth
               type="password"
@@ -227,6 +217,7 @@ const SignUpForm = () => {
           <Grid item xs={9}>
             <TextField
               onChange={handleChange}
+              error={!validate.username}
               required
               fullWidth
               type="text"
