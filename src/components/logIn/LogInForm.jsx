@@ -103,7 +103,7 @@ const LogInForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
       <Grid container spacing={2} alignItems="center">
         <TextField
           error={!validate.username}

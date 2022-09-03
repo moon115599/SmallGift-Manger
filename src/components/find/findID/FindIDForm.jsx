@@ -44,7 +44,7 @@ const FindIDForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
       <TextField
         error={isError.email ? true : undefined}
         margin="normal"

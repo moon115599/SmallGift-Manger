@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { validateEmail } from "../../../utils/validationUtil";
+import { axiosFindPwd } from "../../../api/user/find";
 
 const FindPasswordForm = () => {
   // 이메일, 비밀번호 제출
@@ -26,33 +28,55 @@ const FindPasswordForm = () => {
     username: "",
   });
 
-  const [isError, setIsError] = useState({
-    email: false,
-    username: false,
+  // 오류체크
+  const [validate, setValidate] = useState({
+    email: true,
+    username: true,
+    first: false,
+  });
+
+  // 오류 메세지
+  const [msg, setMsg] = useState({
+    email: "",
+    username: "",
   });
 
   // 입력폼에서 데이터가 바뀔때마다 payload의 데이터 최신화
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    console.log(payload);
+
+    if (e.target.id === "email") {
+      if (e.target.value === "") {
+        setMsg({ ...msg, email: "이메일을 입력해주세요." });
+        setValidate({ ...validate, email: false });
+      } else if (validateEmail(e.target.value)) {
+        setMsg({ ...msg, email: "" });
+        setValidate({ ...validate, email: true, first: true });
+      } else {
+        setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다." });
+        setValidate({ ...validate, email: false, first: true });
+      }
+    } else if (e.target.id === "username") {
+      if (e.target.value === "") {
+        setMsg({ ...msg, username: "아이디를 입력해주세요." });
+        setValidate({ ...validate, username: false });
+      } else {
+        setMsg({ ...msg, username: "" });
+        setValidate({ ...validate, username: true, first: true });
+      }
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (payload.email === "") {
-      setIsError({ ...isError, email: true });
-      return;
-    }
-    if (payload.username === "") {
-      setIsError({ ...isError, username: true });
-    }
+    const findPwdRes = axiosFindPwd(payload);
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3, width: 600 }}>
       <TextField
-        error={isError.username ? true : undefined}
+        error={!validate.email}
         margin="normal"
         required
         fullWidth
@@ -63,8 +87,13 @@ const FindPasswordForm = () => {
         autoFocus
         onChange={handleChange}
       />
+      {!validate.email ? (
+        <Grid item xs={12}>
+          <span style={{ color: "red" }}>{msg.email}</span>
+        </Grid>
+      ) : null}
       <TextField
-        error={isError.password ? true : undefined}
+        error={!validate.username}
         margin="normal"
         required
         fullWidth
@@ -74,8 +103,19 @@ const FindPasswordForm = () => {
         autoComplete="on"
         onChange={handleChange}
       />
-
-      <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      {!validate.username ? (
+        <Grid item xs={12}>
+          <span style={{ color: "red" }}>{msg.username}</span>
+        </Grid>
+      ) : null}
+      <Button
+        disabled={!(validate.email && validate.email && validate.first)}
+        onClick={handleSubmit}
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
         비밀번호 찾기
       </Button>
     </Box>
