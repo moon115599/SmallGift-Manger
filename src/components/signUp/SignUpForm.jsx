@@ -59,24 +59,26 @@ const SignUpForm = () => {
     usernameCheck: "",
   });
 
-  // 변경되는 정보 갱신
+  // 변경되는 정보 갱신 (온체인지)
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
+    console.log(validate.emailCheck);
+
     if (e.target.id === "email") {
       if (validateEmail(e.target.value)) {
         setMsg({ ...msg, email: "" });
-        setValidate({ ...validate, email: true });
+        setValidate({ ...validate, email: true, emailCheck: false });
       } else {
         setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다.", emailCheck: "" });
-        setValidate({ ...validate, email: false });
+        setValidate({ ...validate, email: false, emailCheck: false });
       }
     } else if (e.target.id === "username") {
       if (validateUsername(e.target.value)) {
         setMsg({ ...msg, username: "" });
-        setValidate({ ...validate, username: true });
+        setValidate({ ...validate, username: true, usernameCheck: false });
       } else {
         setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요.", usernameCheck: "" });
-        setValidate({ ...validate, username: false });
+        setValidate({ ...validate, username: false, usernameCheck: false });
       }
     } else if (e.target.id === "password") {
       if (validatePassword(e.target.value)) {
@@ -116,6 +118,7 @@ const SignUpForm = () => {
         console.log("success");
       } else {
         console.log(response.payload.msg);
+        alert(response.payload.msg);
       }
     });
   };
@@ -175,18 +178,35 @@ const SignUpForm = () => {
                 label="이메일 주소"
               />
             </Grid>
-            <Grid item xs={3}>
-              <Button
-                onClick={checkEmail}
-                type="submit"
-                fullWidth
-                variant="outlined"
-                sx={{ m: 0, height: "56px" }}
-                size="large"
-              >
-                중복 확인
-              </Button>
-            </Grid>
+            {validate.emailCheck ? (
+              <Grid item xs={3}>
+                <Button
+                  onClick={checkEmail}
+                  type="submit"
+                  fullWidth
+                  variant="outlined"
+                  sx={{ m: 0, height: "56px" }}
+                  size="large"
+                  color="primary"
+                >
+                  중복 확인
+                </Button>
+              </Grid>
+            ) : (
+              <Grid item xs={3}>
+                <Button
+                  onClick={checkEmail}
+                  type="submit"
+                  fullWidth
+                  variant="outlined"
+                  sx={{ m: 0, height: "56px" }}
+                  size="large"
+                  color="error"
+                >
+                  중복 확인
+                </Button>
+              </Grid>
+            )}
             {msg.emailCheck ? (
               <Grid className={validate.emailCheck ? "success" : "error"} item xs={12}>
                 <span>{msg.emailCheck}</span>
@@ -251,6 +271,7 @@ const SignUpForm = () => {
                 variant="outlined"
                 sx={{ m: 0, height: "56px" }}
                 size="large"
+                color={!validate.usernameCheck ? "error" : "primary"}
               >
                 중복 확인
               </Button>
