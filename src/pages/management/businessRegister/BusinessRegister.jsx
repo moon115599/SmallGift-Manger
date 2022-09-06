@@ -31,9 +31,12 @@ const BusinessRegister = () => {
     console.log(payload);
   };
 
+  const [isRegister, setIsRegister] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
-    axiosRegisterBusiness(payload);
+    if (axiosRegisterBusiness(payload)) {
+      setIsRegister(true);
+    }
   };
 
   return (

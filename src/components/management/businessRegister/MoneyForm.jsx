@@ -8,6 +8,10 @@ const MoneyForm = ({ handleChange }) => {
   const handleBankChange = (e) => {
     setBankName(e.target.value);
   };
+  const handleCheckValidate = (e) => {
+    e.preventDefault();
+    e.target.value;
+  };
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -30,6 +34,7 @@ const MoneyForm = ({ handleChange }) => {
               label="은행"
               variant="filled"
               size="small"
+              required
             >
               <option value="하나은행">하나은행</option>
               <option value="우리은행">우리은행</option>
@@ -44,7 +49,7 @@ const MoneyForm = ({ handleChange }) => {
             required
             variant="filled"
           />
-          <Button className="Button" variant="outlined">
+          <Button className="Button" variant="outlined" onClick={handleCheckValidate}>
             계좌 유효성 확인하기
           </Button>
         </CommonStyled.InputDiv>
