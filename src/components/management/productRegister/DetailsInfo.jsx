@@ -35,8 +35,6 @@ const DetailsInfo = ({ data }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>상품 대표 이미지 등록</span>
-        </CommonStyled.InputDiv>
-        <CommonStyled.InputDiv>
           <Styled.RowFlex>
             <img src={imageUrl || tempImg} />
             <Styled.RuleDiv>
