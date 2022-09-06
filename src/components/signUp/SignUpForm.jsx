@@ -17,7 +17,13 @@ import { useDispatch } from "react-redux";
 import { signUpUser } from "../../redux/_action/user_action";
 import axios from "axios";
 import { axiosEmailCheck, axiosSignUpUser, axiosUsernameCheck } from "../../api/user/signUp";
-import { validateEmail, validateUsername, validatePassword, validateRePassword } from "../../utils/validationUtil";
+import {
+  validateEmail,
+  validateUsername,
+  validatePassword,
+  validateRePassword,
+  validatePhoneNumber,
+} from "../../utils/validationUtil";
 import { MsgColorChanger } from "./style";
 
 const SignUpForm = () => {
@@ -29,6 +35,7 @@ const SignUpForm = () => {
     username: "",
     password: "",
     rePassword: "",
+    phoneNumber: "",
     provider: "NORMAL",
     role: "ROLE_MANAGER",
   });
@@ -39,6 +46,7 @@ const SignUpForm = () => {
     username: true,
     password: true,
     rePassword: true,
+    phoneNumber: true,
     emailCheck: true,
     usernameCheck: true,
   });
@@ -49,6 +57,7 @@ const SignUpForm = () => {
     username: "",
     password: "",
     rePassword: "",
+    phoneNumber: "",
     emailCheck: "",
     usernameCheck: "",
   });
@@ -56,7 +65,6 @@ const SignUpForm = () => {
   // 변경되는 정보 갱신 (온체인지)
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    console.log(validate.emailCheck);
 
     if (e.target.id === "email") {
       if (validateEmail(e.target.value)) {
@@ -89,6 +97,14 @@ const SignUpForm = () => {
       } else {
         setMsg({ ...msg, rePassword: "비밀번호가 일치하지 않습니다." });
         setValidate({ ...validate, rePassword: false });
+      }
+    } else if (e.target.id === "phoneNumber") {
+      if (validatePhoneNumber(e.target.value)) {
+        setMsg({ ...msg, phoneNumber: "" });
+        setValidate({ ...validate, phoneNumber: true });
+      } else {
+        setMsg({ ...msg, phoneNumber: "올바른 전화번호 형식이 아닙니다." });
+        setValidate({ ...validate, phoneNumber: false });
       }
     }
   };
@@ -284,6 +300,22 @@ const SignUpForm = () => {
             {!validate.username ? (
               <Grid item xs={12}>
                 <span style={{ color: "red" }}>{msg.username}</span>
+              </Grid>
+            ) : null}
+            <Grid item xs={12}>
+              <TextField
+                onChange={handleChange}
+                error={!validate.phoneNumber}
+                required
+                fullWidth
+                id="phoneNumber"
+                name="phoneNumber"
+                label="전화번호 (-제외하고 숫자만 입력)"
+              />
+            </Grid>
+            {!validate.phoneNumber ? (
+              <Grid item xs={12}>
+                <span style={{ color: "red" }}>{msg.phoneNumber}</span>
               </Grid>
             ) : null}
             <Grid item xs={12}>

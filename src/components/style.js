@@ -40,11 +40,12 @@ export const InputDiv = styled.div`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
-  white-space: nowrap;
+
   span {
     display: inline-block;
     width: 140px;
     margin-top: 13px;
+    white-space: nowrap;
   }
   hr {
     opacity: 0.3;

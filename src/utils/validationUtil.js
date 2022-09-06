@@ -28,3 +28,11 @@ export const validateRePassword = (password, rePassword) => {
   }
   return false;
 };
+
+export const validatePhoneNumber = (number) => {
+  const phoneNumberRegex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
+  if (!phoneNumberRegex.test(number)) {
+    return false;
+  }
+  return true;
+};

@@ -95,7 +95,7 @@ const LogInForm = () => {
 
     if (logInRes.success) {
       navigate("/");
-      setCookies("token", `Bearer ${logInRes?.data?.result?.Token}`);
+      setCookies("token", `Bearer ${logInRes?.data?.token}`);
     } else {
       alert(logInRes.msg);
       console.log(logInRes.msg);
