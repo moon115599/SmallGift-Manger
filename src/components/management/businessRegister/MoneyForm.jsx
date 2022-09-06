@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import { TextField, FormControl, InputLabel, Selec, MenuItem, Select, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
+import { axiosCheckAccountValid } from "../../../api/management/businessRegister";
 
-const MoneyForm = ({ handleChange }) => {
+const MoneyForm = ({ handleChange, data }) => {
   const [bankName, setBankName] = useState("");
   const handleBankChange = (e) => {
     setBankName(e.target.value);
   };
+
+  const [payload, setPayload] = useState({
+    bankName: data.bankName,
+    bankAccount: data.bankAccount,
+  });
+  const [isValid, setIsValid] = useState(false);
+  const [validMsg, setValidMsg] = useState("");
   const handleCheckValidate = (e) => {
     e.preventDefault();
-    e.target.value;
+    if (axiosCheckAccountValid(payload, setValidMsg) === true) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
   };
   return (
     <>
@@ -21,7 +33,7 @@ const MoneyForm = ({ handleChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>예금주명</span>
-          <input className="TextField" size="small" required variant="filled" />
+          <input className="TextField" id="accountHolder" size="small" required variant="filled" />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
@@ -43,15 +55,21 @@ const MoneyForm = ({ handleChange }) => {
           </FormControl>
           <input
             onChange={handleChange}
-            id="backAccount"
+            id="bankAccount"
             className="TextField"
             size="small"
             required
             variant="filled"
           />
-          <Button className="Button" variant="outlined" onClick={handleCheckValidate}>
+          <Button
+            color={!isValid ? "error" : "primary"}
+            className="Button"
+            variant="outlined"
+            onClick={handleCheckValidate}
+          >
             계좌 유효성 확인하기
           </Button>
+          {!isValid ? <span style={{ color: "red" }}>{validMsg}</span> : null}
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

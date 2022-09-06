@@ -48,7 +48,7 @@ const BusinessRegister = () => {
           <FormControl className="form-control" onSubmit={handleSubmit}>
             <AccountForm handleChange={handleChange} />
             <BusinessForm handleChange={handleChange} />
-            <MoneyForm handleChange={handleChange} />
+            <MoneyForm handleChange={handleChange} data={payload} />
             <RegisterNumberForm handleChange={handleChange} />
             <DocumentForm handleChange={handleChange} />
             <Button onClick={handleSubmit} className="Button" color="secondary" variant="contained" size="small">

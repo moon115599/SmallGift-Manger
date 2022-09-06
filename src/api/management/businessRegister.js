@@ -14,12 +14,16 @@ export const axiosRegisterBusiness = async (payload, setSubmitError) => {
   return true;
 };
 
-export const axiosCheckAccountValid = async (payload) => {
+export const axiosCheckAccountValid = async (payload, setValidMsg) => {
   try {
-    const response = await axios.post("/api/manager/check/account");
-    return response;
+    const response = await axios.post("/api/manager/check/account", payload);
+    if (!response.code === 200) {
+      setValidMsg(response.message);
+      return false;
+    }
+    return false;
   } catch (error) {
     alert(error);
-    return error;
+    return false;
   }
 };
