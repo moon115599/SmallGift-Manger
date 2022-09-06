@@ -11,7 +11,7 @@ import { TextField, FormControl, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import axios from "axios";
-import { axiosRegisterBusiness } from "../../../api/management/businessRegister";
+import { axiosFileSubmit, axiosRegisterBusiness } from "../../../api/management/businessRegister";
 
 const BusinessRegister = () => {
   const title = "사업자 등록";
@@ -32,9 +32,13 @@ const BusinessRegister = () => {
   };
 
   const [isRegister, setIsRegister] = useState(false);
+  const [formDataObj, setFormDataObj] = useState({
+    business: {},
+    sale: {},
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (axiosRegisterBusiness(payload)) {
+    if (axiosRegisterBusiness(payload) && axiosFileSubmit(formDataObj)) {
       setIsRegister(true);
     }
   };
@@ -50,7 +54,7 @@ const BusinessRegister = () => {
             <BusinessForm handleChange={handleChange} />
             <MoneyForm handleChange={handleChange} data={payload} />
             <RegisterNumberForm handleChange={handleChange} />
-            <DocumentForm handleChange={handleChange} />
+            <DocumentForm formDataObj={formDataObj} setFormDataObj={setFormDataObj} />
             <Button onClick={handleSubmit} className="Button" color="secondary" variant="contained" size="small">
               사업자 등록 요청
             </Button>

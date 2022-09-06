@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const DocumentForm = () => {
+const DocumentForm = ({ formDataObj, setFormDataObj }) => {
   const businessRef = useRef();
   const saleRef = useRef();
 
@@ -11,15 +11,21 @@ const DocumentForm = () => {
     business: "",
     sale: "",
   });
-  const onChangeBusiness = () => {
+
+  const handleBusinessChange = (e) => {
     const reader = new FileReader();
     const file = businessRef.current.files[0];
-    console.log(file.name);
+    const formData = new FormData();
+    formData.append("business", file);
+    setFormDataObj({ ...formDataObj, business: formData });
     setLink({ ...link, business: file.name });
   };
-  const onChangeSale = () => {
+  const handleSaleChange = (e) => {
     const reader = new FileReader();
     const file = saleRef.current.files[0];
+    const formData = new FormData();
+    formData.append("sale", file);
+    setFormDataObj({ ...formDataObj, sale: formData });
     setLink({ ...link, sale: file.name });
   };
 
@@ -42,11 +48,11 @@ const DocumentForm = () => {
           <input
             type="file"
             className="imgInput"
-            id="logoImg"
+            id="businessDocument"
             accept="image/*"
             name="file"
             ref={businessRef}
-            onChange={onChangeBusiness}
+            onChange={handleBusinessChange}
             style={{ display: "none" }}
           />
           <Button
@@ -68,11 +74,11 @@ const DocumentForm = () => {
           <input
             type="file"
             className="imgInput"
-            id="logoImg"
+            id="saleDocument"
             accept="image/*"
             name="file"
             ref={saleRef}
-            onChange={onChangeSale}
+            onChange={handleSaleChange}
             style={{ display: "none" }}
           />
           <Button

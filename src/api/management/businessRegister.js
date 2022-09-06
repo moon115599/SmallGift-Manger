@@ -7,11 +7,11 @@ export const axiosRegisterBusiness = async (payload, setSubmitError) => {
       alert(response.message);
       return false;
     }
+    return true;
   } catch (error) {
     alert(error);
     return false;
   }
-  return true;
 };
 
 export const axiosCheckAccountValid = async (payload, setValidMsg) => {
@@ -21,7 +21,20 @@ export const axiosCheckAccountValid = async (payload, setValidMsg) => {
       setValidMsg(response.message);
       return false;
     }
+    return true;
+  } catch (error) {
+    alert(error);
     return false;
+  }
+};
+
+export const axiosFileSubmit = async (payload) => {
+  try {
+    const response = await axios.post("/api/manager/submit/file");
+    if (!response.code === 200) {
+      return false;
+    }
+    return true;
   } catch (error) {
     alert(error);
     return false;
