@@ -12,6 +12,8 @@ import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import axios from "axios";
 import { axiosFileSubmit, axiosRegisterBusiness } from "../../../api/management/businessRegister";
+import PopupDom from "../../../components/management/businessRegister/address/PopupDom";
+import PopupPostCode from "../../../components/management/businessRegister/address/PopupPostCode";
 
 const BusinessRegister = () => {
   const title = "사업자 등록";
@@ -51,7 +53,7 @@ const BusinessRegister = () => {
         <CommonStyled.MainContainer>
           <FormControl className="form-control" onSubmit={handleSubmit}>
             <AccountForm handleChange={handleChange} />
-            <BusinessForm handleChange={handleChange} />
+            <BusinessForm setPayload={setPayload} payload={payload} handleChange={handleChange} />
             <MoneyForm
               handleChange={handleChange}
               data={payload}
