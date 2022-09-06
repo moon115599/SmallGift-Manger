@@ -26,9 +26,9 @@ const BusinessRegister = () => {
     bankName: "",
     bankAccount: "",
   });
+  const [isValidAccount, setIsValidAccount] = useState(false);
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    console.log(payload);
   };
 
   const [isRegister, setIsRegister] = useState(false);
@@ -52,10 +52,35 @@ const BusinessRegister = () => {
           <FormControl className="form-control" onSubmit={handleSubmit}>
             <AccountForm handleChange={handleChange} />
             <BusinessForm handleChange={handleChange} />
-            <MoneyForm handleChange={handleChange} data={payload} />
+            <MoneyForm
+              handleChange={handleChange}
+              data={payload}
+              isValidAccount={isValidAccount}
+              setIsValidAccount={setIsValidAccount}
+            />
             <RegisterNumberForm handleChange={handleChange} />
             <DocumentForm formDataObj={formDataObj} setFormDataObj={setFormDataObj} />
-            <Button onClick={handleSubmit} className="Button" color="secondary" variant="contained" size="small">
+            <Button
+              disabled={
+                !(
+                  payload.username !== "" &&
+                  payload.businessName !== "" &&
+                  payload.address !== "" &&
+                  payload.businessTel !== "" &&
+                  payload.businessType !== "" &&
+                  payload.bankName !== "" &&
+                  payload.bankAccount !== "" &&
+                  isValidAccount &&
+                  formDataObj.business !== {} &&
+                  formDataObj.sale !== {}
+                )
+              }
+              onClick={handleSubmit}
+              className="Button"
+              color="secondary"
+              variant="contained"
+              size="small"
+            >
               사업자 등록 요청
             </Button>
           </FormControl>

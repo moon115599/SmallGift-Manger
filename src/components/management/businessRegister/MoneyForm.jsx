@@ -4,7 +4,7 @@ import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import { axiosCheckAccountValid } from "../../../api/management/businessRegister";
 
-const MoneyForm = ({ handleChange, data }) => {
+const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) => {
   const [bankName, setBankName] = useState("");
   const handleBankChange = (e) => {
     setBankName(e.target.value);
@@ -14,14 +14,14 @@ const MoneyForm = ({ handleChange, data }) => {
     bankName: data.bankName,
     bankAccount: data.bankAccount,
   });
-  const [isValid, setIsValid] = useState(false);
+
   const [validMsg, setValidMsg] = useState("");
   const handleCheckValidate = (e) => {
     e.preventDefault();
     if (axiosCheckAccountValid(payload, setValidMsg) === true) {
-      setIsValid(true);
+      setIsValidAccount(true);
     } else {
-      setIsValid(false);
+      setIsValidAccount(false);
     }
   };
   return (
@@ -62,14 +62,14 @@ const MoneyForm = ({ handleChange, data }) => {
             variant="filled"
           />
           <Button
-            color={!isValid ? "error" : "primary"}
+            color={!isValidAccount ? "error" : "primary"}
             className="Button"
             variant="outlined"
             onClick={handleCheckValidate}
           >
             계좌 유효성 확인하기
           </Button>
-          {!isValid ? <span style={{ color: "red" }}>{validMsg}</span> : null}
+          {!isValidAccount ? <span style={{ color: "red" }}>{validMsg}</span> : null}
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>
