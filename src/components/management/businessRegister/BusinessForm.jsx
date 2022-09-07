@@ -85,7 +85,15 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
-          <span>업종</span>
+          <span>종목/업태</span>
+          <input
+            onChange={handleChange}
+            id="businessType"
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
           <input
             onChange={handleChange}
             id="businessType"
