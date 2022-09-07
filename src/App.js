@@ -9,41 +9,27 @@ import Status from "./pages/status/Status";
 import ProductManagement from "./pages/management/productManagement/ProductManagement";
 import ProductRegister from "./pages/management/productRegister/ProductRegister";
 import BusinessRegister from "./pages/management/businessRegister/BusinessRegister";
+import { NotFound } from "./pages/notFound/NotFound";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PrivateRoute } from "./router/PrivateRoute";
+import { PublicRoute } from "./router/PublicRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/*
-
-        <Route path="/">
-          <Route index element={<Home />} />
-          <Route path="logIn" element={<Login />} />
-          <Route path="chart" element={<Chart />} />
-          <Route path="users">
-            <Route index element={<ProductManagement />} />
-            <Route path="status" element={<Sales />} />
-            <Route path=":userId" element={<Single />} />
-          </Route>
-          <Route path="management">
-            <Route index element={<ProductManagement />} />
-            <Route path="status" element={<Sales />} />
-            <Route path=":productId" element={<Single />} />
-          </Route>
-        </Route>
-*/}
-        <Route path="/test" element={<Test />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/find/id" element={<FindID />} />
-        <Route path="/find/password" element={<FindPassword />} />
-        <Route path="/management/products" element={<ProductManagement />} />
-        <Route path="/management/register/products" element={<ProductRegister />} />
-        <Route path="/management/register/business" element={<BusinessRegister />} />
-        <Route path="/status" element={<Status />} />
+        <Route path="/test" element={<PublicRoute element={<Test />} />} />
+        <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
+        <Route path="/signup" element={<PublicRoute element={<SignUp />} />} />
+        <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
+        <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
+        <Route path="/" element={<PrivateRoute element={<Home />} />} />
+        <Route path="/management/products" element={<PrivateRoute element={<ProductManagement />} />} />
+        <Route path="/management/register/products" element={<PrivateRoute element={<ProductRegister />} />} />
+        <Route path="/management/register/business" element={<PrivateRoute element={<BusinessRegister />} />} />
+        <Route path="/status" element={<PrivateRoute element={<Status />} />} />
+        <Route path="/*" element={<PublicRoute element={<NotFound />} />} />
       </Routes>
     </BrowserRouter>
   );

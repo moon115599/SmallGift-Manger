@@ -14,8 +14,9 @@ const Navbar = ({ title, discription }) => {
     console.log("client");
   };
 
-  const handleSignOutClick = async () => {
-    await removeCookies("token");
+  const handleSignOutClick = () => {
+    removeCookies("token");
+    console.log("sign-out");
   };
 
   return (
