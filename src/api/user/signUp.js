@@ -1,43 +1,42 @@
 import axios from "axios";
 
-export const axiosEmailCheck = async (email) => {
+export const axiosEmailCheck = async ({ email, msg, setMsg }) => {
   try {
     const response = await axios.post(`/api/admin/${email}/exists`, {});
-    return {
-      response,
-    };
+    setMsg({ ...msg, emailCheck: response.message });
+    if (!response.success) {
+      return false;
+    }
+    return true;
   } catch (error) {
-    console.log(error);
-    return {
-      error,
-    };
+    alert("중복 확인에 실패하였습니다.");
   }
+  return 0;
 };
-export const axiosUsernameCheck = async (id) => {
+export const axiosUsernameCheck = async (username, msg, setMsg) => {
   try {
-    const response = await axios.post(`/api/admin/${id}/exists`, {});
-    return {
-      response,
-    };
+    const response = await axios.post(`/api/admin/${username}/exists`, {});
+    setMsg({ ...msg, usernameCheck: response.message });
+    if (!response.success) {
+      return false;
+    }
+    return true;
   } catch (error) {
-    console.log(error);
-    return {
-      error,
-    };
+    alert("중복 확인에 실패하였습니다.");
   }
+  return 0;
 };
 
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
     const response = await axios.post("/api/admin/signup", dataTosubmit);
-    return {
-      response,
-    };
+    if (!response.success) {
+      alert(response.message);
+      return false;
+    }
+    return true;
   } catch (error) {
-    console.log(error);
-    alert(error);
-    return {
-      error,
-    };
+    alert("회원가입에 실패하였습니다.");
   }
+  return 0;
 };

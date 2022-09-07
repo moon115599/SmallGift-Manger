@@ -6,9 +6,9 @@ export const axiosRegisterProduct = async (payload) => {
     if (response.code === 200) {
       console.log("등록이 완료되었습니다.");
     } else {
-      console.log(response.msg);
+      alert(response.message);
     }
   } catch (error) {
-    console.log(error);
+    alert("등록이 실패하였습니다.");
   }
 };

@@ -15,9 +15,11 @@ const Td = ({ item, handleCheck, checked }) => {
   };
 
   const handleSwitch = (e) => {
-    if (e.target.checked) {
-      axiosOnProduct(item.productId);
-    }
+    let payload = {
+      productId: item.productId,
+      isChecked: e.target.checked,
+    };
+    axiosOnProduct(payload);
   };
 
   return (

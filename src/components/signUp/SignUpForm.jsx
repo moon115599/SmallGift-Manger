@@ -118,17 +118,10 @@ const SignUpForm = () => {
   const checkEmail = (e) => {
     e.preventDefault();
 
-    const emailCheckRes = axiosEmailCheck(payload.email);
-
     if (payload.email !== "" && validate.email) {
-      if (emailCheckRes.status === 200) {
-        setMsg({ ...msg, emailCheck: "사용 가능한 이메일입니다." });
+      if (axiosEmailCheck(payload.email, msg, setMsg)) {
         setValidate({ ...validate, emailCheck: true });
-      } else if (emailCheckRes.status === 402) {
-        setMsg({ ...msg, emailCheck: "이미 존재하는 이메일입니다." });
-        setValidate({ ...validate, emailCheck: false });
       } else {
-        setMsg({ ...msg, emailCheck: "중복 확인을 다시 시도해주세요." });
         setValidate({ ...validate, emailCheck: false });
       }
     }
@@ -137,17 +130,10 @@ const SignUpForm = () => {
   const checkUsername = (e) => {
     e.preventDefault();
 
-    const usernameCheckRes = axiosUsernameCheck(payload.username);
-
     if (payload.username !== "" && validate.username) {
-      if (usernameCheckRes.status === 200) {
-        setMsg({ ...msg, usernameCheck: "사용 가능한 아이디입니다." });
+      if (axiosUsernameCheck(payload.username, msg, setMsg)) {
         setValidate({ ...validate, usernameCheck: true });
-      } else if (usernameCheckRes.status === 402) {
-        setMsg({ ...msg, usernameCheck: "이미 존재하는 이메일입니다." });
-        setValidate({ ...validate, usernameCheck: false });
       } else {
-        setMsg({ ...msg, usernameCheck: "중복 확인을 다시 시도해주세요." });
         setValidate({ ...validate, usernameCheck: false });
       }
     }

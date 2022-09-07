@@ -57,7 +57,7 @@ const FindIDForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const findIdRes = axiosFindId;
+    const findIdRes = axiosFindId(payload);
   };
 
   return (

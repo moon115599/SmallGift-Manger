@@ -91,14 +91,8 @@ const LogInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const logInRes = axiosLogInUser(payload);
-
-    if (logInRes.success) {
+    if (axiosLogInUser(payload, setCookies)) {
       navigate("/");
-      setCookies("token", `Bearer ${logInRes?.data?.token}`);
-    } else {
-      alert(logInRes.msg);
-      console.log(logInRes.msg);
     }
   };
 

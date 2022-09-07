@@ -4,10 +4,12 @@ export const axiosGetHome = async (setState) => {
   try {
     const response = await axios.get("/api/manager/home");
     if (response.code === 200) {
-      console.log("등록이 완료되었습니다.");
+      console.log("데이터를 불러오는데 성공했습니다.");
       setState(response);
+    } else {
+      alert(response.massage);
     }
   } catch (error) {
-    console.log(error);
+    alert("데이터를 불러오는데 실패했습니다.");
   }
 };
