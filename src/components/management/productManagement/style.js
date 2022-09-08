@@ -59,13 +59,14 @@ export const ModalDiv = styled.div`
   }
   .modal > section {
     width: 90%;
-    margin: 0 auto;
+    height: 90%;
+    margin: auto;
+    overflow-y: scroll;
 
     border-radius: 0.3rem;
     background-color: #fff;
     /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-show 0.3s;
-    overflow: hidden;
   }
   .modal > section > header {
     position: relative;

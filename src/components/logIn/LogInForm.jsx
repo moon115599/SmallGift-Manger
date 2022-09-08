@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import { logInUser } from "../../redux/_action/user_action";
 import axios from "axios";
 import { axiosLogInUser } from "../../api/user/logIn";
@@ -80,19 +80,20 @@ const LogInForm = () => {
       removeCookies("rememberUsername");
     }
   };
+
   useEffect(() => {
     if (cookies.rememberUsername !== undefined) {
       setPayload({ ...payload, username: cookies.rememberUsername });
       setIsRemember(true);
     }
-    // setCookies("token", 1);
+    setCookies("token", 1);
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (axiosLogInUser(payload, setCookies)) {
-      navigate("/");
+      window.location.href = "/login";
     }
   };
 

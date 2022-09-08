@@ -3,5 +3,8 @@ import { Cookies } from "react-cookie";
 const cookies = new Cookies();
 
 export const isLogin = () => {
-  return !!cookies.get("token");
+  if (cookies.get("token") === "undefined") {
+    return false;
+  }
+  return cookies.get("token");
 };
