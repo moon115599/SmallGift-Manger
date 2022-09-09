@@ -35,13 +35,11 @@ const BusinessRegister = () => {
   const [isValidAccount, setIsValidAccount] = useState(false);
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
+    console.log(payload);
   };
 
   const [isRegister, setIsRegister] = useState(false);
-  const [formDataObj, setFormDataObj] = useState({
-    business: {},
-    sale: {},
-  });
+  const [formDataObj, setFormDataObj] = useState({});
   const handleSubmit = (e) => {
     e.preventDefault();
     if (axiosRegisterBusiness(payload) && axiosFileSubmit(formDataObj)) {

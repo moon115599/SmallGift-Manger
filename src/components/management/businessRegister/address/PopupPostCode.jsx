@@ -20,8 +20,9 @@ const PopupPostCode = ({ onClose, setAddress, setZoneCode }) => {
     }
     console.log(fullAddress);
     setAddress(fullAddress);
-    console.log(data.zonecode);
-    setZoneCode(data.zoneCode);
+
+    let zoneCode = data.zonecode;
+    setZoneCode(zoneCode);
     onClose();
   };
 

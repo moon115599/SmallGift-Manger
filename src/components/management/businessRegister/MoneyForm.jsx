@@ -33,26 +33,24 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>예금주명</span>
-          <input className="TextField" id="bankUsername" size="small" required variant="filled" />
+          <input
+            className="TextField"
+            id="bankUsername"
+            onChange={handleChange}
+            size="small"
+            required
+            variant="filled"
+          />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>은행계좌</span>
-          <FormControl className="FormControl">
-            <select
-              onChange={(handleChange, handleBankChange)}
-              value={bankName}
-              id="bankName"
-              label="은행"
-              variant="filled"
-              size="small"
-              required
-            >
-              <option value="하나은행">하나은행</option>
-              <option value="우리은행">우리은행</option>
-              <option value="신한은행">신한은행</option>
-            </select>
-          </FormControl>
+          <select onChange={handleChange} id="bankName" label="은행" required>
+            <option value="">==선택==</option>
+            <option value="하나은행">하나은행</option>
+            <option value="우리은행">우리은행</option>
+            <option value="신한은행">신한은행</option>
+          </select>
           <input
             onChange={handleChange}
             id="bankAccount"
