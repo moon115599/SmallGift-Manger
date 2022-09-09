@@ -5,6 +5,10 @@ import * as CommonStyled from "../../style";
 
 const categories = [
   {
+    value: "",
+    label: "==선택==",
+  },
+  {
     value: "A",
     label: "A",
   },
@@ -23,11 +27,6 @@ const categories = [
 ];
 
 const BasicInfo = ({ data, onChange }) => {
-  const [category, setCategory] = React.useState("A");
-
-  const handleChange = (event) => {
-    setCategory(event.target.value);
-  };
   return (
     <>
       <CommonStyled.TitleDiv>
@@ -37,16 +36,7 @@ const BasicInfo = ({ data, onChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>카테고리</span>
-          <select
-            id="catergory"
-            className="TextField"
-            size="small"
-            select
-            variant="filled"
-            helperText="카테고리를 선택하여 주세요"
-            value={data.category}
-            onChange={handleChange}
-          >
+          <select id="category" value={data.category} onChange={onChange}>
             {categories.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -61,9 +51,7 @@ const BasicInfo = ({ data, onChange }) => {
             className="TextField"
             value={data.productName}
             defaultValue=""
-            variant="filled"
             placeholder="상품명을 입력하세요"
-            size="small"
             required
             id="productName"
             onChange={onChange}

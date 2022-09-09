@@ -52,8 +52,7 @@ export const InputDiv = styled.div`
     margin-top: 10px;
   }
   input,
-  select,
-  textarea {
+  select {
     width: 300px;
     height: 45px;
     font-size: 15px;
@@ -63,6 +62,13 @@ export const InputDiv = styled.div`
     padding-left: 10px;
     background-color: rgb(233, 233, 233);
     margin: 0 10px;
+  }
+  textarea {
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    background-color: rgb(233, 233, 233);
   }
   .FormControl {
     //padding: 10px;
