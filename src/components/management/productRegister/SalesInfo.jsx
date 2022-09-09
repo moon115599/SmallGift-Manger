@@ -17,7 +17,6 @@ const SalesInfo = ({ data, onChange }) => {
             id="productPrice"
             className="TextField"
             value={data.productPrice}
-            defaultValue={0}
             size="small"
             required
             type="number"
@@ -32,7 +31,8 @@ const SalesInfo = ({ data, onChange }) => {
           <input
             id="productStock"
             className="TextField"
-            // value={data.productStock || 0}
+            value={data.productStock}
+            onChange={onChange}
             size="small"
             required
             type="number"
@@ -47,9 +47,9 @@ const SalesInfo = ({ data, onChange }) => {
             id="start_dt"
             variant="filled"
             value={data.start_dt}
+            onChange={onChange}
             label="Date"
             type="date"
-            defaultValue=""
             sx={{ width: 220 }}
             InputLabelProps={{
               shrink: true,
@@ -59,10 +59,10 @@ const SalesInfo = ({ data, onChange }) => {
           <input
             id="end_dt"
             value={data.end_dt}
+            onChange={onChange}
             label="Date"
             variant="filled"
             type="date"
-            defaultValue=""
             sx={{ width: 220 }}
             InputLabelProps={{
               shrink: true,

@@ -40,12 +40,11 @@ const BasicInfo = ({ data, onChange }) => {
           <select
             id="catergory"
             className="TextField"
-            // value = {data.category || ""}
             size="small"
             select
             variant="filled"
             helperText="카테고리를 선택하여 주세요"
-            value={category}
+            value={data.category}
             onChange={handleChange}
           >
             {categories.map((option) => (

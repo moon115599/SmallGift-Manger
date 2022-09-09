@@ -52,7 +52,8 @@ export const InputDiv = styled.div`
     margin-top: 10px;
   }
   input,
-  select {
+  select,
+  textarea {
     width: 300px;
     height: 45px;
     font-size: 15px;
@@ -65,5 +66,8 @@ export const InputDiv = styled.div`
   }
   .FormControl {
     //padding: 10px;
+  }
+  #description {
+    white-spacec: normal;
   }
 `;

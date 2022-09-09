@@ -88,16 +88,18 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
           <span>종목/업태</span>
           <input
             onChange={handleChange}
-            id="businessType"
+            id="businessType1"
             className="TextField"
+            placeholder="종목"
             size="small"
             required
             variant="filled"
           />
           <input
             onChange={handleChange}
-            id="businessType"
+            id="businessType2"
             className="TextField"
+            placeholder="업태"
             size="small"
             required
             variant="filled"

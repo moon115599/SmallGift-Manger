@@ -33,7 +33,7 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>예금주명</span>
-          <input className="TextField" id="accountHolder" size="small" required variant="filled" />
+          <input className="TextField" id="bankUsername" size="small" required variant="filled" />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>

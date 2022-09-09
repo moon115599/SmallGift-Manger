@@ -8,14 +8,16 @@ import tempImg from "../../../assets/tempImg.png";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const DetailsInfo = ({ data }) => {
+const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
   const [imageUrl, setImageUrl] = useState(null);
   const imgRef = useRef();
 
   const onChangeImage = () => {
     const reader = new FileReader();
     const file = imgRef.current.files[0];
-    console.log(file);
+    const formData = new FormData();
+    formData.append("representative", file);
+    setFormDataObj(formData);
 
     reader.readAsDataURL(file);
     reader.onloadend = () => {
@@ -71,24 +73,11 @@ const DetailsInfo = ({ data }) => {
         <CommonStyled.InputDiv>
           <span>상세 설명</span>
           <br />
-          <CKEditor
-            style={{ minWidth: "10px" }}
-            editor={ClassicEditor}
-            data="<p>설명을 입력하세요</p>"
-            onReady={(editor) => {
-              // You can store the "editor" and use when it is needed.
-              console.log("Editor is ready to use!", editor);
-            }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              console.log({ event, editor, data });
-            }}
-            onBlur={(event, editor) => {
-              console.log("Blur.", editor);
-            }}
-            onFocus={(event, editor) => {
-              console.log("Focus.", editor);
-            }}
+          <textarea
+            style={{ width: "100%", height: "100px" }}
+            id="description"
+            value={data.description}
+            onChange={onChange}
           />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>

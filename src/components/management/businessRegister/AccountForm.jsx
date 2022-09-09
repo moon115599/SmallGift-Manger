@@ -13,7 +13,7 @@ const AccountForm = ({ handleChange }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>계정</span>
-          <input onChange={handleChange} id="username" className="TextField" required />
+          <input onChange={handleChange} id="account" className="TextField" required />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

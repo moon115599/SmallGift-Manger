@@ -20,13 +20,17 @@ const BusinessRegister = () => {
   const description = "판매를 하기 전 최초 1회 사업자 등록이 필요합니다";
 
   const [payload, setPayload] = useState({
+    account: "",
     username: "",
     businessName: "",
     address: "",
     businessTel: "",
-    businessType: "",
+    businessType1: "",
+    businessType2: "",
+    bankUsername: "",
     bankName: "",
     bankAccount: "",
+    businessNumber: "",
   });
   const [isValidAccount, setIsValidAccount] = useState(false);
   const handleChange = (e) => {
