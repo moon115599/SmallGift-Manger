@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const axiosLogInUser = async (dataTosubmit, setCookies) => {
+export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
   try {
     const response = await axios.post("/api/admin/login", dataTosubmit);
     if (!response.success) {
@@ -11,10 +11,11 @@ export const axiosLogInUser = async (dataTosubmit, setCookies) => {
     const TOKEN_TIME_OUT = 600 * 1000;
     const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
     const expireReissueToken = today.setDate(today.getDate() + 7);
-    setCookies("token", response.data.accessToken, {
+    setCookies("token", response.data.jwtAccessToken, {
       expires: new Date(expireAccessToken),
     });
-    setCookies("reissue_token", response.data.reissueToken, {
+    localStorage.setItem("expireAccessToken", expireAccessToken);
+    setCookies("reissue_token", response.data.jwtReissueToken, {
       expires: new Date(expireReissueToken),
     });
 

@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Cookies, useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import { logInUser } from "../../redux/_action/user_action";
 import axios from "axios";
 import { axiosLogInUser } from "../../api/user/logIn";

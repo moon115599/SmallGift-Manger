@@ -17,7 +17,7 @@ const Widget = ({ data }) => {
           {data.isMoney && "원"}
           {data.isGun && "건"}
         </span>
-        {/* <div className="refresh"> */}
+        {/* <div className="reIssueToken"> */}
         {/*   <span>{date}</span> */}
         {/*   <CachedIcon className="icon" /> */}
         {/* </div> */}
