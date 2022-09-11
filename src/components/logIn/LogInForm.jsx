@@ -93,7 +93,7 @@ const LogInForm = () => {
     event.preventDefault();
 
     if (axiosLogInUser(payload, setCookies)) {
-      window.location.href = "/login";
+      window.location.href = "/";
     }
   };
 
