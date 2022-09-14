@@ -17,10 +17,9 @@ const SalesInfo = ({ data, onChange }) => {
             id="productPrice"
             className="TextField"
             value={data.productPrice}
-            size="small"
+            placeholder="가격을 입력하세요"
             required
             type="number"
-            variant="filled"
             onChange={onChange}
           />
           <span>원</span>
@@ -32,6 +31,7 @@ const SalesInfo = ({ data, onChange }) => {
             id="productStock"
             className="TextField"
             value={data.productStock}
+            placeholder="재고 수량을 입력하세요"
             onChange={onChange}
             size="small"
             required

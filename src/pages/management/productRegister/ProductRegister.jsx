@@ -20,10 +20,10 @@ const ProductRegister = () => {
   const [payload, setPayload] = useState({
     category: "",
     productName: "",
-    productPrice: 0,
-    productStock: 0,
-    start_dt: 0,
-    end_dt: 0,
+    productPrice: "",
+    productStock: "",
+    start_dt: "",
+    end_dt: "",
     description: "",
   });
   const handleChange = (e) => {
@@ -59,8 +59,8 @@ const ProductRegister = () => {
                 !(
                   payload.category !== "" &&
                   payload.productName !== "" &&
-                  payload.productPrice !== 0 &&
-                  payload.productStock !== 0 &&
+                  payload.productPrice > 0 &&
+                  payload.productStock > 0 &&
                   payload.start_dt !== 0 &&
                   payload.end_dt !== 0 &&
                   payload.description !== "" &&

@@ -50,8 +50,7 @@ const BasicInfo = ({ data, onChange }) => {
           <input
             className="TextField"
             value={data.productName}
-            defaultValue=""
-            placeholder="상품명을 입력하세요"
+            placeholder="상품명을 입력하세요(최대 30자)"
             required
             id="productName"
             onChange={onChange}
