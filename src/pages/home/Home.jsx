@@ -27,22 +27,22 @@ const Home = () => {
 
         <Grid className="grid-container" container spacing={2}>
           <Grid item md={3} xs={6}>
-            <Sales />
+            <Sales info={info} />
           </Grid>
           <Grid item md={3} xs={6}>
-            <Profits />
+            <Profits info={info} />
           </Grid>
           <Grid item md={3} xs={6}>
-            <Reviews />
+            <Reviews info={info} />
           </Grid>
           <Grid item md={3} xs={6}>
-            <Populars />
+            <Populars info={info} />
           </Grid>
           <Grid item md={6} xs={12}>
-            <Weekly />
+            <Weekly info={info} />
           </Grid>
           <Grid item md={6} xs={12}>
-            <Monthly />
+            <Monthly info={info} />
           </Grid>
         </Grid>
       </Styled.HomeContainer>
