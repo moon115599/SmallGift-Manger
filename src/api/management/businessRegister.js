@@ -30,7 +30,7 @@ export const axiosCheckAccountValid = async (payload, setValidMsg) => {
 
 export const axiosFileSubmit = async (payload) => {
   try {
-    const response = await axios.post("/api/manager/submit/file");
+    const response = await axios.post("/api/manager/submit/file", payload);
     if (!response.code === 200) {
       return false;
     }

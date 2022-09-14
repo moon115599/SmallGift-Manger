@@ -1,11 +1,33 @@
 import styled from "styled-components";
 
+export const completeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px 0 40px 0;
+  background-color: #474747;
+  border-radius: 20px;
+  padding: 27px 32px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  font-size: 20px;
+  span {
+    font-weight: 700;
+    color: white;
+    margin: 0 16px;
+  }
+  p {
+    font-weight: 400;
+    color: #9f9f9f;
+    margin: 0 8px;
+  }
+`;
+
 export const MainContainer = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
   background-color: white;
-  border-radius: 3%;
+  border-radius: 30px;
   padding: 50px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 

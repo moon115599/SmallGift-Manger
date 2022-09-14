@@ -15,6 +15,8 @@ import { axiosFileSubmit, axiosRegisterBusiness } from "../../../api/management/
 import PopupDom from "../../../components/management/businessRegister/address/PopupDom";
 import PopupPostCode from "../../../components/management/businessRegister/address/PopupPostCode";
 
+import checkImg from "../../../assets/check.png";
+
 const BusinessRegister = () => {
   const title = "사업자 등록";
   const description = "판매를 하기 전 최초 1회 사업자 등록이 필요합니다";
@@ -52,6 +54,13 @@ const BusinessRegister = () => {
       <Sidebar className="sidebar" />
       <CommonStyled.FormContainer>
         <Navbar className="navbar" title={title} discription={description} />
+        {isRegister ? (
+          <CommonStyled.completeContainer>
+            <img src={checkImg} height="32px" width="32x" />
+            <span>신청완료</span>
+            <p>승인까지 최대 일주일이 소요될 수 있습니다</p>
+          </CommonStyled.completeContainer>
+        ) : null}
         <CommonStyled.MainContainer>
           <FormControl className="form-control" onSubmit={handleSubmit}>
             <AccountForm handleChange={handleChange} />
