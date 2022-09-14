@@ -47,6 +47,7 @@ const SalesInfo = ({ data, onChange }) => {
             id="start_dt"
             variant="filled"
             value={data.start_dt}
+            man={data.end_dt}
             onChange={onChange}
             label="Date"
             type="date"
@@ -59,6 +60,7 @@ const SalesInfo = ({ data, onChange }) => {
           <input
             id="end_dt"
             value={data.end_dt}
+            min={data.start_dt}
             onChange={onChange}
             label="Date"
             variant="filled"
