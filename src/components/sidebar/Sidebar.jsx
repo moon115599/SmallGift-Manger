@@ -88,9 +88,11 @@ const Sidebar = () => {
 
   return (
     <Styled.hideController>
-      <li className={isOpen ? "hide-menu" : "show-menu"} style={{ listStyle: "none" }}>
-        <MenuIcon onClick={() => toggleMenu()} />
-      </li>
+      <Styled.hideContainer className={isOpen ? "hide-menu" : "show-menu"}>
+        <li style={{ listStyle: "none" }}>
+          <MenuIcon onClick={() => toggleMenu()} />
+        </li>
+      </Styled.hideContainer>
       <Styled.Container className={isOpen ? "show-menu" : "hide-menu"}>
         <li style={{ listStyle: "none" }}>
           <MenuIcon onClick={() => toggleMenu()} />

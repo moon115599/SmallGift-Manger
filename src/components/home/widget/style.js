@@ -7,7 +7,7 @@ export const Container = styled.div`
     justify-content: space-between;
     flex: 1;
     padding: 10px;
-    height: 60px;
+    height: 80px;
     margin-bottom: 5px;
     white-space: nowrap;
     span {
@@ -18,12 +18,20 @@ export const Container = styled.div`
       font-weight: bold;
       font-size: 13px;
       color: rgb(160, 160, 160);
+      margin-bottom: 5px;
     }
 
     .counter {
       font-size: 22px;
       font-weight: 800;
       color: #6600cc;
+      text-align: center;
+    }
+
+    .list {
+      color: #6600cc;
+      font-weight: 800;
+      font-size: 12px;
       text-align: center;
     }
 

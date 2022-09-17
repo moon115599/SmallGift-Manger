@@ -10,7 +10,7 @@ const Chart = ({ data }) => {
       {/* <div> */}
       <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 30, right: 30, bottom: 50, left: 60 }}
         xScale={{ type: "point" }}
         yScale={{
           type: "linear",
@@ -27,17 +27,7 @@ const Chart = ({ data }) => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          // legend: "transportation",
           legendOffset: 36,
-          legendPosition: "middle",
-        }}
-        axisLeft={{
-          orient: "left",
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: "count",
-          legendOffset: -40,
           legendPosition: "middle",
         }}
         pointSize={10}
@@ -46,32 +36,6 @@ const Chart = ({ data }) => {
         pointBorderColor={{ from: "serieColor" }}
         pointLabelYOffset={-12}
         useMesh
-        legends={[
-          {
-            anchor: "bottom-right",
-            direction: "column",
-            justify: false,
-            translateX: 100,
-            translateY: 1,
-            itemsSpacing: 1,
-            itemDirection: "left-to-right",
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: "circle",
-            symbolBorderColor: "rgba(0, 0, 0, .5)",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemBackground: "rgba(0, 0, 0, .03)",
-                  itemOpacity: 1,
-                },
-              },
-            ],
-          },
-        ]}
       />
     </div>
   );

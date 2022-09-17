@@ -8,9 +8,9 @@ const Ranking = ({ data }) => {
       <div className="content">
         <span className="title">인기있는 메뉴</span>
         <ol className="list">
-          <li>{data.first}</li>
-          <li>{data.second}</li>
-          <li>{data.third}</li>
+          <p>1. {data.first}</p>
+          <p>2. {data.second}</p>
+          <p>3. {data.third}</p>
         </ol>
       </div>
     </Styled.Container>

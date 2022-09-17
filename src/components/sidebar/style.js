@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export const hideController = styled.div`
   padding-top: 20px;
   padding-right: 20px;
+  min-height: 100vh;
   background-color: white;
   border-right: 0.5px solid rgb(230, 227, 227);
 
@@ -14,7 +15,6 @@ export const hideController = styled.div`
   .show-menu {
     z-index: 99;
     min-height: 100vh;
-
     transition: all 1s;
   }
   .hide-menu {
@@ -22,6 +22,16 @@ export const hideController = styled.div`
     left: -376px;
     transition: 1s;
   }
+  @media (max-width: 1000px) {
+    position: absolute;
+    z-index: 99;
+  }
+`;
+
+export const hideContainer = styled.div`
+  min-width: 50px;
+  min-height: 100vh;
+  background-color: white;
 `;
 
 export const Container = styled.div`
@@ -53,6 +63,53 @@ export const Top = styled.div`
   }
   .info-name {
     font-size: 20px;
+  }
+`;
+
+export const hideCenter = styled.div`
+  margin-top: 20px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    text-decoration-line: none;
+
+    .link {
+      text-decoration: none;
+      color: black;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      border-radius: 13px;
+      padding: 16px 16px;
+      margin: 80px 0px;
+
+      &:hover {
+        background-color: #ece8ff;
+      }
+
+      .Icon {
+        font-size: 20px;
+        opacity: 0.2;
+      }
+
+      ul {
+        color: #858585;
+      }
+    }
+
+    .clicked {
+      background-color: #6600cc;
+      color: white;
+      .Icon {
+        opacity: 1;
+      }
+    }
   }
 `;
 
