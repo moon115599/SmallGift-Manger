@@ -7,11 +7,11 @@ const Ranking = ({ data }) => {
     <Styled.Container>
       <div className="content">
         <span className="title">인기있는 메뉴</span>
-        <ol className="list">
+        <div className="list">
           <p>1. {data.first}</p>
           <p>2. {data.second}</p>
           <p>3. {data.third}</p>
-        </ol>
+        </div>
       </div>
     </Styled.Container>
   );

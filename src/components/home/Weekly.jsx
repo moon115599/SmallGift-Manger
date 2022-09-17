@@ -44,7 +44,7 @@ const Weekly = () => {
   ];
   return (
     <Styled.Container>
-      <span className="title">주간 판매 현황</span>
+      <span className="chart-title">주간 판매 현황</span>
       <Chart data={data} />
     </Styled.Container>
   );
