@@ -93,6 +93,7 @@ const Sidebar = () => {
           <MenuIcon onClick={() => toggleMenu()} />
         </li>
       </Styled.hideContainer>
+
       <Styled.Container className={isOpen ? "show-menu" : "hide-menu"}>
         <li style={{ listStyle: "none" }}>
           <MenuIcon onClick={() => toggleMenu()} />

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export const hideController = styled.div`
   padding-top: 20px;
   padding-right: 20px;
-  min-height: 100vh;
   background-color: white;
   border-right: 0.5px solid rgb(230, 227, 227);
 
@@ -15,6 +14,7 @@ export const hideController = styled.div`
   .show-menu {
     z-index: 99;
     min-height: 100vh;
+    overflow: hidden;
     transition: all 1s;
   }
   .hide-menu {
@@ -22,22 +22,16 @@ export const hideController = styled.div`
     left: -376px;
     transition: 1s;
   }
-  @media (max-width: 1000px) {
-    position: absolute;
-    z-index: 99;
-  }
 `;
 
 export const hideContainer = styled.div`
   min-width: 50px;
-  min-height: 100vh;
   background-color: white;
 `;
 
 export const Container = styled.div`
   min-width: 310px;
 
-  min-height: 100vh;
   background-color: white;
 `;
 export const Hr = styled.hr`

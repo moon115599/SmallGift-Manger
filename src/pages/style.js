@@ -29,6 +29,7 @@ export const MainContainer = styled.div`
   background-color: white;
   border-radius: 30px;
   padding: 50px;
+
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 
   .form-control {
@@ -58,6 +59,8 @@ export const FormContainer = styled.div`
 export const Container = styled.div`
   display: flex;
   background-color: #f9f9f9;
+  min-height: 100vh;
+  padding-bottom: 0;
 `;
 
 export const TitleDiv = styled.div`

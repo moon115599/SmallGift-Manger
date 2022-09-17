@@ -28,7 +28,7 @@ const ProductManagement = () => {
   }, []);
   return (
     <CommonStyled.Container>
-      <Sidebar style={{ display: "none" }} className="sidebar" id="sidebar" />
+      <Sidebar className="sidebar" id="sidebar" />
       <CommonStyled.FormContainer>
         <Navbar title={title} discription={description} />
         <CommonStyled.MainContainer>
