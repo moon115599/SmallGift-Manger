@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { axios } from "axios";
 import { validateEmail } from "../../../utils/validationUtil";
 import { axiosFindId } from "../../../api/user/find";
 
@@ -54,13 +54,20 @@ const FindIDForm = () => {
     }
   };
 
+  const [findedUsername, setFindedUsername] = useState("");
+  const [finded, setFinded] = useState(true);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const findIdRes = axiosFindId(payload);
+    if (axiosFindId(payload, setFindedUsername)) {
+      setFinded(true);
+    }
+  };
+  const handleLoginClick = async (event) => {
+    navigate("/login");
   };
 
-  return (
+  return !finded ? (
     <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
       <TextField
         error={!validate.email}
@@ -89,6 +96,15 @@ const FindIDForm = () => {
         sx={{ mt: 3, mb: 2 }}
       >
         아이디 찾기
+      </Button>
+    </Box>
+  ) : (
+    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
+      <h3 style={{ textAlign: "center", fontWeight: "normal" }}>회원가입 시 사용한 아이디는</h3>
+      <h2 style={{ textAlign: "center" }}>{findedUsername}</h2>
+      <h3 style={{ textAlign: "center", fontWeight: "normal" }}> 입니다.</h3>
+      <Button onClick={handleLoginClick} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+        로그인 페이지로 이동
       </Button>
     </Box>
   );

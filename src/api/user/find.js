@@ -1,25 +1,27 @@
 import axios from "axios";
 
-export const axiosFindId = async (dataTosubmit) => {
+export const axiosFindId = async (dataTosubmit, setData) => {
   try {
     const response = await axios.post("/api/admin/find/id", dataTosubmit);
     if (response.code === 200) {
-      return response;
+      setData(response.username);
+      return true;
     }
   } catch (error) {
-    return error;
+    return false;
   }
   return 0;
 };
 
-export const axiosFindPwd = async (dataTosubmit) => {
+export const axiosFindPwd = async (dataTosubmit, setData) => {
   try {
     const response = await axios.post("/api/admin/find/password", dataTosubmit);
     if (response.code === 200) {
-      return response;
+      setData(response.username);
+      return true;
     }
   } catch (error) {
-    return error;
+    return false;
   }
   return 0;
 };

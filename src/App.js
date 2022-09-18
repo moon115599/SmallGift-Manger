@@ -3,12 +3,15 @@ import Home from "./pages/home/Home";
 import LogIn from "./pages/logIn/LogIn";
 import SignUp from "./pages/signUp/SignUp";
 import FindID from "./pages/find/findID/FindID";
+import FindIDAfter from "./pages/find/findID/FindIdAfter";
 import FindPassword from "./pages/find/findPassword/FindPassword";
+import FindPasswordAfter from "./pages/find/findPassword/FindPasswordAfter";
 import Single from "./pages/single/Single";
 import Status from "./pages/status/Status";
 import ProductManagement from "./pages/management/productManagement/ProductManagement";
 import ProductRegister from "./pages/management/productRegister/ProductRegister";
 import BusinessRegister from "./pages/management/businessRegister/BusinessRegister";
+
 import { NotFound } from "./pages/notFound/NotFound";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -23,7 +26,9 @@ function App() {
         <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
         <Route path="/signup" element={<PublicRoute element={<SignUp />} />} />
         <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
+        <Route path="/find/id/after" element={<PublicRoute element={<FindIDAfter />} />} />
         <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
+        <Route path="/find/password/after" element={<PublicRoute element={<FindPasswordAfter />} />} />
         <Route path="/" element={<PrivateRoute element={<Home />} />} />
         <Route path="/management/products" element={<PrivateRoute element={<ProductManagement />} />} />
         <Route path="/management/register/products" element={<PrivateRoute element={<ProductRegister />} />} />

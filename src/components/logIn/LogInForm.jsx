@@ -86,7 +86,7 @@ const LogInForm = () => {
       setPayload({ ...payload, username: cookies.rememberUsername });
       setIsRemember(true);
     }
-    setCookies("token", 1);
+    // setCookies("token", 1);
   }, []);
 
   const handleSubmit = async (event) => {
