@@ -17,14 +17,14 @@ export const Container = styled.div`
     }
 
     .counter {
-      font-size: 2vw;
+      font-size: 22px;
       font-weight: 800;
       color: #6600cc;
       text-align: center;
     }
 
     .list {
-      font-size: 0.7vw;
+      font-size: 14px;
       font-weight: 800;
       color: #6600cc;
       white-space: nowrap;
