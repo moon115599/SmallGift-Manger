@@ -67,13 +67,19 @@ const FindPasswordForm = () => {
     }
   };
 
+  const [reset, setReset] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const findPwdRes = axiosFindPwd(payload);
   };
 
-  return (
+  const handleLoginClick = async (event) => {
+    navigate("/login");
+  };
+
+  return !reset ? (
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3, width: 600 }}>
       <TextField
         error={!validate.email}
@@ -116,7 +122,16 @@ const FindPasswordForm = () => {
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
       >
-        비밀번호 찾기
+        비밀번호 초기화하기
+      </Button>
+    </Box>
+  ) : (
+    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
+      <h3 style={{ textAlign: "center", fontWeight: "normal" }}>
+        회원가입 시 등록한 이메일로 초기화된 비밀번호를 보냈습니다.
+      </h3>
+      <Button onClick={handleLoginClick} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+        로그인 페이지로 이동
       </Button>
     </Box>
   );
