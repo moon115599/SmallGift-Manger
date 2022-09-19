@@ -86,15 +86,17 @@ const LogInForm = () => {
       setPayload({ ...payload, username: cookies.rememberUsername });
       setIsRemember(true);
     }
-    // setCookies("token", 1);
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (axiosLogInUser(payload, setCookies)) {
-      window.location.href = "/";
-    }
+    // if (axiosLogInUser(payload, setCookies)) {
+    //   window.location.href = "/";
+    // }
+    setCookies("token", 1);
+    window.location.href = "/";
+    // 위에 코드는 삭제할것
   };
 
   return (

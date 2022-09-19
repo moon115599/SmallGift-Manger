@@ -40,7 +40,7 @@ const FindIDForm = () => {
 
   // 입력폼에서 데이터가 바뀔때마다 payload의 데이터 최신화
   const handleChange = (e) => {
-    setPayload({ ...payload, [e.target.ids]: e.target.value });
+    setPayload({ ...payload, [e.target.id]: e.target.value });
 
     if (e.target.value === "") {
       setMsg({ ...msg, email: "이메일을 입력해주세요." });
@@ -55,7 +55,7 @@ const FindIDForm = () => {
   };
 
   const [findedUsername, setFindedUsername] = useState("");
-  const [finded, setFinded] = useState(true);
+  const [finded, setFinded] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
