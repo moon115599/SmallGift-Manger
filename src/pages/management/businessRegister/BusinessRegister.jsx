@@ -42,9 +42,13 @@ const BusinessRegister = () => {
 
   const [isRegister, setIsRegister] = useState(false);
   const [formDataObj, setFormDataObj] = useState({});
+  const formData = new FormData();
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (axiosRegisterBusiness(payload) && axiosFileSubmit(formDataObj)) {
+    formData.append("business", formDataObj.business);
+    formData.append("sale", formDataObj.sale);
+    formData.append("payload", payload);
+    if (axiosRegisterBusiness(payload) && axiosFileSubmit(formData)) {
       setIsRegister(true);
     }
   };

@@ -14,16 +14,19 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { axios } from "axios";
-import { axiosChangePwd } from "../../api/user/chage";
+import { axiosChangePwd } from "../../api/user/change";
 import { validatePassword, validateRePassword } from "../../utils/validationUtil";
+import { useCookies } from "react-cookie";
 
 const ChangePwdForm = () => {
   // 이메일, 비밀번호 제출
   const navigate = useNavigate();
+  const [cookies] = useCookies([]);
 
   // 사용자한테 아이디/비밀번호를 입력 받고
   // 백에 보내줄 payload
   const [payload, setPayload] = useState({
+    accessToken: cookies.token,
     newPassword: "",
     reNewPassword: "",
     password: "",

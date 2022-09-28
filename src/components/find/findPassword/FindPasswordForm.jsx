@@ -15,7 +15,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { validateEmail } from "../../../utils/validationUtil";
-import { axiosFindPwd } from "../../../api/user/find";
+import { axiosFindId, axiosFindPwd } from "../../../api/user/find";
 
 const FindPasswordForm = () => {
   // 이메일, 비밀번호 제출
@@ -72,7 +72,9 @@ const FindPasswordForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const findPwdRes = axiosFindPwd(payload);
+    if (axiosFindId(payload)) {
+      setReset(true);
+    }
   };
 
   const handleLoginClick = async (event) => {

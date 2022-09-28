@@ -7,7 +7,6 @@ export const axiosChangePwd = async (dataTosubmit) => {
       return true;
     }
     alert(response.msg);
-
     return false;
   } catch (error) {
     return false;
