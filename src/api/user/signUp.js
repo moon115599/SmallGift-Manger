@@ -1,8 +1,9 @@
 import axios from "axios";
+import { api } from "../server/Api";
 
 export const axiosEmailCheck = async ({ email, msg, setMsg }) => {
   try {
-    const response = await axios.post(`/api/admin/${email}/exists`, {});
+    const response = await api.post(`/api/admin/${email}/exists`, {});
     setMsg({ ...msg, emailCheck: response.message });
     if (!response.success) {
       return false;
@@ -15,7 +16,7 @@ export const axiosEmailCheck = async ({ email, msg, setMsg }) => {
 };
 export const axiosUsernameCheck = async (username, msg, setMsg) => {
   try {
-    const response = await axios.post(`/api/admin/${username}/exists`, {});
+    const response = await api.post(`/api/admin/${username}/exists`, {});
     setMsg({ ...msg, usernameCheck: response.message });
     if (!response.success) {
       return false;
@@ -29,7 +30,7 @@ export const axiosUsernameCheck = async (username, msg, setMsg) => {
 
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
-    const response = await axios.post("/api/admin/signup", dataTosubmit);
+    const response = await api.post("/api/admin/signup", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;

@@ -1,8 +1,9 @@
 import axios from "axios";
+import { accessApi } from "../server/Api";
 
 export const axiosChangePwd = async (dataTosubmit) => {
   try {
-    const response = await axios.post("/api/admin/change/password", dataTosubmit);
+    const response = await accessApi.post("/api/admin/change/password", dataTosubmit);
     if (response.code === 200) {
       return true;
     }

@@ -140,17 +140,20 @@ const SignUpForm = () => {
   };
 
   // 동의 체크 확인
-  const [agree, setAgree] = useState(false);
+  const [agree, setAgree] = useState({
+    use: false,
+    privacy: false,
+    location: false,
+  });
 
   // 체크 되어있는지
   const handleAgree = (event) => {
-    setAgree(event.target.checked);
+    setAgree({ ...agree, [event.target.id]: event.target.value });
   };
 
   // 제출하는 함수
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(agree);
 
     const signUpRes = axiosSignUpUser(payload);
     if (signUpRes.success) {
@@ -306,8 +309,20 @@ const SignUpForm = () => {
             ) : null}
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox onChange={handleAgree} color="primary" />}
-                label="회원가입 약관에 동의합니다."
+                control={<Checkbox id="use" onChange={handleAgree} color="primary" />}
+                label="이용 약관에 동의합니다."
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox id="privacy" onChange={handleAgree} color="primary" />}
+                label="개인 정보 방침에 동의합니다."
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox id="location" onChange={handleAgree} color="primary" />}
+                label="위치 기반 서비스에 동의합니다."
               />
             </Grid>
           </Grid>
@@ -320,7 +335,9 @@ const SignUpForm = () => {
                 validate.rePassword &&
                 validate.emailCheck &&
                 validate.usernameCheck &&
-                agree
+                agree.use &&
+                agree.privacy &&
+                agree.location
               )
             }
             onClick={handleSubmit}

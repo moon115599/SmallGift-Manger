@@ -1,8 +1,9 @@
 import axios from "axios";
+import { accessApi } from "../server/Api";
 
 export const axiosGetProduct = async (setState) => {
   try {
-    const response = await axios.get("/api/manager/productList/on");
+    const response = await accessApi.get("/api/manager/productList/on");
     if (response.code === 200) {
       console.log("성공적으로 데이터를 가져왔습니다.");
       setState(response);
@@ -16,7 +17,7 @@ export const axiosGetProduct = async (setState) => {
 
 export const axiosRemoveProduct = async (productId) => {
   try {
-    const response = await axios.delete("/api/manager/productList/remove", productId);
+    const response = await accessApi.delete("/api/manager/productList/remove", productId);
     if (response.code === 200) {
       console.log("삭제가 완료되었습니다.");
     } else {
@@ -29,7 +30,7 @@ export const axiosRemoveProduct = async (productId) => {
 
 export const axiosModifyProduct = async (payload) => {
   try {
-    const response = await axios.post("/api/manager/productList/modify", payload);
+    const response = await accessApi.post("/api/manager/productList/modify", payload);
     if (response.code === 200) {
       console.log("수정이 완료되었습니다.");
     } else {
@@ -42,7 +43,7 @@ export const axiosModifyProduct = async (payload) => {
 
 export const axiosOnProduct = async (payload) => {
   try {
-    const response = await axios.patch("/api/manager/productList", payload);
+    const response = await accessApi.patch("/api/manager/productList", payload);
     if (response.code === 200) {
       console.log("노출 상태가 변경되었습니다.");
     } else {
