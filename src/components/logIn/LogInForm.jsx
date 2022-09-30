@@ -94,7 +94,17 @@ const LogInForm = () => {
     // if (axiosLogInUser(payload, setCookies)) {
     //   window.location.href = "/";
     // }
-    setCookies("token", 1);
+
+    // setCookies("token", 1);
+    // 로컬 스토리지 잘 작동하면 지우기
+
+    //
+    let expire = new Date().getTime() + 600 * 1000;
+
+    window.localStorage.setItem("accessToken", 1);
+    window.localStorage.setItem("expireAccessToken", expire);
+    // 원래는 api에서 처리되는 것들
+
     window.location.href = "/";
     // 위에 코드는 삭제할것
   };

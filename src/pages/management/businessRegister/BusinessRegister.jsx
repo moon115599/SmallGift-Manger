@@ -34,7 +34,11 @@ const BusinessRegister = () => {
     bankAccount: "",
     businessNumber: "",
   });
-  const [isValidAccount, setIsValidAccount] = useState(false);
+
+  // const [isValidAccount, setIsValidAccount] = useState(false);
+  // 계좌 유효성 api가 완성되지 않았으므로 임의로 true로 설정
+  const [isValidAccount, setIsValidAccount] = useState(true);
+
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
     console.log(payload);

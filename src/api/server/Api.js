@@ -1,9 +1,7 @@
 import axios from "axios";
-import { server } from "./server.js";
-import { reIssueErrorHandle, reIssueToken } from "../user/reIssueToken";
+import { server } from "./server";
+import { useReIssueErrorHandle, useReIssueToken } from "../user/reIssueToken";
 import { useCookies } from "react-cookie";
-
-const [cookies] = useCookies([]);
 
 export const api = axios.create({
   baseURL: server,
@@ -22,8 +20,8 @@ export const accessApi = axios.create({
 
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${cookies.token}`,
+    Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
   },
 });
 
-accessApi.interceptors.request.use(reIssueToken, reIssueErrorHandle);
+accessApi.interceptors.request.use(useReIssueToken, useReIssueErrorHandle);

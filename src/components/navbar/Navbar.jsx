@@ -3,24 +3,20 @@ import { Button, Grid } from "@mui/material";
 import { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Cookies, useCookies } from "react-cookie";
 import { BtnContainer } from "./style";
 import { isLogin } from "../../utils/isLogin";
 
 const Navbar = ({ title, discription }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [cookies, removeCookies] = useCookies([]);
 
   const handleClientClick = async () => {
     console.log("client");
   };
 
-  const cookie = new Cookies();
-
   const handleSignOutClick = (e) => {
     e.preventDefault();
-    removeCookies("token");
+    window.localStorage.removeItem("accessToken");
     window.location.href = "/login";
   };
 

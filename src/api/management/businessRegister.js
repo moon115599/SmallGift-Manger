@@ -1,8 +1,9 @@
 import axios from "axios";
+import { accessApi } from "../server/Api";
 
 export const axiosRegisterBusiness = async (payload, setSubmitError) => {
   try {
-    const response = await axios.post("/api/manager/registration/manager", payload);
+    const response = await accessApi.post("/api/manager/registration/manager", payload);
     if (!response.code === 200) {
       alert(response.message);
       return false;
@@ -16,7 +17,7 @@ export const axiosRegisterBusiness = async (payload, setSubmitError) => {
 
 export const axiosCheckAccountValid = async (payload, setValidMsg) => {
   try {
-    const response = await axios.post("/api/manager/check/account", payload);
+    const response = await accessApi.post("/api/manager/check/account", payload);
     if (!response.code === 200) {
       setValidMsg(response.message);
       return false;
@@ -30,7 +31,7 @@ export const axiosCheckAccountValid = async (payload, setValidMsg) => {
 
 export const axiosFileSubmit = async (payload) => {
   try {
-    const response = await axios.post("/api/manager/submit/file", payload);
+    const response = await accessApi.post("/api/manager/submit/file", payload);
     if (!response.code === 200) {
       return false;
     }

@@ -1,13 +1,13 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { useCookies } from "react-cookie";
-import { RefreshTokenResponse } from "util/types/Response";
-import { server } from "config/config.json";
 import moment from "moment";
 
-export const reIssueToken = async ({ cookies, setCookies, removeCookies }) => {
-  const refreshToken = cookies.refreshToken;
-  const expire = localStorage.getItem("expireAccessToken");
-  let accessToken = cookies.token;
+export const useReIssueToken = async () => {
+  const [cookies, setCookies] = useCookies([]);
+
+  const refreshToken = cookies.reissue_token;
+  const expire = window.localStorage.getItem("expireAccessToken");
+  const accessToken = window.localStorage.getItem("accessToken");
 
   // 토큰이 만료 10초전이고, refreshToken 이 저장되어 있을 때
   if (moment(expire).diff(moment()) < 0 && refreshToken) {
@@ -22,10 +22,9 @@ export const reIssueToken = async ({ cookies, setCookies, removeCookies }) => {
         const today = new Date();
         const TOKEN_TIME_OUT = 600 * 1000;
         const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
-        setCookies("token", response.data.jwtAccessToken, {
-          expires: new Date(expireAccessToken),
-        });
-        localStorage.setItem("expireAccessToken", expireAccessToken);
+
+        window.localStorage.setItem("expireAccessToken", expireAccessToken);
+        window.localStorage.setItem("accessToken", response.data.jwtAccessToken);
       } else {
         alert(response.message);
       }
@@ -35,6 +34,7 @@ export const reIssueToken = async ({ cookies, setCookies, removeCookies }) => {
   }
 };
 
-export const reIssueErrorHandle = () => {
+export const useReIssueErrorHandle = () => {
+  const [removeCookies] = useCookies([]);
   removeCookies("reissue_token");
 };

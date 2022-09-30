@@ -11,10 +11,10 @@ export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
     const TOKEN_TIME_OUT = 600 * 1000;
     const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
     const expireReissueToken = today.setDate(today.getDate() + 7);
-    setCookies("token", response.data.jwtAccessToken, {
-      expires: new Date(expireAccessToken),
-    });
-    localStorage.setItem("expireAccessToken", expireAccessToken);
+    // 만료 시간 설정
+
+    window.localStorage.setItem("acessToken", response.data.jwtAccessToken);
+    window.localStorage.setItem("expireAccessToken", expireAccessToken);
     setCookies("reissue_token", response.data.jwtReissueToken, {
       expires: new Date(expireReissueToken),
     });
