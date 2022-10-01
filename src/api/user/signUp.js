@@ -1,36 +1,39 @@
 import axios from "axios";
 import { api } from "../server/Api";
 
-export const axiosEmailCheck = async ({ email, msg, setMsg }) => {
+export const axiosEmailCheck = async (email) => {
   try {
-    const response = await api.post(`/api/admin/${email}/exists`, {});
-    setMsg({ ...msg, emailCheck: response.message });
+    const response = await api.post(`/api/manager/${email}/exists`, {});
     if (!response.success) {
+      alert(response.message);
       return false;
     }
+    console.log(response);
     return true;
   } catch (error) {
-    alert("중복 확인에 실패하였습니다.");
+    console.log("중복 확인에 실패하였습니다.");
+    console.log(error);
+    return false;
   }
-  return 0;
 };
-export const axiosUsernameCheck = async (username, msg, setMsg) => {
+export const axiosUsernameCheck = async (username) => {
   try {
-    const response = await api.post(`/api/admin/${username}/exists`, {});
-    setMsg({ ...msg, usernameCheck: response.message });
+    const response = await api.post(`/api/manager/${username}/exists`, {});
     if (!response.success) {
+      alert(response.message);
       return false;
     }
     return true;
   } catch (error) {
-    alert("중복 확인에 실패하였습니다.");
+    console.log("중복 확인에 실패하였습니다.");
+    console.log(error);
+    return false;
   }
-  return 0;
 };
 
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
-    const response = await api.post("/api/admin/signup", dataTosubmit);
+    const response = await api.post("/api/manager/signup", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;
@@ -38,6 +41,6 @@ export const axiosSignUpUser = async (dataTosubmit) => {
     return true;
   } catch (error) {
     alert("회원가입에 실패하였습니다.");
+    return false;
   }
-  return 0;
 };

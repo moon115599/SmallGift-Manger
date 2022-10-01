@@ -115,23 +115,24 @@ const SignUpForm = () => {
     username: "",
   });
   // 이메일 중복 확인
-  const checkEmail = (e) => {
+  const checkEmail = async (e) => {
     e.preventDefault();
 
     if (payload.email !== "" && validate.email) {
-      if (axiosEmailCheck(payload.email, msg, setMsg)) {
+      if (await axiosEmailCheck(payload.email)) {
         setValidate({ ...validate, emailCheck: true });
       } else {
         setValidate({ ...validate, emailCheck: false });
       }
     }
+    console.log(validate.emailCheck);
   };
   // 아이디 중복 확인
-  const checkUsername = (e) => {
+  const checkUsername = async (e) => {
     e.preventDefault();
 
     if (payload.username !== "" && validate.username) {
-      if (axiosUsernameCheck(payload.username, msg, setMsg)) {
+      if (await axiosUsernameCheck(payload.username)) {
         setValidate({ ...validate, usernameCheck: true });
       } else {
         setValidate({ ...validate, usernameCheck: false });
@@ -155,13 +156,9 @@ const SignUpForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const signUpRes = axiosSignUpUser(payload);
-    if (signUpRes.success) {
+    if (axiosSignUpUser(payload)) {
       navigate("/");
       console.log("success");
-    } else {
-      console.log(signUpRes.msg);
-      alert(signUpRes.msg);
     }
   };
 
@@ -183,35 +180,20 @@ const SignUpForm = () => {
                 label="이메일 주소"
               />
             </Grid>
-            {validate.emailCheck ? (
-              <Grid item xs={3}>
-                <Button
-                  onClick={checkEmail}
-                  type="submit"
-                  fullWidth
-                  variant="outlined"
-                  sx={{ m: 0, height: "56px" }}
-                  size="large"
-                  color="primary"
-                >
-                  중복 확인
-                </Button>
-              </Grid>
-            ) : (
-              <Grid item xs={3}>
-                <Button
-                  onClick={checkEmail}
-                  type="submit"
-                  fullWidth
-                  variant="outlined"
-                  sx={{ m: 0, height: "56px" }}
-                  size="large"
-                  color="error"
-                >
-                  중복 확인
-                </Button>
-              </Grid>
-            )}
+            <Grid item xs={3}>
+              <Button
+                disabled={!validate.email}
+                onClick={checkEmail}
+                type="submit"
+                fullWidth
+                variant="outlined"
+                sx={{ m: 0, height: "56px" }}
+                size="large"
+                color={!validate.emailCheck ? "error" : "primary"}
+              >
+                중복 확인
+              </Button>
+            </Grid>
             {msg.emailCheck ? (
               <Grid className={validate.emailCheck ? "success" : "error"} item xs={12}>
                 <span>{msg.emailCheck}</span>
@@ -270,6 +252,7 @@ const SignUpForm = () => {
             </Grid>
             <Grid item xs={3}>
               <Button
+                disabled={!validate.username}
                 onClick={checkUsername}
                 type="submit"
                 fullWidth
