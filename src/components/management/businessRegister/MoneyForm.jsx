@@ -21,7 +21,9 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
     if (axiosCheckAccountValid(payload, setValidMsg) === true) {
       setIsValidAccount(true);
     } else {
-      setIsValidAccount(false);
+      // setIsValidAccount(false);
+      // api 안 만들어지면 그냥 유지
+      setIsValidAccount(true);
     }
   };
   return (

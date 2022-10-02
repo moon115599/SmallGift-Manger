@@ -5,7 +5,7 @@ import BusinessForm from "../../../components/management/businessRegister/Busine
 import DocumentForm from "../../../components/management/businessRegister/DocumentForm";
 import MoneyForm from "../../../components/management/businessRegister/MoneyForm";
 import RegisterNumberForm from "../../../components/management/businessRegister/RegisterNumberForm";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { TextField, FormControl, Button } from "@mui/material";
 import * as Styled from "./style";
@@ -41,21 +41,29 @@ const BusinessRegister = () => {
 
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    console.log(payload);
+    console.log(payload, formData.get("payload"));
+    console.log(formData);
   };
 
   const [isRegister, setIsRegister] = useState(false);
-  const [formDataObj, setFormDataObj] = useState({});
+  const [formDataObj, setFormDataObj] = useState({
+    sale: "",
+    business: "",
+  });
   const formData = new FormData();
   const handleSubmit = (e) => {
     e.preventDefault();
-    formData.append("business", formDataObj.business);
-    formData.append("sale", formDataObj.sale);
-    formData.append("payload", payload);
-    if (axiosRegisterBusiness(payload) && axiosFileSubmit(formData)) {
+
+    if (axiosRegisterBusiness(formData)) {
       setIsRegister(true);
     }
   };
+  useEffect(() => {
+    formData.set("business", formDataObj.business);
+    formData.set("sale", formDataObj.sale);
+    formData.set("payload", JSON.stringify(payload));
+    console.log("obj바뀐다");
+  }, [formDataObj]);
 
   return (
     <CommonStyled.Container>
@@ -92,8 +100,8 @@ const BusinessRegister = () => {
                   payload.bankName !== "" &&
                   payload.bankAccount !== "" &&
                   isValidAccount &&
-                  formDataObj.business !== {} &&
-                  formDataObj.sale !== {}
+                  formData.get("business") !== {} &&
+                  formData.get("sale") !== {}
                 )
               }
               onClick={handleSubmit}

@@ -15,17 +15,17 @@ const DocumentForm = ({ formDataObj, setFormDataObj }) => {
   const handleBusinessChange = (e) => {
     const reader = new FileReader();
     const file = businessRef.current.files[0];
-    const formData = new FormData();
-    formData.append("business", file);
-    setFormDataObj({ ...formDataObj, business: formData });
+    // const formData = new FormData();
+    // formData.append("business", file);
+    setFormDataObj({ ...formDataObj, business: file });
     setLink({ ...link, business: file.name });
   };
   const handleSaleChange = (e) => {
     const reader = new FileReader();
     const file = saleRef.current.files[0];
-    const formData = new FormData();
-    formData.append("sale", file);
-    setFormDataObj({ ...formDataObj, sale: formData });
+    // const formData = new FormData();
+    // formData.append("sale", file);
+    setFormDataObj({ ...formDataObj, sale: file });
     setLink({ ...link, sale: file.name });
   };
 

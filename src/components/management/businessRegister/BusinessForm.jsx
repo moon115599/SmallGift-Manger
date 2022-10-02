@@ -21,9 +21,10 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
 
   const [address, setAddress] = useState("");
   const [zoneCode, setZoneCode] = useState("");
-  useEffect(() => {
-    console.log(zoneCode);
-  }, [address]);
+
+  const handleZoneCodeChange = () => {
+    setPayload({ ...payload, address: zoneCode });
+  };
 
   return (
     <>
@@ -51,15 +52,15 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>사업자 주소</span>
+          <input style={{ display: "none" }} id="address" className="TextField" required />
           <input
-            style={{ display: "none" }}
-            id="address"
-            onChange={handleChange}
-            value={zoneCode}
+            value={address}
             className="TextField"
+            onChange={handleZoneCodeChange}
+            size="small"
             required
+            variant="filled"
           />
-          <input value={address} className="TextField" size="small" required variant="filled" />
           <Button className="Button" variant="outlined" size="small" onClick={openPostCode}>
             찾기
           </Button>

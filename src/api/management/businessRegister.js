@@ -3,7 +3,7 @@ import { accessApi } from "../server/Api";
 
 export const axiosRegisterBusiness = async (payload, setSubmitError) => {
   try {
-    const response = await accessApi.post("/api/manager/registration/manager", payload);
+    const response = await accessApi.post("/api/manager", payload);
     if (!response.code === 200) {
       alert(response.message);
       return false;
