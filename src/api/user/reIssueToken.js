@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import moment from "moment";
 
 export const useReIssueToken = async () => {
-  const [cookies, setCookies] = useCookies([]);
+  const [cookies] = useCookies([]);
 
   const refreshToken = cookies.reissue_token;
   const expire = window.localStorage.getItem("expireAccessToken");
@@ -17,7 +17,7 @@ export const useReIssueToken = async () => {
     };
 
     try {
-      const response = await axios.post("/api/admin/reissueAccessToken", body);
+      const response = await axios.post(`../${process.env.REACT_APP_BASE_URL}/api/maneger/reissueAccessToken`, body);
       if (response.code === 200) {
         const today = new Date();
         const TOKEN_TIME_OUT = 600 * 1000;

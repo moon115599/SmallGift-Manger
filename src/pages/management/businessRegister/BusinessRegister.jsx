@@ -11,7 +11,7 @@ import { TextField, FormControl, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import axios from "axios";
-import { axiosFileSubmit, axiosRegisterBusiness } from "../../../api/management/businessRegister";
+import { axiosRegisterBusiness } from "../../../api/management/businessRegister";
 import PopupDom from "../../../components/management/businessRegister/address/PopupDom";
 import PopupPostCode from "../../../components/management/businessRegister/address/PopupPostCode";
 
@@ -62,7 +62,6 @@ const BusinessRegister = () => {
     formData.set("business", formDataObj.business);
     formData.set("sale", formDataObj.sale);
     formData.set("payload", JSON.stringify(payload));
-    console.log("obj바뀐다");
   }, [formDataObj]);
 
   return (

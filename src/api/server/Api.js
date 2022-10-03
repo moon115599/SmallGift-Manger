@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { useReIssueErrorHandle, useReIssueToken } from "../user/reIssueToken";
-import { useCookies } from "react-cookie";
 
 export const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,

@@ -3,7 +3,7 @@ import { api } from "../server/Api";
 
 export const axiosFindId = async (dataTosubmit, setData) => {
   try {
-    const response = await api.post("/api/admin/find/id", dataTosubmit);
+    const response = await api.post("../api/admin/find/id", dataTosubmit);
     if (response.code === 200) {
       setData(response.username);
       return true;
@@ -16,7 +16,7 @@ export const axiosFindId = async (dataTosubmit, setData) => {
 
 export const axiosFindPwd = async (dataTosubmit, setData) => {
   try {
-    const response = await api.post("/api/admin/find/password", dataTosubmit);
+    const response = await api.post("../api/admin/find/password", dataTosubmit);
     if (response.code === 200) {
       setData(response.username);
       return true;

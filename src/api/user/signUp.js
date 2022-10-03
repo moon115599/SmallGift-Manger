@@ -3,7 +3,7 @@ import { api } from "../server/Api";
 
 export const axiosEmailCheck = async (email) => {
   try {
-    const response = await api.post(`/api/manager/${email}/exists`, {});
+    const response = await api.post(`../api/manager/${email}/exists`, {});
     if (!response.success) {
       alert(response.message);
       return false;
@@ -18,7 +18,7 @@ export const axiosEmailCheck = async (email) => {
 };
 export const axiosUsernameCheck = async (username) => {
   try {
-    const response = await api.post(`/api/manager/${username}/exists`, {});
+    const response = await api.post(`../api/manager/${username}/exists`, {});
     if (!response.success) {
       alert(response.message);
       return false;
@@ -33,7 +33,7 @@ export const axiosUsernameCheck = async (username) => {
 
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
-    const response = await api.post("/api/manager/signup", dataTosubmit);
+    const response = await api.post("../api/manager/signup", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;
