@@ -1,10 +1,10 @@
 import axios from "axios";
-import { server } from "./server";
+
 import { useReIssueErrorHandle, useReIssueToken } from "../user/reIssueToken";
 import { useCookies } from "react-cookie";
 
 export const api = axios.create({
-  baseURL: server,
+  baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 10000,
   params: {},
 
@@ -14,7 +14,7 @@ export const api = axios.create({
 });
 
 export const accessApi = axios.create({
-  baseURL: server,
+  baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 10000,
   params: {},
 
