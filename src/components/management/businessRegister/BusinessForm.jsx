@@ -82,22 +82,22 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
           <span>종목/업태</span>
           <input
             onChange={handleChange}
-            id="businessType1"
+            id="businessType"
             className="TextField"
-            placeholder="종목"
+            placeholder=""
             size="small"
             required
             variant="filled"
           />
-          <input
-            onChange={handleChange}
-            id="businessType2"
-            className="TextField"
-            placeholder="업태"
-            size="small"
-            required
-            variant="filled"
-          />
+          {/* <input */}
+          {/*   onChange={handleChange} */}
+          {/*   id="businessType2" */}
+          {/*   className="TextField" */}
+          {/*   placeholder="업태" */}
+          {/*   size="small" */}
+          {/*   required */}
+          {/*   variant="filled" */}
+          {/* /> */}
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

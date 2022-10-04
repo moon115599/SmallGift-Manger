@@ -22,17 +22,14 @@ const BusinessRegister = () => {
   const description = "판매를 하기 전 최초 1회 사업자 등록이 필요합니다";
 
   const [payload, setPayload] = useState({
-    account: "",
     username: "",
     businessName: "",
     address: "",
     businessTel: "",
-    businessType1: "",
-    businessType2: "",
-    bankUsername: "",
-    bankName: "",
-    bankAccount: "",
-    businessNumber: "",
+    businessType: "",
+    accountHolder: "",
+    settlementBank: "",
+    settlementAccount: "",
   });
 
   // const [isValidAccount, setIsValidAccount] = useState(false);
@@ -78,7 +75,8 @@ const BusinessRegister = () => {
         ) : null}
         <CommonStyled.MainContainer>
           <FormControl className="form-control" onSubmit={handleSubmit}>
-            <AccountForm handleChange={handleChange} />
+            {/* <AccountForm handleChange={handleChange} /> */}
+            {/* 계정은 로그인 할 때 어차피 입력함 */}
             <BusinessForm setPayload={setPayload} payload={payload} handleChange={handleChange} />
             <MoneyForm
               handleChange={handleChange}

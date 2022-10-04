@@ -16,7 +16,7 @@ export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
 
     window.localStorage.setItem("acessToken", response.data.jwtAccessToken);
     window.localStorage.setItem("expireAccessToken", expireAccessToken);
-    setCookies("reissue_token", response.data.jwtReissueToken, {
+    setCookies("refresh_token", response.data.jwtRefreshToken, {
       expires: new Date(expireReissueToken),
     });
 

@@ -8,7 +8,6 @@ export const useReIssueToken = async () => {
   const refreshToken = cookies.reissue_token;
   const expire = window.localStorage.getItem("expireAccessToken");
   const accessToken = window.localStorage.getItem("accessToken");
-
   // 토큰이 만료 10초전이고, refreshToken 이 저장되어 있을 때
   if (moment(expire).diff(moment()) < 0 && refreshToken) {
     const body = {
@@ -36,5 +35,5 @@ export const useReIssueToken = async () => {
 
 export const useReIssueErrorHandle = () => {
   const [removeCookies] = useCookies([]);
-  removeCookies("reissue_token");
+  removeCookies("refresh_token");
 };
