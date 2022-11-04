@@ -48,6 +48,12 @@ const BusinessRegister = () => {
     business: "",
   });
   const formData = new FormData();
+  useEffect(() => {
+    window.localStorage.setItem("accessToken", 1);
+    formData.set("businessRegistration", formDataObj.business);
+    formData.set("mailOrderSalesRegistration", formDataObj.sale);
+    formData.set("registManager", JSON.stringify(payload));
+  }, [formDataObj]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -55,11 +61,6 @@ const BusinessRegister = () => {
       setIsRegister(true);
     }
   };
-  useEffect(() => {
-    formData.set("business", formDataObj.business);
-    formData.set("sale", formDataObj.sale);
-    formData.set("payload", JSON.stringify(payload));
-  }, [formDataObj]);
 
   return (
     <CommonStyled.Container>

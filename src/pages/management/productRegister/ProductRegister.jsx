@@ -4,7 +4,7 @@ import BasicInfo from "../../../components/management/productRegister/BasicInfo"
 import SalesInfo from "../../../components/management/productRegister/SalesInfo";
 import DetailsInfo from "../../../components/management/productRegister/DetailsInfo";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, FormControl, TextField } from "@mui/material";
@@ -31,10 +31,15 @@ const ProductRegister = () => {
     console.log(payload);
   };
 
-  const [formDataObj, setFormDataObj] = useState({});
+  const [formDataObj, setFormDataObj] = useState("");
+  const formData = new FormData();
+  useEffect(() => {
+    formData.set("image", formDataObj);
+    formData.set("payload", JSON.stringify(payload));
+  }, [formDataObj]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (axiosRegisterProduct(payload) && axiosFileSubmit(formDataObj)) {
+    if (axiosRegisterProduct(payload)) {
       navigate("/management/products");
     }
   };

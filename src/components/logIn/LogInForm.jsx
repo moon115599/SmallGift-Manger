@@ -92,9 +92,10 @@ const LogInForm = () => {
     event.preventDefault();
 
     // api 연결 잘 되면 이걸로 사용
-    // if (axiosLogInUser(payload, setCookies)) {
-    //   window.location.href = "/";
-    // }
+    if (axiosLogInUser(payload, setCookies)) {
+      console.log("a");
+      // window.location.href = "/";
+    }
 
     let expire = new Date().getTime() + 600 * 1000;
 
@@ -102,7 +103,7 @@ const LogInForm = () => {
     window.localStorage.setItem("expireAccessToken", expire);
     // 원래는 api에서 처리되는 것들
 
-    window.location.href = "/";
+    // window.location.href = "/";
     // 위에 코드는 삭제할것
   };
 

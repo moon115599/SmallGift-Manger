@@ -15,9 +15,9 @@ const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
   const onChangeImage = () => {
     const reader = new FileReader();
     const file = imgRef.current.files[0];
-    const formData = new FormData();
-    formData.append("representative", file);
-    setFormDataObj(formData);
+    // const formData = new FormData();
+    // formData.append("representative", file);
+    setFormDataObj(file);
 
     reader.readAsDataURL(file);
     reader.onloadend = () => {
