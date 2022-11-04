@@ -35,25 +35,18 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
       <CommonStyled.InputsDiv>
         <CommonStyled.InputDiv>
           <span>대표자명</span>
-          <input onChange={handleChange} id="username" className="TextField" size="small" required variant="filled" />
+          <input onChange={handleChange} id="username" className="TextField" size="small" required />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>상호명</span>
-          <input
-            onChange={handleChange}
-            id="businessName"
-            className="TextField"
-            size="small"
-            required
-            variant="filled"
-          />
+          <input onChange={handleChange} id="businessName" className="TextField" size="small" required />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>사업자 주소</span>
           <input style={{ display: "none" }} id="address" className="TextField" required />
-          <input value={address} className="TextField" size="small" required variant="filled" />
+          <input value={address} className="TextField" size="small" required />
           <Button className="Button" variant="outlined" size="small" onClick={openPostCode}>
             찾기
           </Button>
@@ -68,27 +61,12 @@ const BusinessForm = ({ handleChange, setPayload, payload }) => {
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>사업자 등록 번호</span>
-          <input
-            onChange={handleChange}
-            id="businessTel"
-            className="TextField"
-            size="small"
-            required
-            variant="filled"
-          />
+          <input onChange={handleChange} id="businessTel" className="TextField" size="small" required />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>종목/업태</span>
-          <input
-            onChange={handleChange}
-            id="businessType"
-            className="TextField"
-            placeholder=""
-            size="small"
-            required
-            variant="filled"
-          />
+          <input onChange={handleChange} id="businessType" className="TextField" placeholder="" size="small" required />
           {/* <input */}
           {/*   onChange={handleChange} */}
           {/*   id="businessType2" */}
