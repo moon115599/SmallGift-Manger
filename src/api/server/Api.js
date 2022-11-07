@@ -19,7 +19,8 @@ export const accessApi = axios.create({
 
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
+    // Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
+    Authorization: window.localStorage.getItem("accessToken"),
   },
 });
 

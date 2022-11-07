@@ -49,7 +49,7 @@ const BusinessRegister = () => {
   });
   const formData = new FormData();
   useEffect(() => {
-    window.localStorage.setItem("accessToken", 1);
+    console.log(window.localStorage.getItem("accessToken"));
     formData.set("businessRegistration", formDataObj.business);
     formData.set("mailOrderSalesRegistration", formDataObj.sale);
     formData.set("registManager", JSON.stringify(payload));

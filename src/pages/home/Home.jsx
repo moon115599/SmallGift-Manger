@@ -16,7 +16,7 @@ import { axiosGetHome } from "../../api/home/home";
 const Home = () => {
   const [info, setInfo] = useState([]);
   useEffect(() => {
-    axiosGetHome(setInfo);
+    // axiosGetHome(setInfo);
   }, []);
 
   return (
