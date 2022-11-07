@@ -75,7 +75,7 @@ const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
           <br />
           <textarea
             style={{ width: "100%", height: "100px", padding: "14px" }}
-            id="description"
+            id="productContent"
             placeholder="설명을 입력하세요"
             value={data.description}
             onChange={onChange}

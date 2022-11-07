@@ -47,7 +47,7 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>은행계좌</span>
-          <select onChange={handleChange} id="settlmentBank" label="은행" required>
+          <select onChange={handleChange} id="settlementBank" label="은행" required>
             <option value="">==선택==</option>
             <option value="하나은행">하나은행</option>
             <option value="우리은행">우리은행</option>

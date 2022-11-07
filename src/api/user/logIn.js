@@ -1,11 +1,11 @@
 import axios from "axios";
 import { api } from "../server/Api";
 
-export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
+export const axiosLogInUser = async (dataToSubmit, setCookies) => {
   try {
-    const response = await api.post("./api/manager/login", dataTosubmit);
-    if (!response.success) {
-      alert(response.message);
+    const response = await api.post("./api/v1/login", JSON.stringify(dataToSubmit));
+    if (!response.status === 200) {
+      console.log(response);
       return false;
     }
     const today = new Date();
@@ -13,17 +13,17 @@ export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
     const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
     const expireReissueToken = today.setDate(today.getDate() + 7);
     // 만료 시간 설정
-
-    window.localStorage.setItem("acessToken", response.data.jwtAccessToken);
+    // window.localStorage.setItem("accessToken", 1);
+    console.log(response);
+    window.localStorage.setItem("accessToken", response.data.jwtAccessToken);
     window.localStorage.setItem("expireAccessToken", expireAccessToken);
     setCookies("refresh_token", response.data.jwtRefreshToken, {
       expires: new Date(expireReissueToken),
     });
-
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(dataToSubmit);
     return false;
   }
-  return 0;
+  return false;
 };

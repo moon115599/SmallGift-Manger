@@ -12,13 +12,14 @@ export const axiosRegisterBusiness = async (payload) => {
   } catch (error) {
     // alert(error);
     console.log(error);
+    console.log();
     return false;
   }
 };
 
 export const axiosCheckAccountValid = async (payload, setValidMsg) => {
   try {
-    const response = await accessApi.post("/api/manager/check/account", payload);
+    const response = await api.post("/api/manager/check/account", payload);
     if (!response.code === 200) {
       setValidMsg(response.message);
       return false;
@@ -32,7 +33,7 @@ export const axiosCheckAccountValid = async (payload, setValidMsg) => {
 
 export const axiosFileSubmit = async (payload) => {
   try {
-    const response = await accessApi.post("/api/manager/submit/file", payload);
+    const response = await api.post("/api/manager/submit/file", payload);
     if (!response.code === 200) {
       return false;
     }

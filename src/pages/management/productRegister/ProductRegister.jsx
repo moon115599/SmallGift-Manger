@@ -22,12 +22,16 @@ const ProductRegister = () => {
     productName: "",
     productPrice: "",
     productStock: "",
-    start_dt: "",
-    end_dt: "",
-    description: "",
+    startDate: "",
+    endDate: "",
+    productContent: "",
   });
   const handleChange = (e) => {
-    setPayload({ ...payload, [e.target.id]: e.target.value });
+    if (e.target.id === "productPrice" || e.target.id === "productStock") {
+      setPayload({ ...payload, [e.target.id]: parseInt(e.target.value, 10) });
+    } else {
+      setPayload({ ...payload, [e.target.id]: e.target.value });
+    }
     console.log(payload);
   };
 
@@ -37,10 +41,11 @@ const ProductRegister = () => {
     formData.set("image", formDataObj);
     formData.set("payload", JSON.stringify(payload));
   }, [formDataObj]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (axiosRegisterProduct(payload)) {
-      navigate("/management/products");
+    if (axiosRegisterProduct(formData)) {
+      // navigate("/management/products");
     }
   };
 

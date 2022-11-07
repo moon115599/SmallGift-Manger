@@ -44,7 +44,7 @@ const SalesInfo = ({ data, onChange }) => {
         <CommonStyled.InputDiv>
           <span>판매기간</span>
           <input
-            id="start_dt"
+            id="startDate"
             variant="filled"
             value={data.start_dt}
             man={data.end_dt}
@@ -58,7 +58,7 @@ const SalesInfo = ({ data, onChange }) => {
           />
           <h3 style={{ display: "inline", margin: "0 10px" }}>~</h3>
           <input
-            id="end_dt"
+            id="endDate"
             value={data.end_dt}
             min={data.start_dt}
             onChange={onChange}

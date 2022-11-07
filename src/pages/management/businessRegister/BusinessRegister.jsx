@@ -38,8 +38,8 @@ const BusinessRegister = () => {
 
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    console.log(payload, formData.get("payload"));
-    console.log(formData);
+    // console.log(payload, formData.get("payload"));
+    // console.log(formData);
   };
 
   const [isRegister, setIsRegister] = useState(false);

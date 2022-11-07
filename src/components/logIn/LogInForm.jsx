@@ -48,6 +48,7 @@ const LogInForm = () => {
   // 입력폼에서 데이터가 바뀔때마다 payload의 데이터 최신화
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
+    console.log(payload);
 
     if (e.target.id === "username") {
       if (e.target.value === "") {
@@ -93,13 +94,16 @@ const LogInForm = () => {
 
     // api 연결 잘 되면 이걸로 사용
     if (axiosLogInUser(payload, setCookies)) {
-      console.log("a");
-      // window.location.href = "/";
+      window.location.href = "/";
+      console.log("suc");
+    } else {
+      // window.location.href = "/login";
+      console.log("fail");
     }
 
     let expire = new Date().getTime() + 600 * 1000;
 
-    window.localStorage.setItem("accessToken", 1);
+    // window.localStorage.setItem("accessToken", 1);
     window.localStorage.setItem("expireAccessToken", expire);
     // 원래는 api에서 처리되는 것들
 

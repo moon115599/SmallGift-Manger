@@ -33,7 +33,7 @@ export const axiosUsernameCheck = async (username) => {
 
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
-    const response = await api.post("../api/manager/signup", dataTosubmit);
+    const response = await api.post("../api/user/signup", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;
