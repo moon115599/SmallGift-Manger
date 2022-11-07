@@ -23,12 +23,14 @@ const Td = ({ item, handleCheck, checked }) => {
   };
 
   return (
-    <tr id={item.productId}>
+    <tr id={item.id}>
       <td>
-        <input type="checkbox" onChange={handleCheck} checked={checked.includes(item.productId)} />
+        <input type="checkbox" onChange={handleCheck} checked={checked.includes(item.id)} />
       </td>
-      <td>{item.listNum}</td>
-      <td>{item.productImg}</td>
+      <td>{item.id}</td>
+      <td>
+        <img src={item.productImage} alt="image" height="50px" width="50px" />
+      </td>
       <td>{item.productName}</td>
       <td>{item.productPrice}</td>
       <td>

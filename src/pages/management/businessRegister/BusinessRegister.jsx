@@ -50,15 +50,20 @@ const BusinessRegister = () => {
   const formData = new FormData();
   useEffect(() => {
     console.log(window.localStorage.getItem("accessToken"));
-    formData.set("businessRegistration", formDataObj.business);
-    formData.set("mailOrderSalesRegistration", formDataObj.sale);
-    formData.set("registManager", JSON.stringify(payload));
+    formData.append("businessRegistration", formDataObj.business);
+    formData.append("mailOrderSalesRegistration", formDataObj.sale);
+    // formData.append("registManager", new Blob([JSON.stringify(payload)], { type: "application/json" }));
+    formData.append("registManager", JSON.stringify(payload));
   }, [formDataObj]);
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(formData.get("registManager"));
+    console.log(payload);
     if (axiosRegisterBusiness(formData)) {
       setIsRegister(true);
+      window.location.href = "/management/register/products";
+    } else {
+      setIsRegister(false);
     }
   };
 

@@ -4,14 +4,16 @@ import { accessApi, api } from "../server/Api";
 export const axiosRegisterBusiness = async (payload) => {
   try {
     const response = await accessApi.post("/api/manager", payload);
-    if (!response.status === 200 || response.status === 404) {
+    if (!response.status === 200) {
       alert(response.message);
       return false;
     }
+    console.log("suuccess");
     return true;
   } catch (error) {
     // alert(error);
     console.log(error);
+    console.log(payload);
     return false;
   }
 };

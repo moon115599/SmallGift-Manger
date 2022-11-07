@@ -4,14 +4,16 @@ import { api, accessApi } from "../server/Api";
 export const axiosRegisterProduct = async (payload) => {
   try {
     const response = await accessApi.post("./api/shops/1/products", payload);
-    if (response.code === 200) {
+    if (response.status === 201 || response.status === 200) {
       console.log("등록이 완료되었습니다.");
-    } else {
-      alert(response.message);
+      return true;
     }
+    alert(response.message);
+    return false;
   } catch (error) {
     alert("등록이 실패하였습니다.");
     console.log(error);
+    return false;
   }
 };
 

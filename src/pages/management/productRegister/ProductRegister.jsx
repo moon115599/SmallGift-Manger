@@ -38,14 +38,14 @@ const ProductRegister = () => {
   const [formDataObj, setFormDataObj] = useState("");
   const formData = new FormData();
   useEffect(() => {
-    formData.set("image", formDataObj);
-    formData.set("payload", JSON.stringify(payload));
+    formData.append("productImage", formDataObj);
+    formData.append("registProduct", JSON.stringify(payload));
   }, [formDataObj]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (axiosRegisterProduct(formData)) {
-      // navigate("/management/products");
+      navigate("/management/products");
     }
   };
 

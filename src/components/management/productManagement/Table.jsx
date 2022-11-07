@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import { DataGrid } from "@mui/x-data-grid";
@@ -8,17 +8,20 @@ import Td from "./Td";
 
 const Table = ({ info, setInfo }) => {
   const [checked, setChecked] = useState([]);
-
-  const handleRemove = () => {
+  const [removed, setRemoved] = useState(0);
+  const handleRemove = async () => {
     checked.map((id) => {
       axiosRemoveProduct(id);
     });
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   };
 
   const checkAll = (e) => {
     let checked = [];
     if (e.target.checked === true) {
-      info.forEach((i) => checked.push(i.productId));
+      info.forEach((i) => checked.push(i.id));
       setChecked(checked);
     } else {
       setChecked(checked);
@@ -32,6 +35,9 @@ const Table = ({ info, setInfo }) => {
       setChecked(checked.filter((i) => i != e.target.parentElement.parentElement.id));
     }
   };
+  useEffect(() => {
+    console.log(checked);
+  }, [checked]);
 
   return (
     <CommonStyled.ColumnFlexContainer>
@@ -61,9 +67,7 @@ const Table = ({ info, setInfo }) => {
         </thead>
         <tbody>
           {info.map((item) => {
-            return (
-              <Td id={item.productId} key={item.productId} item={item} handleCheck={handleCheck} checked={checked} />
-            );
+            return <Td id={item.id} key={item.id} item={item} handleCheck={handleCheck} checked={checked} />;
           })}
         </tbody>
       </Styled.Table>
