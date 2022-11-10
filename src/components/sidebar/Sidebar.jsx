@@ -152,7 +152,7 @@ const Sidebar = () => {
               </li>
             </Link>
 
-            <Link className="link" to="/">
+            <Link className="link" to="/review">
               <li className={menu.fourth ? "clicked" : ""}>
                 <ReceiptIcon className="Icon" />
                 <span>리뷰 관리</span>

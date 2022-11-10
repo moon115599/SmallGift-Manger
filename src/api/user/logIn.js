@@ -6,6 +6,7 @@ export const axiosLogInUser = async (dataToSubmit, setCookies) => {
     const response = await api.post("./api/v1/login", JSON.stringify(dataToSubmit));
     if (!response.status === 200) {
       console.log(response);
+      alert("로그인에 실패했습니다.");
       return false;
     }
     const today = new Date();
@@ -23,6 +24,7 @@ export const axiosLogInUser = async (dataToSubmit, setCookies) => {
     return true;
   } catch (error) {
     console.log(dataToSubmit);
+    alert("로그인에 실패했습니다.");
     return false;
   }
   return false;

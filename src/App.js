@@ -7,6 +7,7 @@ import FindPassword from "./pages/find/findPassword/FindPassword";
 import FindPasswordAfter from "./pages/find/findPassword/FindPasswordAfter";
 import Single from "./pages/single/Single";
 import Status from "./pages/status/Status";
+import Review from "./pages/review/Review";
 import ProductManagement from "./pages/management/productManagement/ProductManagement";
 import ProductRegister from "./pages/management/productRegister/ProductRegister";
 import BusinessRegister from "./pages/management/businessRegister/BusinessRegister";
@@ -36,6 +37,7 @@ function App() {
         <Route path="/management/register/products" element={<PrivateRoute element={<ProductRegister />} />} />
         <Route path="/management/register/business" element={<PrivateRoute element={<BusinessRegister />} />} />
         <Route path="/status" element={<PrivateRoute element={<Status />} />} />
+        <Route path="/review" element={<PrivateRoute element={<Review />} />} />
         <Route path="/*" element={<PublicRoute element={<NotFound />} />} />
       </Routes>
     </BrowserRouter>
