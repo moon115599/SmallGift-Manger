@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const DocumentForm = ({ formDataObj, setFormDataObj }) => {
+const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
   const businessRef = useRef();
   const saleRef = useRef();
 
@@ -66,7 +66,13 @@ const DocumentForm = ({ formDataObj, setFormDataObj }) => {
             파일 선택
           </Button>
 
-          <input value={link.business} className="TextField" size="small" required variant="filled" />
+          <input
+            value={link.business || payload.임시사업자등록증}
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
@@ -91,7 +97,13 @@ const DocumentForm = ({ formDataObj, setFormDataObj }) => {
           >
             파일 선택
           </Button>
-          <input value={link.sale} className="TextField" size="small" required variant="filled" />
+          <input
+            value={link.sale || payload.임시통신판매신고증}
+            className="TextField"
+            size="small"
+            required
+            variant="filled"
+          />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

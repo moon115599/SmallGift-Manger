@@ -108,9 +108,11 @@ const Sidebar = () => {
               <br />
               <p>관리자 | 포비 베이직</p>
             </div>
-            <Badge className="info-badge" badgeContent={4} color="secondary">
+            {/* <Badge className="info-badge" badgeContent={4} color="secondary">
               <NotificationsNoneIcon color="action" />
-            </Badge>
+            </Badge> 
+            알림 부분
+            */}
           </div>
         </Styled.Top>
         <Styled.Center>

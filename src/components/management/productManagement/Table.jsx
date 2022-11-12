@@ -58,10 +58,10 @@ const Table = ({ info, setInfo }) => {
               <input type="checkbox" onChange={checkAll} checked={checked.length === info.length} />
             </th>
             <th>번호</th>
+            <th>이미지</th>
             <th>상품명</th>
-            <th> </th>
             <th>판매가</th>
-            <th>상품 노출</th>
+            {/* <th>상품 노출</th> */}
             <th>수정</th>
           </tr>
         </thead>

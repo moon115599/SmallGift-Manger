@@ -24,4 +24,4 @@ export const accessApi = axios.create({
   },
 });
 
-// accessApi.interceptors.request.use(useReIssueToken, useReIssueErrorHandle);
+accessApi.interceptors.request.use(useReIssueToken, useReIssueErrorHandle);

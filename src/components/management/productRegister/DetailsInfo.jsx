@@ -8,7 +8,7 @@ import tempImg from "../../../assets/tempImg.png";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
+const DetailsInfo = ({ data, setData, onChange, formDataObj, setFormDataObj }) => {
   const [imageUrl, setImageUrl] = useState(null);
   const imgRef = useRef();
 
@@ -18,6 +18,7 @@ const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
     // const formData = new FormData();
     // formData.append("representative", file);
     setFormDataObj(file);
+    setData({ ...data, productImage: file });
 
     reader.readAsDataURL(file);
     reader.onloadend = () => {
@@ -38,7 +39,7 @@ const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
         <CommonStyled.InputDiv>
           <span>상품 대표 이미지 등록</span>
           <Styled.RowFlex>
-            <img src={imageUrl || tempImg} />
+            <img src={imageUrl || data.productImage || tempImg} />
             <Styled.RuleDiv>
               <span>이미지 등록시 유의사항</span>
               <div>
@@ -48,8 +49,8 @@ const DetailsInfo = ({ data, onChange, formDataObj, setFormDataObj }) => {
               </div>
               <input
                 type="file"
-                className="imgInput"
-                id="logoImg"
+                className="productImage"
+                id="productImage"
                 accept="image/*"
                 name="file"
                 ref={imgRef}

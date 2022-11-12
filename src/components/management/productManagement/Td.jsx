@@ -33,9 +33,9 @@ const Td = ({ item, handleCheck, checked }) => {
       </td>
       <td>{item.productName}</td>
       <td>{item.productPrice}</td>
-      <td>
+      {/* <td>
         <Switch defaultChecked onChange={handleSwitch} />
-      </td>
+      </td> */}
       <td>
         <Button onClick={openModal} variant="outlined" size="small">
           수정

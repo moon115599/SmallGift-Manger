@@ -39,6 +39,7 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
             className="TextField"
             id="accountHolder"
             onChange={handleChange}
+            value={data.accountHolder}
             size="small"
             required
             variant="filled"
@@ -47,7 +48,7 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
           <span>은행계좌</span>
-          <select onChange={handleChange} id="settlementBank" label="은행" required>
+          <select onChange={handleChange} id="settlementBank" value={data.settlementBank} label="은행" required>
             <option value="">==선택==</option>
             <option value="하나은행">하나은행</option>
             <option value="우리은행">우리은행</option>
@@ -57,6 +58,7 @@ const MoneyForm = ({ handleChange, data, isValidAccount, setIsValidAccount }) =>
             onChange={handleChange}
             id="settlementAccount"
             className="TextField"
+            value={data.settlementAccount}
             size="small"
             required
             variant="filled"

@@ -22,9 +22,11 @@ const ProductRegister = () => {
     productName: "",
     productPrice: "",
     productStock: "",
-    startDate: "",
-    endDate: "",
+    start_dt: "",
+    end_dt: "",
+    imageFile: "",
     productContent: "",
+    managerId: "",
   });
   const handleChange = (e) => {
     if (e.target.id === "productPrice" || e.target.id === "productStock") {
@@ -61,6 +63,7 @@ const ProductRegister = () => {
             <DetailsInfo
               onChange={handleChange}
               data={payload}
+              setData={setPayload}
               formDataObj={formDataObj}
               setFormDataObj={setFormDataObj}
             />
