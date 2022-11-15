@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Test from "./Test";
 import Home from "./pages/home/Home";
 import LogIn from "./pages/logIn/LogIn";

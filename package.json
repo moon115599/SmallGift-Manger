@@ -1,4 +1,5 @@
 {
+  "homepage": "https://moon115599.github.io/smallgiftAdmin",
   "name": "admin-page",
   "version": "0.1.0",
   "private": true,
@@ -24,6 +25,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "eslint-config-airbnb-base": "^15.0.0",
+    "gh-pages": "^4.0.0",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -46,7 +48,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
