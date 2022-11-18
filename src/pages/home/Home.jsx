@@ -11,12 +11,15 @@ import * as Styled from "./style";
 import * as CommonStyled from "../style";
 import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-import { axiosGetHome } from "../../api/home/home";
+import { axiosGetHome, axiosGetManger } from "../../api/home/home";
+import { useCookies } from "react-cookie";
 
 const Home = () => {
   const [info, setInfo] = useState([]);
+
   useEffect(() => {
     // axiosGetHome(setInfo);
+    axiosGetManger();
   }, []);
 
   return (
