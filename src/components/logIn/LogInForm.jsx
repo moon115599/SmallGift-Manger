@@ -94,7 +94,6 @@ const LogInForm = () => {
 
     // api 연결 잘 되면 이걸로 사용
     if (axiosLogInUser(payload, setCookies) || window.localStorage.getItem("accessToken")) {
-      window.localStorage.setItem("username", payload.username);
       setTimeout(() => navigate("/"), 2000);
       // console.log(window.localStorage.getItem("accessToken"));
 

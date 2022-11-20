@@ -104,9 +104,9 @@ const Sidebar = () => {
           </div>
           <div className="i">
             <div className="info">
-              <p className="info-name">{window.localStorage.getItem("username") || "이름 없음"}</p>
+              <p className="info-name">홍길동</p>
               <br />
-              <p>관리자 </p>
+              <p>관리자 | 포비 베이직</p>
             </div>
             {/* <Badge className="info-badge" badgeContent={4} color="secondary">
               <NotificationsNoneIcon color="action" />

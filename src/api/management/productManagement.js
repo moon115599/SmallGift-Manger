@@ -1,9 +1,9 @@
 import axios from "axios";
 import { accessApi } from "../server/Api";
 
-export const axiosGetProduct = async (setState, managerId) => {
+export const axiosGetProduct = async (setState) => {
   try {
-    const response = await accessApi.get(`../api/managers/${managerId}/shops/products`);
+    const response = await accessApi.get("../api/shops/1/products");
     if (response.status === 200) {
       console.log("성공적으로 데이터를 가져왔습니다.");
       // console.log(response.data.data);
