@@ -71,7 +71,7 @@ const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
             className="TextField"
             size="small"
             required
-            variant="filled"
+            variant="outlined"
           />
           <hr />
         </CommonStyled.InputDiv>
@@ -102,7 +102,7 @@ const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
             className="TextField"
             size="small"
             required
-            variant="filled"
+            variant="outlined"
           />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>

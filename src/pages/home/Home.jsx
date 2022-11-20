@@ -42,12 +42,12 @@ const Home = () => {
           <Grid item md={3} xs={6}>
             <Populars info={info} />
           </Grid>
-          <Grid item md={6} xs={12}>
+          {/*          <Grid item md={6} xs={12}>
             <Weekly info={info} />
           </Grid>
           <Grid item md={6} xs={12}>
             <Monthly info={info} />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Styled.HomeContainer>
     </Styled.Container>

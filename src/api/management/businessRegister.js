@@ -13,7 +13,7 @@ export const axiosRegisterBusiness = async (payload) => {
   } catch (error) {
     // alert(error);
     console.log(error);
-    console.log(payload);
+
     return false;
   }
 };

@@ -66,7 +66,7 @@ const BusinessRegister = () => {
     console.log(payload);
     if (axiosRegisterBusiness(formData)) {
       setIsRegister(true);
-      window.location.href = "/management/register/products";
+      // window.location.href = "/management/register/products";
     } else {
       setIsRegister(false);
     }
