@@ -25,9 +25,6 @@ const LogInForm = () => {
   const [cookies, setCookies, removeCookies] = useCookies([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.localStorage.setItem("accessToken", 12);
-  }, []);
   // 사용자한테 아이디/비밀번호를 입력 받고
   // 백에 보내줄 payload
   const [payload, setPayload] = useState({

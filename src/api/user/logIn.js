@@ -23,7 +23,7 @@ export const axiosLogInUser = async (dataToSubmit, setCookies) => {
     });
     return true;
   } catch (error) {
-    console.log(error);
+    console.log(dataToSubmit);
     alert("로그인에 실패했습니다.");
     return false;
   }

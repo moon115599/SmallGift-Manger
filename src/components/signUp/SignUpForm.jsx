@@ -36,7 +36,7 @@ const SignUpForm = () => {
     password: "",
     rePassword: "",
     phoneNumber: "",
-    // provider: "NORMAL",
+    provider: "NORMAL",
     role: "ROLE_MANAGER",
   });
 
