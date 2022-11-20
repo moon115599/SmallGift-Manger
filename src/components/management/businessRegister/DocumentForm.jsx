@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
+const DocumentForm = ({ formDataObj, setFormDataObj }) => {
   const businessRef = useRef();
   const saleRef = useRef();
 
@@ -15,10 +15,15 @@ const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
   const handleBusinessChange = (e) => {
     const reader = new FileReader();
     const file = businessRef.current.files[0];
+    console.log(file);
     // const formData = new FormData();
     // formData.append("business", file);
     setFormDataObj({ ...formDataObj, business: file });
-    setLink({ ...link, business: file.name });
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setLink({ ...link, business: file.name });
+      console.log("이미지주소", reader.result);
+    };
   };
   const handleSaleChange = (e) => {
     const reader = new FileReader();
@@ -26,7 +31,11 @@ const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
     // const formData = new FormData();
     // formData.append("sale", file);
     setFormDataObj({ ...formDataObj, sale: file });
-    setLink({ ...link, sale: file.name });
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setLink({ ...link, sale: file.name });
+      console.log("이미지주소", reader.result);
+    };
   };
 
   const onClickBusinessBtn = (e) => {
@@ -66,13 +75,8 @@ const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
             파일 선택
           </Button>
 
-          <input
-            value={link.business || payload.임시사업자등록증}
-            className="TextField"
-            size="small"
-            required
-            variant="outlined"
-          />
+          <input value={link.business} className="TextField" size="small" required variant="filled" />
+
           <hr />
         </CommonStyled.InputDiv>
         <CommonStyled.InputDiv>
@@ -97,13 +101,7 @@ const DocumentForm = ({ formDataObj, setFormDataObj, payload }) => {
           >
             파일 선택
           </Button>
-          <input
-            value={link.sale || payload.임시통신판매신고증}
-            className="TextField"
-            size="small"
-            required
-            variant="outlined"
-          />
+          <input value={link.sale} className="TextField" size="small" required variant="filled" />
         </CommonStyled.InputDiv>
       </CommonStyled.InputsDiv>
     </>

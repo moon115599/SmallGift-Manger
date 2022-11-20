@@ -8,13 +8,12 @@ import { ModalDiv } from "./style";
 
 const Modal = ({ item, open, close, header }) => {
   const [payload, setPayload] = useState({
-    end_dt: item.end_dt,
-    id: item.id,
+    end_dt: "string",
+    productId: item.productId,
     productName: item.productName,
     productPrice: item.productPrice,
-    productStock: item.productStock,
-    productImage: item.productImage,
-    start_dt: item.start_dt,
+    productStock: 0,
+    start_dt: "string",
   });
 
   const handleChange = (e) => {

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { accessApi } from "../server/Api";
 
-export const axiosGetProduct = async (setState) => {
+export const axiosGetProduct = async (setState, managerId) => {
   try {
-    const response = await accessApi.get("../api/shops/1/products");
+    const response = await accessApi.get(`./api/managers/${managerId}/shops/products`);
     if (response.status === 200) {
       console.log("성공적으로 데이터를 가져왔습니다.");
       // console.log(response.data.data);
@@ -13,13 +13,12 @@ export const axiosGetProduct = async (setState) => {
     }
   } catch (error) {
     alert("데이터를 가져오는 데 실패하였습니다.");
-    console.log(error);
   }
 };
 
-export const axiosRemoveProduct = async (productId) => {
+export const axiosRemoveProduct = async (productId, managerId) => {
   try {
-    const response = await accessApi.delete(`../api/shops/1/products/${productId}`);
+    const response = await accessApi.delete(`../api/managers/${managerId}/shops/products/${productId}`);
     if (response.status === 200) {
       console.log("삭제가 완료되었습니다.");
     } else {

@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 
-const RegisterNumberForm = ({ handleChange, payload }) => {
+const RegisterNumberForm = ({ handleChange }) => {
   const handleForm = (e) => {
     console.log(e.target.id);
   };
@@ -20,7 +20,6 @@ const RegisterNumberForm = ({ handleChange, payload }) => {
             onChange={handleChange}
             className="TextField"
             id="businessNumber"
-            value={payload.임시신고번호}
             size="small"
             required
             variant="filled"

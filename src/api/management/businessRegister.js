@@ -3,30 +3,13 @@ import { accessApi, api } from "../server/Api";
 
 export const axiosRegisterBusiness = async (payload) => {
   try {
-    const response = await accessApi.post("/api/manager", payload);
+    const response = await accessApi.post("./api/manager", payload);
     if (!response.status === 200) {
       alert(response.msg);
       return false;
     }
     console.log("suuccess");
-    return true;
-  } catch (error) {
-    // alert(error);
-    console.log(error);
-
-    return false;
-  }
-};
-
-export const axiosGetBusiness = async (setData) => {
-  try {
-    const response = await accessApi.get("/api/1/manager");
-    if (!response.status === 200) {
-      alert(response.msg);
-      return false;
-    }
-    setData(response.data.data);
-    console.log("suuccess");
+    window.location.href = "/management/register/products";
     return true;
   } catch (error) {
     // alert(error);

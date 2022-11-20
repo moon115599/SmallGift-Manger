@@ -11,6 +11,7 @@ import { Button, FormControl, TextField } from "@mui/material";
 import * as CommonStyled from "../../style";
 import * as Styled from "./style";
 import { axiosFileSubmit, axiosRegisterProduct } from "../../../api/management/productRegister";
+import { axiosGetManager } from "../../../api/home/home";
 
 const ProductRegister = () => {
   const title = "상품 등록";
@@ -22,11 +23,9 @@ const ProductRegister = () => {
     productName: "",
     productPrice: "",
     productStock: "",
-    start_dt: "",
-    end_dt: "",
-    imageFile: "",
+    startDate: "",
+    endDate: "",
     productContent: "",
-    managerId: "",
   });
   const handleChange = (e) => {
     if (e.target.id === "productPrice" || e.target.id === "productStock") {
@@ -40,14 +39,18 @@ const ProductRegister = () => {
   const [formDataObj, setFormDataObj] = useState("");
   const formData = new FormData();
   useEffect(() => {
+    axiosGetManager();
+  }, []);
+  useEffect(() => {
     formData.append("productImage", formDataObj);
     formData.append("registProduct", JSON.stringify(payload));
-  }, [formDataObj]);
+  }, [payload]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (axiosRegisterProduct(formData)) {
-      navigate("/management/products");
+    let managerId = window.localStorage.getItem("managerId");
+    if (axiosRegisterProduct(formData, managerId)) {
+      // navigate("/management/products");
     }
   };
 
@@ -63,7 +66,6 @@ const ProductRegister = () => {
             <DetailsInfo
               onChange={handleChange}
               data={payload}
-              setData={setPayload}
               formDataObj={formDataObj}
               setFormDataObj={setFormDataObj}
             />

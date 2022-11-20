@@ -18,11 +18,12 @@ const PopupPostCode = ({ onClose, setAddress, setZoneCode }) => {
       }
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
-    console.log(fullAddress);
+    console.log(data.address);
     setAddress(fullAddress);
 
     let zoneCode = data.zonecode;
-    setZoneCode(zoneCode);
+    let zoneName = data.address;
+    setZoneCode(zoneName);
     onClose();
   };
 

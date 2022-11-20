@@ -36,7 +36,6 @@ const SignUpForm = () => {
     password: "",
     rePassword: "",
     phoneNumber: "",
-    provider: "NORMAL",
     role: "ROLE_MANAGER",
   });
 
@@ -160,8 +159,8 @@ const SignUpForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (axiosSignUpUser(payload)) {
-      navigate("/");
+    if (axiosSignUpUser(payload) == true) {
+      // navigate("/");
       console.log("success");
     }
   };

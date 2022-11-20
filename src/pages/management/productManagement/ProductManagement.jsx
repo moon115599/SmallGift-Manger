@@ -8,23 +8,26 @@ import { TextField, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import { axiosGetProduct } from "../../../api/management/productManagement";
+import { axiosGetManager } from "../../../api/home/home";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([
-    { listNum: 1, id: 1, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 2, id: 2, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 3, id: 3, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 4, id: 4, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 5, id: 5, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 6, id: 6, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 7, id: 7, productName: "Good", productPrice: 10000, productImage: 1 },
-    { listNum: 8, id: 8, productName: "Good", productPrice: 10000, productImage: 1 },
+    // { listNum: 1, productId: 1, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 2, productId: 2, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 3, productId: 3, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 4, productId: 4, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 5, productId: 5, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 6, productId: 6, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 7, productId: 7, productName: "Good", productPrice: 10000, status: 1 },
+    // { listNum: 8, productId: 8, productName: "Good", productPrice: 10000, status: 1 },
   ]);
   const title = "상품 관리";
   const description = "판매 중인 상품 리스트를 관리할 수 있습니다";
 
   useEffect(() => {
-    axiosGetProduct(setProducts);
+    axiosGetManager();
+    let managerId = window.localStorage.getItem("managerId");
+    axiosGetProduct(setProducts, managerId);
   }, []);
   return (
     <CommonStyled.Container>

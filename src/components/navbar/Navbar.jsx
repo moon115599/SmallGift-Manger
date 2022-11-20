@@ -17,6 +17,7 @@ const Navbar = ({ title, discription }) => {
   const handleSignOutClick = (e) => {
     e.preventDefault();
     window.localStorage.removeItem("accessToken");
+    window.localStorage.removeItem("managerId");
     window.location.href = "/login";
   };
 

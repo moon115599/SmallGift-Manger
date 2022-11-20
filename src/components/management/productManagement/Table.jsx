@@ -9,8 +9,9 @@ import Td from "./Td";
 const Table = ({ info, setInfo }) => {
   const [checked, setChecked] = useState([]);
   const [removed, setRemoved] = useState(0);
+  let managerId = window.localStorage.getItem("managerId");
   const handleRemove = async () => {
-    checked.map((id) => {
+    checked.map((id, managerId) => {
       axiosRemoveProduct(id);
     });
     setTimeout(() => {
@@ -58,10 +59,10 @@ const Table = ({ info, setInfo }) => {
               <input type="checkbox" onChange={checkAll} checked={checked.length === info.length} />
             </th>
             <th>번호</th>
-            <th>이미지</th>
             <th>상품명</th>
+            <th> </th>
             <th>판매가</th>
-            {/* <th>상품 노출</th> */}
+            <th>상품 노출</th>
             <th>수정</th>
           </tr>
         </thead>

@@ -34,12 +34,14 @@ export const axiosUsernameCheck = async (username) => {
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
     const response = await api.post("../api/user/signup", dataTosubmit);
-    if (!response.success) {
-      alert(response.message);
+    if (!response.status == 200) {
+      alert(response.msg);
       return false;
     }
+    console.log("회원가입에 완료했습니다.");
     return true;
   } catch (error) {
+    console.log(error);
     alert("회원가입에 실패하였습니다.");
     return false;
   }

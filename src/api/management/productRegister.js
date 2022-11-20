@@ -1,9 +1,9 @@
 import axios from "axios";
 import { api, accessApi } from "../server/Api";
 
-export const axiosRegisterProduct = async (payload) => {
+export const axiosRegisterProduct = async (payload, managerId) => {
   try {
-    const response = await accessApi.post("./api/shops/1/products", payload);
+    const response = await accessApi.post(`./api/managers/${managerId}/shops/products`, payload);
     if (response.status === 201 || response.status === 200) {
       console.log("등록이 완료되었습니다.");
       return true;

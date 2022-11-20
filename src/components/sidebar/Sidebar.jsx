@@ -104,15 +104,10 @@ const Sidebar = () => {
           </div>
           <div className="i">
             <div className="info">
-              <p className="info-name">홍길동</p>
+              <p className="info-name">{window.localStorage.getItem("username")}</p>
               <br />
-              <p>관리자 | 포비 베이직</p>
+              <p>관리자 </p>
             </div>
-            {/* <Badge className="info-badge" badgeContent={4} color="secondary">
-              <NotificationsNoneIcon color="action" />
-            </Badge> 
-            알림 부분
-            */}
           </div>
         </Styled.Top>
         <Styled.Center>

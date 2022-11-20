@@ -11,7 +11,7 @@ import { TextField, FormControl, Button } from "@mui/material";
 import * as Styled from "./style";
 import * as CommonStyled from "../../style";
 import axios from "axios";
-import { axiosGetBusiness, axiosRegisterBusiness } from "../../../api/management/businessRegister";
+import { axiosRegisterBusiness } from "../../../api/management/businessRegister";
 import PopupDom from "../../../components/management/businessRegister/address/PopupDom";
 import PopupPostCode from "../../../components/management/businessRegister/address/PopupPostCode";
 
@@ -32,18 +32,13 @@ const BusinessRegister = () => {
     settlementAccount: "",
   });
 
-  useEffect(() => {
-    axiosGetBusiness(setPayload);
-  }, []);
-
   // const [isValidAccount, setIsValidAccount] = useState(false);
   // 계좌 유효성 api가 완성되지 않았으므로 임의로 true로 설정
   const [isValidAccount, setIsValidAccount] = useState(true);
 
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
-    // console.log(payload, formData.get("payload"));
-    // console.log(formData);
+    // console.log(payload, formData.get("payload"))
   };
 
   const [isRegister, setIsRegister] = useState(false);
@@ -52,14 +47,13 @@ const BusinessRegister = () => {
     business: "",
   });
   const formData = new FormData();
+
   useEffect(() => {
-    // console.log(window.localStorage.getItem("accessToken"));
     formData.append("businessRegistration", formDataObj.business);
-    formData.append("mailOrderSalesRegistration", formDataObj.sale);
+    formData.append("mailOrderSalesRegistration", formDataObj.business);
     // formData.append("registManager", new Blob([JSON.stringify(payload)], { type: "application/json" }));
     formData.append("registManager", JSON.stringify(payload));
-  }, [formDataObj]);
-
+  }, [payload]);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData.get("registManager"));
@@ -71,7 +65,6 @@ const BusinessRegister = () => {
       setIsRegister(false);
     }
   };
-
   return (
     <CommonStyled.Container>
       <Sidebar className="sidebar" />
@@ -95,8 +88,8 @@ const BusinessRegister = () => {
               isValidAccount={isValidAccount}
               setIsValidAccount={setIsValidAccount}
             />
-            <RegisterNumberForm handleChange={handleChange} payload={payload} />
-            <DocumentForm formDataObj={formDataObj} setFormDataObj={setFormDataObj} payload={payload} />
+            <RegisterNumberForm handleChange={handleChange} />
+            <DocumentForm formDataObj={formDataObj} setFormDataObj={setFormDataObj} />
             <Button
               disabled={
                 !(
