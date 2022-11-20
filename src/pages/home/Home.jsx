@@ -11,15 +11,16 @@ import * as Styled from "./style";
 import * as CommonStyled from "../style";
 import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-import { axiosGetHome, axiosGetManger } from "../../api/home/home";
+import { axiosGetHome, axiosGetManager } from "../../api/home/home";
 import { useCookies } from "react-cookie";
 
 const Home = () => {
   const [info, setInfo] = useState([]);
 
   useEffect(() => {
-    // axiosGetHome(setInfo);
-    axiosGetManger();
+    if (!window.localStorage.getItem("managerId")) {
+      axiosGetManager();
+    }
   }, []);
 
   return (

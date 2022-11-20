@@ -1,5 +1,5 @@
 import axios from "axios";
-import { accessApi } from "../server/Api";
+import { accessApi, api } from "../server/Api";
 
 export const axiosGetHome = async (setState) => {
   try {
@@ -15,17 +15,18 @@ export const axiosGetHome = async (setState) => {
   }
 };
 
-export const axiosGetManger = async () => {
+export const axiosGetManager = async () => {
   try {
     const response = await accessApi.get("./api/manager/info");
     console.log(response.data);
     if (response.status === 200) {
       console.log("데이터를 불러오는데 성공했습니다.");
-      // window.localStorage.setItem("managerId", responsee);
+      window.localStorage.setItem("managerId", response);
     } else {
       alert(response.msg);
     }
   } catch (error) {
     alert("데이터를 불러오는데 실패했습니다.");
+    console.log(error);
   }
 };
