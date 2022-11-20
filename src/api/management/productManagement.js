@@ -13,7 +13,6 @@ export const axiosGetProduct = async (setState, managerId) => {
     }
   } catch (error) {
     alert("데이터를 가져오는 데 실패하였습니다.");
-    console.log(error);
   }
 };
 

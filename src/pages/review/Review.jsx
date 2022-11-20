@@ -11,6 +11,7 @@ import * as CommonStyled from "../style";
 const Review = () => {
   const title = "리뷰 관리";
   const description = "리뷰를 관리할 수 있습니다.";
+
   return (
     <CommonStyled.Container>
       <Sidebar style={{ display: "none" }} className="sidebar" id="sidebar" />
